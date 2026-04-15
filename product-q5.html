@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ARI MOBILE — 올인원 진단 테스트 매뉴얼</title>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+        <style>:root { --cp-black: #03030a; --cp-dark: #07071a; --cp-surface: #0b0b22; --cp-surface2: #0f0f2e; --cp-border: #1a1a4a; --cp-text: #e0e8ff; --cp-muted: #7888cc; --cp-cyan: #00f5ff; --cp-amber: #ffc107; --cp-pink: #ff2d9b; --cp-purple: #b44fff; } * { box-sizing: border-box; margin: 0; padding: 0; } body { background: var(--cp-black); color: var(--cp-text); font-family: 'Rajdhani', sans-serif; line-height: 1.6; min-height: 100vh; } .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; } .hero { text-align: center; padding: 4rem 1rem 2rem; background: radial-gradient(ellipse at top, rgba(255,193,7,0.15), transparent 70%); } .hero h1 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 3.2rem; background: linear-gradient(90deg, var(--cp-amber), var(--cp-cyan), var(--cp-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; } .hero img { max-width: 100%; border: 2px solid var(--cp-amber); border-radius: 8px; box-shadow: 0 0 30px rgba(255,193,7,0.25); margin: 1.5rem 0; } .section { margin: 2rem 0; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 6px; overflow: hidden; } .section-header { padding: 1rem 1.5rem; background: rgba(255,193,7,0.05); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; } .section-header:hover { background: rgba(255,193,7,0.12); } .section-header h2 { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--cp-amber); letter-spacing: 0.08em; text-transform: uppercase; } .section-content { padding: 1.5rem; display: none; } .section-content.open { display: block; } .section-content p, .section-content ul { color: var(--cp-muted); font-size: 1rem; } .section-content strong { color: var(--cp-amber); } .list { list-style: none; padding-left: 1.2rem; } .list li:before { content: '→'; color: var(--cp-purple); margin-right: 0.5rem; } footer { text-align: center; padding: 2rem; color: var(--cp-muted); font-size: 0.85rem; border-top: 1px solid var(--cp-border); }</style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero">
+                <h1>ARI MOBILE</h1>
+                <p style="color:var(--cp-muted); max-width:620px; margin:0 auto;">올인원 정밀 진단 테스트 — 생활·성격·인지·정서·다크트라이어드까지 한 번에</p>
+                <img src="allquiz.png" alt="Ari Mobile App 화면">
+            </div>
+            <div class="section">
+                <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+                    <h2>1. 앱 개요</h2>
+                    <span>▼</span>
+                </div>
+                <div class="section-content">
+                    <p><strong>ARI MOBILE</strong>은 5가지 정밀 진단 테스트를 하나의 앱으로 통합한 올인원 진단 도구입니다.</p>
+                    <p>포트레이트 모드 전용, 다크 테마, 배경음악 + 효과음 지원, 부드러운 애니메이션 UI로 구성되어 있습니다.</p>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+                    <h2>2. 주요 테스트 카테고리</h2>
+                    <span>▼</span>
+                </div>
+                <div class="section-content">
+                    <ul class="list">
+                        <li>
+                            <strong>생활퀴즈</strong> — 현대 사회 시스템 생존 능력 측정 (자본주의 적응도)
+                        </li>
+                        <li>
+                            <strong>성격MBTI</strong> — 비즈니스 환경 / 일상 환경 두 가지 모드 지원 (Jungian 기반)
+                        </li>
+                        <li>
+                            <strong>IQ 테스트</strong> — 30문항 G-Factor 기반 인지 능력 검사 (멘사 수준)
+                        </li>
+                        <li>
+                            <strong>EQ 테스트</strong> — 정서 지능 및 공감 능력 평가 (Goleman 모델)
+                        </li>
+                        <li>
+                            <strong>반사회 인격장애 (다크 트라이어드)</strong> — 마키아벨리즘, 나르시시즘, 사이코패시 성향 분석 (SD3 기반)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+                    <h2>3. 화면 구성 및 조작 방법</h2>
+                    <span>▼</span>
+                </div>
+                <div class="section-content">
+                    <p><strong>메인 화면</strong></p>
+                    <ul class="list">
+                        <li>배경 이미지 + 어두운 오버레이</li>
+                        <li>상단: 테스트 소스 및 이름 표시 (MBTI는 도움말 버튼 제공)</li>
+                        <li>중앙: 5개 카테고리 리스트 (터치로 선택, 선택 시 amber 강조)</li>
+                        <li>하단: 큰 <strong>“정밀 진단 개시”</strong> 버튼
+                        </li>
+                    </ul>
+                    <p><strong>조작</strong></p>
+                    <ul class="list">
+                        <li>카테고리 터치 → 선택 (애니메이션 적용)</li>
+                        <li>시작 버튼 → 해당 테스트 페이지로 이동</li>
+                        <li>MBTI 선택 시 → 비즈니스 모드 / 일상 모드 팝업 등장</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+                    <h2>4. 설치 & 실행</h2>
+                    <span>▼</span>
+                </div>
+                <div class="section-content">
+                    <ol>
+                        <li>Flutter 프로젝트에 assets/images/, assets/audio/ 폴더 생성</li>
+                        <li>bgm.mp3, click.wav, click3.wav 파일을 assets/audio/에 넣기</li>
+                        <li>pubspec.yaml에 assets 선언</li>
+                        <li>flutter run (세로 모드만 지원)</li>
+                    </ol>
+                    <p>앱 실행 즉시 배경음악(BGM)이 30% 볼륨으로 자동 재생됩니다.</p>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+                    <h2>5. 특징 및 주의사항</h2>
+                    <span>▼</span>
+                </div>
+                <div class="section-content">
+                    <p><strong>특징</strong></p>
+                    <ul class="list">
+                        <li>세로 화면 고정 (portraitUp)</li>
+                        <li>다크 테마 + Amber 포인트 컬러</li>
+                        <li>배경음악 루프 재생 + 버튼 효과음</li>
+                        <li>MBTI 이중 모드 (비즈니스 / 일상)</li>
+                        <li>각 테스트별 전문 데이터베이스 연동</li>
+                    </ul>
+                    <p><strong>주의사항</strong></p>
+                    <ul class="list">
+                        <li>현재 일부 테스트는 개발 중일 수 있음 (“로직 정밀 검수 중” 알림)</li>
+                        <li>이미지 파일명과 assets 경로 정확히 맞춰야 함</li>
+                        <li>실제 배포 시 Google Play / App Store 정책 준수 필요</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer>© 2026 ARI MOBILE — All-in-One Diagnostic System</footer>
+        <script>
+  document.querySelector('.section-content').classList.add('open');
+</script>
+    </body>
+</html>

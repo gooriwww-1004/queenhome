@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AI Queen of Millennium Session</title>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <style>/* DESIGN TOKENS */:root { --cp-black: #03030a; --cp-dark: #07071a; --cp-surface: #0b0b22; --cp-surface2: #0f0f2e; --cp-border: #1a1a4a; --cp-divider: #12123a; --cp-text: #e0e8ff; --cp-text-muted: #7888cc; --cp-text-faint: #334488; --cp-cyan: #00f5ff; --cp-purple: #b44fff; --cp-pink: #ff2d9b; --cp-gold: #ffd700; --cp-green: #00ff9f; --font-display: 'Orbitron', sans-serif; --font-body: 'Rajdhani', sans-serif; --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.75rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem); --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem); --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem); --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem); --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem); } *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; scroll-padding-top: var(--space-16); } body { background: var(--cp-black); color: var(--cp-text); font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; min-height: 100dvh; overflow-x: hidden; } img { display: block; max-width: 100%; height: auto; } a { color: inherit; text-decoration: none; transition: color 180ms, opacity 180ms; } button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; } /* LAYOUT */.container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: clamp(var(--space-6), 5vw, var(--space-16)); } /* HEADER */.header { position: sticky; top: 0; z-index: 100; padding-block: var(--space-4); background: rgba(3,3,10,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--cp-cyan); box-shadow: 0 0 20px rgba(0,245,255,0.1); } .header__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); } .logo { display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); color: var(--cp-cyan); } .logo__sub { font-size: var(--text-xs); color: var(--cp-purple); display: block; letter-spacing: 0.04em; text-transform: uppercase; } nav a { color: var(--cp-text-muted); font-family: var(--font-body); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; transition: color 180ms; } nav a:hover { color: var(--cp-cyan); } .desktop-nav { display: flex; align-items: center; gap: var(--space-6); } /* PAGE HERO */.page-hero { padding-block: clamp(var(--space-16), 10vw, var(--space-20)); background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(180,79,255,0.18) 0%, rgba(0,245,255,0.08) 40%, transparent 70%, var(--cp-black) 100%); border-bottom: 1px solid var(--cp-divider); } .page-hero__label { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 0.65rem; font-weight: 700; color: var(--cp-cyan); font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: var(--space-4); } .page-hero__label::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--cp-cyan); border-radius: 2px; box-shadow: 0 0 6px var(--cp-cyan); } .page-hero__title { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 900; line-height: 1.1; margin-bottom: var(--space-6); } .page-hero__gradient { background: linear-gradient(90deg, var(--cp-cyan), var(--cp-purple), var(--cp-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; } .page-hero__desc { font-size: var(--text-lg); color: var(--cp-text-muted); max-width: 58ch; line-height: 1.7; } /* SECTION COMMON */section { padding-block: clamp(var(--space-12), 8vw, var(--space-20)); } section:nth-child(even) { background: var(--cp-surface); } .section-label { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 0.65rem; font-weight: 700; color: var(--cp-cyan); font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: var(--space-4); } .section-label::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--cp-cyan); border-radius: 2px; } .section-title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--cp-text); margin-bottom: var(--space-4); } .section-desc { font-size: var(--text-base); color: var(--cp-text-muted); max-width: 56ch; line-height: 1.7; margin-bottom: var(--space-10); } /* ============================================
+   IMAGE SLIDER
+   ============================================ */.img-slider { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: linear-gradient(135deg, rgba(180,79,255,0.15), rgba(0,245,255,0.08)); border-bottom: 1px solid var(--cp-border); } .img-slider__track { display: flex; width: 300%; height: 100%; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); } .img-slider__slide { width: 33.3333%; height: 100%; flex-shrink: 0; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; } .img-slider__slide img { width: 100%; height: 100%; object-fit: cover; display: block; } .img-slider__placeholder { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); color: var(--cp-text-faint); font-family: var(--font-display); font-size: var(--text-xs); letter-spacing: 0.1em; width: 100%; height: 100%; justify-content: center; } .img-slider__placeholder svg { opacity: 0.4; } /* 슬라이더 화살표 버튼 */.img-slider__btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 28px; height: 28px; border-radius: 50%; background: rgba(3,3,10,0.75); border: 1px solid var(--cp-cyan); color: var(--cp-cyan); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, box-shadow 0.2s; padding: 0; } .img-slider__btn:hover { background: rgba(0,245,255,0.15); box-shadow: 0 0 10px rgba(0,245,255,0.4); } .img-slider__btn--prev { left: 6px; } .img-slider__btn--next { right: 6px; } /* 도트 인디케이터 */.img-slider__dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10; } .img-slider__dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,245,255,0.3); border: 1px solid rgba(0,245,255,0.5); cursor: pointer; transition: background 0.2s, transform 0.2s; } .img-slider__dot.active { background: var(--cp-cyan); transform: scale(1.3); box-shadow: 0 0 6px var(--cp-cyan); } /* ── CARD MINI SLIDER ──────────────────────────────────── */.card-slider { position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden; background: linear-gradient(135deg, rgba(180,79,255,0.15), rgba(0,245,255,0.08)); } .card-slider__track { display: flex; width: 300%; height: 100%; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); } .card-slider__slide { width: 33.3333%; height: 100%; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(180,79,255,0.1), rgba(0,245,255,0.06)); } .card-slider__slide img { width: 100%; height: 100%; object-fit: cover; display: block; } .card-slider__placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--cp-text-faint); font-family: var(--font-display); font-size: 0.6rem; letter-spacing: 0.1em; } .card-slider__btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 24px; height: 24px; border-radius: 50%; background: rgba(3,3,10,0.8); border: 1px solid var(--cp-cyan); color: var(--cp-cyan); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, box-shadow 0.2s; padding: 0; opacity: 0; transition: opacity 0.2s, background 0.2s, box-shadow 0.2s; } .card-slider:hover .card-slider__btn { opacity: 1; } .card-slider__btn:hover { background: rgba(0,245,255,0.2); box-shadow: 0 0 8px rgba(0,245,255,0.5); } .card-slider__btn--prev { left: 5px; } .card-slider__btn--next { right: 5px; } .card-slider__dots { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 10; } .card-slider__dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(0,245,255,0.3); border: 1px solid rgba(0,245,255,0.5); cursor: pointer; transition: background 0.2s, transform 0.2s; } .card-slider__dot.active { background: var(--cp-cyan); transform: scale(1.3); box-shadow: 0 0 5px var(--cp-cyan); } /* PRODUCT CARD */.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-8); margin-top: var(--space-10); } .product-card { background: var(--cp-surface2); border: 1px solid var(--cp-border); border-radius: 4px; overflow: hidden; transition: all 0.25s; display: flex; flex-direction: column; } .product-card:hover { border-color: var(--cp-cyan); box-shadow: 0 0 24px rgba(0,245,255,0.2), inset 0 0 20px rgba(0,245,255,0.03); transform: translateY(-4px); } .product-card__body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); flex: 1; } .product-card__badge { display: inline-flex; align-items: center; gap: var(--space-2); padding: 2px var(--space-3); border-radius: 999px; font-size: 0.6rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; width: fit-content; } .badge--approved { background: rgba(0,255,159,0.1); border: 1px solid rgba(0,255,159,0.35); color: var(--cp-green); } .badge--dev { background: rgba(0,245,255,0.08); border: 1px solid rgba(0,245,255,0.3); color: var(--cp-cyan); } .badge--hold { background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.3); color: var(--cp-gold); } .badge--new { background: rgba(255,45,155,0.1); border: 1px solid rgba(255,45,155,0.35); color: var(--cp-pink); } .product-card__title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; color: var(--cp-text); line-height: 1.2; } .product-card__desc { font-size: var(--text-sm); color: var(--cp-text-muted); line-height: 1.7; flex: 1; } .product-card__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: auto; } .tag { padding: 2px var(--space-3); border-radius: 2px; font-size: 0.6rem; font-weight: 600; font-family: var(--font-display); letter-spacing: 0.08em; background: rgba(0,245,255,0.05); border: 1px solid rgba(0,245,255,0.2); color: var(--cp-cyan); } .tag--purple { background: rgba(180,79,255,0.07); border-color: rgba(180,79,255,0.25); color: var(--cp-purple); } .tag--pink { background: rgba(255,45,155,0.07); border-color: rgba(255,45,155,0.25); color: var(--cp-pink); } /* ─── FEATURED PRODUCT (가로형 큰 카드) ────────────────── */.product-featured { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-10); align-items: center; background: var(--cp-surface2); border: 1px solid rgba(180,79,255,0.4); border-radius: 4px; overflow: hidden; padding: var(--space-10); box-shadow: 0 0 30px rgba(180,79,255,0.12); margin-bottom: var(--space-10); } .product-featured:hover { border-color: var(--cp-purple); box-shadow: 0 0 40px rgba(180,79,255,0.25); } /* 이미지 영역 (featured) */.product-featured__img-wrap { width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(
+        135deg,
+        rgba(180,79,255,0.2),
+        rgba(0,245,255,0.1)
+      ); border: 1px solid var(--cp-border); border-radius: 4px; display: flex; align-items: center; justify-content: center; overflow: hidden; } .product-featured__img-wrap img { width: 100%; height: 100%; object-fit: cover; } .product-featured__title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 900; color: var(--cp-text); margin-bottom: var(--space-4); } .product-featured__desc { font-size: var(--text-base); color: var(--cp-text-muted); line-height: 1.8; margin-bottom: var(--space-6); } .product-featured__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-6); } /* ─── ROADMAP ────────────────────────────────────────────── */.roadmap { display: flex; flex-direction: column; gap: var(--space-6); margin-top: var(--space-10); } .roadmap-item { display: grid; grid-template-columns: 100px 1fr; gap: var(--space-6); align-items: start; padding: var(--space-6); background: var(--cp-surface2); border: 1px solid var(--cp-border); border-radius: 4px; transition: border-color 0.25s, box-shadow 0.25s; } .roadmap-item:hover { border-color: var(--cp-cyan); box-shadow: 0 0 16px rgba(0,245,255,0.15); } .roadmap-year { font-family: var(--font-display); font-size: var(--text-sm); font-weight: 700; color: var(--cp-cyan); letter-spacing: 0.08em; } .roadmap-content h4 { font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; color: var(--cp-text); margin-bottom: var(--space-2); } .roadmap-content p { font-size: var(--text-sm); color: var(--cp-text-muted); line-height: 1.6; } /* ─── STAT BAR ───────────────────────────────────────────── */.stat-bar { display: flex; flex-wrap: wrap; gap: var(--space-10); padding: var(--space-10); background: var(--cp-surface2); border: 1px solid var(--cp-border); border-radius: 4px; margin-top: var(--space-10); } .stat-item { flex: 1 1 140px; } .stat-value { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 900; color: var(--cp-cyan); letter-spacing: -0.02em; text-shadow: 0 0 20px rgba(0,245,255,0.4); } .stat-label { font-size: var(--text-xs); color: var(--cp-text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: var(--space-2); font-family: var(--font-display); } /* ─── BUTTONS ────────────────────────────────────────────── */.btn-primary { display: inline-flex; align-items: center; gap: var(--space-2); background: transparent; border: 1px solid var(--cp-cyan); color: var(--cp-cyan); font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.75rem 2rem; border-radius: 2px; box-shadow: 0 0 12px rgba(0,245,255,0.3),
+                  inset 0 0 12px rgba(0,245,255,0.05); transition: all 0.2s; } .btn-primary:hover { border-color: var(--cp-purple); color: var(--cp-purple); box-shadow: 0 0 24px rgba(180,79,255,0.5),
+                  inset 0 0 20px rgba(180,79,255,0.1); } .btn-secondary { display: inline-flex; align-items: center; gap: var(--space-2); background: transparent; border: 1px solid var(--cp-purple); color: var(--cp-purple); font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 2rem; border-radius: 2px; transition: all 0.2s; } .btn-secondary:hover { border-color: var(--cp-cyan); color: var(--cp-cyan); box-shadow: 0 0 24px rgba(0,245,255,0.4); } /* ─── SCROLL ANIMATION ───────────────────────────────────── */.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.6s cubic-bezier(0.16,1,0.3,1); } .fade-up.visible { opacity: 1; transform: translateY(0); } .fade-up:nth-child(2) { transition-delay: 0.1s; } .fade-up:nth-child(3) { transition-delay: 0.2s; } .fade-up:nth-child(4) { transition-delay: 0.3s; } .fade-up:nth-child(5) { transition-delay: 0.4s; } .fade-up:nth-child(6) { transition-delay: 0.5s; } /* ─── FOOTER ─────────────────────────────────────────────── */footer { background: var(--cp-dark); border-top: 1px solid var(--cp-cyan); box-shadow: 0 -4px 20px rgba(0,245,255,0.08); padding-block: var(--space-10); } .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-6); } .footer__links { display: flex; gap: var(--space-6); } .footer__links a { font-size: var(--text-sm); color: var(--cp-text-muted); font-family: var(--font-body); font-weight: 600; transition: color 180ms; } .footer__links a:hover { color: var(--cp-cyan); text-shadow: 0 0 8px var(--cp-cyan); } .footer__copy { font-size: 0.6rem; color: var(--cp-text-faint); font-family: var(--font-display); letter-spacing: 0.1em; } /* ─── MOBILE ─────────────────────────────────────────────── */@media (max-width: 768px) { .desktop-nav {  display: none; }  .product-featured {  grid-template-columns: 1fr; }  .roadmap-item {  grid-template-columns: 1fr;  gap: var(--space-2); }  /* 중간 메뉴(우리가만드는것) 모바일 처리 */ .qms-header__inner .qms-nav {  display: none !important; }  .qms-header__inner .qms-hamburger {  display: flex !important; } }</style>
+    </head>
+    <body>
+        <!-- QMS HEADER -->
+        <style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap'); .qms-header { position: sticky; top: 0; z-index: 200; padding: 1rem 0; background: rgba(3,3,10,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid #00f5ff; box-shadow: 0 0 20px rgba(0,245,255,0.1); font-family: 'Rajdhani', sans-serif; } .qms-header__inner { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; } .qms-logo { display: flex; align-items: center; gap: 0.75rem; font-family: 'Orbitron', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: 0.1em; color: #00f5ff; text-decoration: none; } .qms-logo__sub { font-size: 0.7rem; font-weight: 400; color: #b44fff; display: block; letter-spacing: 0.06em; text-transform: uppercase; } .qms-nav { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; position: relative; } .qms-nav a, .qms-nav-item > a { font-size: 0.72rem; font-weight: 600; color: #7888cc; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s, text-shadow 0.2s; text-decoration: none; font-family: 'Rajdhani', sans-serif; } .qms-nav a:hover, .qms-nav-item > a:hover { color: #00f5ff; text-shadow: 0 0 8px #00f5ff; } .qms-nav-item { position: relative; } .qms-dropdown { display: none; position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); background: rgba(3,3,10,0.98); border: 1px solid #00f5ff; border-radius: 4px; min-width: 160px; z-index: 500; box-shadow: 0 0 20px rgba(0,245,255,0.25); overflow: hidden; } .qms-dropdown.open { display: block; } .qms-dropdown a { display: block; padding: 10px 16px; font-size: 0.82rem; font-weight: 600; color: #7888cc; letter-spacing: 0.04em; border-bottom: 1px solid #12123a; transition: all 0.15s; white-space: nowrap; text-decoration: none; text-transform: none; } .qms-dropdown a:last-child { border-bottom: none; } .qms-dropdown a:hover { color: #00f5ff; background: rgba(0,245,255,0.06); } .qms-nav-item.has-dd > a::after { content: ' ▾'; font-size: 0.6rem; opacity: 0.7; } .qms-nav-item.has-dd > a.dd-open::after { content: ' ▴'; } .qms-active { color: #00f5ff !important; text-shadow: 0 0 8px #00f5ff; } /* mobile */.qms-hamburger { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; cursor: pointer; background: none; border: none; } .qms-hamburger span { display: block; width: 22px; height: 2px; background: #00f5ff; border-radius: 2px; } .qms-mobile-nav { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(3,3,10,0.97); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; } .qms-mobile-nav.open { display: flex; } .qms-mobile-nav a { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; font-weight: 700; color: #e0e8ff; text-decoration: none; } .qms-mobile-nav a:hover { color: #00f5ff; } .qms-mobile-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.2rem; color: #7888cc; cursor: pointer; background: none; border: none; font-family: inherit; } @media (max-width:900px){ .qms-nav {  display: none; }  .qms-hamburger {  display: flex; } } /* scanline */body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; background: repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,245,255,.012) 3px,rgba(0,245,255,.012) 4px); }</style>
+        <header class="qms-header">
+            <div class="qms-header__inner">
+                <a href="index.html" class="qms-logo"> <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
+                        <rect width="36" height="36" rx="10" fill="url(#qhg)"/>
+                        <path d="M18 7L21 13L28 14L23 19L24.5 26L18 23L11.5 26L13 19L8 14L15 13Z" fill="white" opacity="0.9"/>
+                        <defs>
+                            <linearGradient id="qhg" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#b44fff"/>
+                                <stop offset="1" stop-color="#00f5ff"/>
+                            </linearGradient>
+                        </defs>
+                    </svg> <div>
+                        <span>QMS</span>
+                        <span class="qms-logo__sub">Queen of Millennium Session</span>
+                    </div> </a>
+                <nav class="qms-nav">
+                    <a href="index.html#team">AI 팀</a>
+                    <a href="team.html">팀 소개</a>
+                    <a href="ensemble-product.html" class="qms-active">Queen's Collection</a>
+                    <div class="qms-nav-item has-dd">
+                        <a href="project.html">장기 프로젝트</a>
+                        <div class="qms-dropdown">
+                            <a href="project.html">밀레니아</a>
+                            <a href="project.html">드론 택시</a>
+                            <a href="project.html">방어무기</a>
+                        </div>
+                    </div>
+                    <div class="qms-nav-item has-dd">
+                        <a href="quantum.html">체험</a>
+                        <div class="qms-dropdown">
+                            <a href="quantum.html">양자체험</a>
+                            <a href="ensemble-maker.html">앙상블웹체험</a>
+                        </div>
+                    </div>
+                    <a href="index.html#about">About</a>
+                    <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+                </nav>
+                <button class="qms-hamburger" id="qmsHamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+        <div class="qms-mobile-nav" id="qmsMobileNav">
+            <button class="qms-mobile-close" id="qmsMobileClose">✕</button>
+            <a href="index.html#team">AI 팀</a>
+            <a href="team.html">팀 소개</a>
+            <a href="ensemble-product.html">Queen's Collection</a>
+            <a href="project.html">장기 프로젝트</a>
+            <a href="project.html" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 밀레니아</a>
+            <a href="project.html" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 드론 택시</a>
+            <a href="project.html" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 방어무기</a>
+            <a href="quantum.html">체험</a>
+            <a href="quantum.html" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 양자체험</a>
+            <a href="ensemble-maker.html" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 앙상블웹체험</a>
+            <a href="index.html#about">About</a>
+            <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+        </div>
+        <script>
+(function(){
+  /* ── 상단 메인 햄버거 ── */
+  var h=document.getElementById('qmsHamburger'),
+      n=document.getElementById('qmsMobileNav'),
+      c=document.getElementById('qmsMobileClose');
+  if(h&&n){
+    h.addEventListener('click',function(){n.classList.add('open');});
+  }
+  if(c&&n){
+    c.addEventListener('click',function(){n.classList.remove('open');});
+  }
+  if(n){
+    /* 일반 링크 클릭 시 닫기 (mob-parent 제외) */
+    n.querySelectorAll('a:not(.mob-parent)').forEach(function(a){
+      a.addEventListener('click',function(){n.classList.remove('open');});
+    });
+    /* 서브메뉴 토글 */
+    n.querySelectorAll('.mob-parent').forEach(function(btn){
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        var sub=btn.nextElementSibling;
+        if(!sub)return;
+        var isOpen=(sub.style.display==='flex');
+        n.querySelectorAll('.mob-sub').forEach(function(s){s.style.display='none';});
+        sub.style.display=isOpen?'none':'flex';
+      });
+    });
+  }
+  /* ── 데스크탑 드롭다운 ── */
+  document.querySelectorAll('.qms-nav-item.has-dd').forEach(function(item){
+    var trigger=item.querySelector(':scope > a');
+    var dd=item.querySelector('.qms-dropdown');
+    if(!trigger||!dd)return;
+    trigger.addEventListener('click',function(e){
+      e.preventDefault();
+      var isOpen=dd.classList.contains('open');
+      document.querySelectorAll('.qms-dropdown.open').forEach(function(d){
+        d.classList.remove('open');
+        var p=d.closest('.qms-nav-item');
+        if(p)p.querySelector(':scope > a').classList.remove('dd-open');
+      });
+      if(!isOpen){dd.classList.add('open');trigger.classList.add('dd-open');}
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.qms-nav-item.has-dd')&&!e.target.closest('#qmsMobileNav')){
+      document.querySelectorAll('.qms-dropdown.open').forEach(function(d){
+        d.classList.remove('open');
+        var p=d.closest('.qms-nav-item');
+        if(p)p.querySelector(':scope > a').classList.remove('dd-open');
+      });
+    }
+  });
+})();
+</script>
+        <!-- ─── HEADER ──────────────────────────────────────────────── -->
+        <!-- ─── PAGE HERO ────────────────────────────────────────────── -->
+        <div class="page-hero">
+            <div class="container">
+                <div class="page-hero__label">Products</div>
+                <h1 class="page-hero__title">AI 점성술 - 사주풀이<br> <span class="page-hero__gradient">상품 소개</span></h1>
+                <p class="page-hero__desc">
+        A~G 7인의 AI가 협업하는 멀티모델 의사결정 시스템.<br>
+        무한의 스크롤 앱 1,000개 제작 목표. </p>
+            </div>
+        </div>
+        <!-- ─── STATS ────────────────────────────────────────────────── -->
+        <section>
+            <div class="container">
+                <div class="stat-bar fade-up">
+                    <div class="stat-item">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">AI 협업 모델</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">1,000</div>
+                        <div class="stat-label">앱 제작 목표</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">10년</div>
+                        <div class="stat-label">장기 로드맵</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">0원</div>
+                        <div class="stat-label">개발비용</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="qms-header__inner">
+            <a href="index.html" class="qms-logo"> <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
+                    <rect width="36" height="36" rx="10" fill="url(#qhg)"/>
+                    <path d="M18 7L21 13L28 14L23 19L24.5 26L18 23L11.5 26L13 19L8 14L15 13Z" fill="white" opacity="0.9"/>
+                    <defs>
+                        <linearGradient id="qhg" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#b44fff"/>
+                            <stop offset="1" stop-color="#00f5ff"/>
+                        </linearGradient>
+                    </defs>
+                </svg> <div>
+                    <span>우리가 만든것</span>
+                    <span class="qms-logo__sub">Queen of Millennium Session</span>
+                </div> </a>
+            <nav class="qms-nav">
+                <a href="ensemble-product.html">자동화 AI TOOL</a>
+                <a href="ensemble-product-1.html">자동화 AI 트레이딩</a>
+                <a href="ensemble-product.html" class="qms-active">고대 점성술</a>
+                <div class="qms-nav-item has-dd">
+                    <a href="ensemble-product-3.html">교육용 앱</a>
+                    <div class="qms-dropdown">
+                        <a href="project.html">밀레니아</a>
+                        <a href="project.html">드론 택시</a>
+                        <a href="project.html">방어무기</a>
+                    </div>
+                </div>
+                <div class="qms-nav-item has-dd">
+                    <div class="qms-dropdown">
+                        <a href="quantum.html">양자체험</a>
+                        <a href="ensemble-maker.html">앙상블웹체험</a>
+                    </div>
+                </div>
+            </nav>
+            <button class="qms-hamburger" id="qmsHamburger2">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="qms-mobile-nav" id="qmsMobileNav2">
+            <button class="qms-mobile-close" id="qmsMobileClose2">✕</button>
+            <a href="ensemble-product.html">자동화 AI TOOL</a>
+            <a href="ensemble-product-1.html">자동화 AI 트레이딩</a>
+            <a href="ensemble-product-2.html">고대 점성술</a>
+            <a href="ensemble-product-3.html">교육용 앱</a>
+        </div>
+        <script>
+(function(){
+  var h2=document.getElementById('qmsHamburger2'),
+      n2=document.getElementById('qmsMobileNav2'),
+      c2=document.getElementById('qmsMobileClose2');
+  if(h2&&n2){
+    h2.addEventListener('click',function(){n2.classList.add('open');});
+  }
+  if(c2&&n2){
+    c2.addEventListener('click',function(){n2.classList.remove('open');});
+  }
+  if(n2){
+    n2.querySelectorAll('a:not(.mob-parent)').forEach(function(a){
+      a.addEventListener('click',function(){n2.classList.remove('open');});
+    });
+    n2.querySelectorAll('.mob-parent').forEach(function(btn){
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        var sub=btn.nextElementSibling;
+        if(!sub)return;
+        var isOpen=(sub.style.display==='flex');
+        n2.querySelectorAll('.mob-sub').forEach(function(s){s.style.display='none';});
+        sub.style.display=isOpen?'none':'flex';
+      });
+    });
+  }
+})();
+</script>
+        <!-- ─── FEATURED: 앙상블 플러터 ─────────────────────────────── -->
+        <section>
+            <div class="container">
+                <div class="section-label">Featured Product</div>
+                <h2 class="section-title">대표 상품</h2>
+                <div class="product-featured fade-up" width="width:50%;height:auto;max-height:600px;object-fit:contain;display:block;margin:0 auto;">
+                    <!-- 이미지 영역 → 실제 이미지로 교체 시 img 태그 사용 -->
+                    <div style="grid-area:1 / 1 / 2 / 2;" class="product-featured__img-wrap">
+                        <!-- <img src="images/ensemble-flutter.png" alt="앙상블 플러터"> -->
+                        <div class="product-card__img-placeholder">
+</div>
+                        <img src="allquiz.png" width="width:50%;height:auto;max-height:700px;object-fit:contain;display:block;margin:0 auto;">
+                    </div>
+                    <!-- 텍스트 영역 -->
+                    <div>
+                        <span class="product-card__badge badge--approved">&#10003; 완료 테스트</span>
+                        <h3 class="product-featured__title" style="margin-top:1rem;">&nbsp; &nbsp;레이스 &amp; 세이 베트남</h3>
+                        <p class="product-featured__desc">외국어 연습 &#8212; 네 목소리로 바로 피드백 받는 앱.-음성 녹음 &amp; 즉시 피드백: 발음 점수, 억양 그래프
+언어팩 선택: 영어&middot;일본어&middot;스페인어&middot;프랑스어 등
+대화 시뮬레이션: AI가 질문 &rarr; 답변 &rarr; 교정
+반복 연습 모드: 틀린 문장만 자동 재생
+화면 비율 최적화: 태블릿&middot;폰 모두 16:9 풀스크린</p>
+                        <div class="product-featured__tags">
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Dart</span>
+                            <span class="tag tag--pink">크로스플랫폼</span>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <a href="product-q5.html" class="btn-primary">
+              상세 보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg> </a>
+                            <a class="btn-secondary">다운 로드&nbsp; &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ─── 상품 그리드 ──────────────────────────────────────────── -->
+        <section>
+            <div class="container">
+                <div class="section-label">All Products</div>
+                <h2 class="section-title">전체 상품 목록</h2>
+                <p class="section-desc">
+        무한의 스크롤 앱 1,000개 제작 목표 (현재 8개 전시 중).<br>
+        아래 카드에 상품 추가 시 복사해서 붙여넣기. </p>
+                <div class="product-grid">
+                    <!-- ── 카드 1: 레이스 & 세이 동남아 ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide">
+                                    <img src="king.png" alt="레이스&세이 동남아 화면1">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="say1_2.png" alt="레이스&세이 동남아 화면2" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'M21 15l-5-5L5 21\'/></svg><span>슬라이드 2</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="say1_3.png" alt="레이스&세이 동남아 화면3" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'M21 15l-5-5L5 21\'/></svg><span>슬라이드 3</span></div>'">
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--approved">✓ 승인</span>
+                            <div class="product-card__title">MBTI 러쉬</div>
+                            <p class="product-card__desc">기존 앱들(MBTI 30문제, IQ 40문제, EQ 25문제, 인격장애 15문제) 데이터 보유.
+사용자 피로도: 20문제 넘으면 60% 이상 이탈 (쇼츠 세대 영향).
+목표: 1분 내 완성, 정확도 70% 수준 유지 &rarr; &quot;재미 + 빠름&quot; 우선.&nbsp;</p>
+                            <div class="product-card__tags">
+                                <span class="tag">Flutter</span>
+                                <span class="tag tag--purple">AI×3</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <a href="product-q2.html" class="btn-primary">
+              상세 보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg> </a>
+                            <a href="qofms.netlify.app" class="btn-secondary">웹 체험판 →</a>
+                        </div>
+                    </div>
+                    <!-- ── 카드 2: 레이스 & 세이 Myanmar ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide">
+                                    <img src="say2.png" alt="레이스&세이 Myanmar 화면1">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="say2_2.png" alt="레이스&세이 Myanmar 화면2" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'M21 15l-5-5L5 21\'/></svg><span>슬라이드 2</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="say2_3.png" alt="레이스&세이 Myanmar 화면3" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'M21 15l-5-5L5 21\'/></svg><span>슬라이드 3</span></div>'">
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--hold">⚠ 준비</span>
+                            <div class="product-card__title">레이스 &amp; 세이 Myanmar</div>
+                            <p class="product-card__desc">실시간 TTS/STT 분석 → 발음·억양·속도 피드백. 언어팩 10개 이상 지원, 16:9 풀스크린 최적화. 혼자서도 "진짜 대화"처럼 연습 — AI가 상대역. 음성 데이터 로컬 처리, 저장 없음.</p>
+                            <div class="product-card__tags">
+                                <span class="tag tag--pink">FlutterLight</span>
+                                <span class="tag">분산처리</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ── 카드 3: AI 사주풀이 ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide">
+                                    <img src="saju1.png" alt="사주 화면1" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'12\' r=\'10\'/><path d=\'M12 8v4l3 3\'/></svg><span>슬라이드 1</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="saju2.png" alt="사주 화면2" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'12\' r=\'10\'/><path d=\'M12 8v4l3 3\'/></svg><span>슬라이드 2</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="saju3.png" alt="사주 화면3" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'12\' r=\'10\'/><path d=\'M12 8v4l3 3\'/></svg><span>슬라이드 3</span></div>'">
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--dev">개발중</span>
+                            <div class="product-card__title">AI 고대 사주풀이</div>
+                            <p class="product-card__desc">생년월일시 입력 → 7인 AI가 협업 분석. 동양 고전 명리학과 현대 데이터사이언스 결합. 운세·성격·진로 리포트 자동 생성.</p>
+                            <div class="product-card__tags">
+                                <span class="tag">AI×7</span>
+                                <span class="tag tag--purple">명리학</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <a href="product-q2.html" class="btn-primary">
+              상세 보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg> </a>
+                            <a href="ensemble-maker.html" class="btn-secondary">웹 체험판 →</a>
+                        </div>
+                    </div>
+                    <!-- ── 카드 4: 타로 AI ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide">
+                                    <img src="taro1.png" alt="타로 화면1" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><rect x=\'4\' y=\'2\' width=\'16\' height=\'20\' rx=\'2\'/><path d=\'M9 7h6M9 12h6M9 17h4\'/></svg><span>슬라이드 1</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="taro2.png" alt="타로 화면2" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><rect x=\'4\' y=\'2\' width=\'16\' height=\'20\' rx=\'2\'/><path d=\'M9 7h6M9 12h6M9 17h4\'/></svg><span>슬라이드 2</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="taro3.png" alt="타로 화면3" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><rect x=\'4\' y=\'2\' width=\'16\' height=\'20\' rx=\'2\'/><path d=\'M9 7h6M9 12h6M9 17h4\'/></svg><span>슬라이드 3</span></div>'">
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--dev">개발중</span>
+                            <div class="product-card__title">AI 타로 리딩</div>
+                            <p class="product-card__desc">78장 타로 덱 기반 AI 해석 엔진. 질문 입력 → 카드 드로우 → 멀티모델 해석. 연애·재물·커리어 테마별 리딩.</p>
+                            <div class="product-card__tags">
+                                <span class="tag tag--pink">타로</span>
+                                <span class="tag">Flutter</span>
+                                <span class="tag tag--purple">AI×4</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ── 카드 5: 별자리 점성술 ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide">
+                                    <img src="star1.png" alt="별자리 화면1" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><polygon points=\'12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26\'/></svg><span>슬라이드 1</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="star2.png" alt="별자리 화면2" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><polygon points=\'12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26\'/></svg><span>슬라이드 2</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="star3.png" alt="별자리 화면3" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><polygon points=\'12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26\'/></svg><span>슬라이드 3</span></div>'">
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--new">NEW</span>
+                            <div class="product-card__title">별자리 AI 점성술</div>
+                            <p class="product-card__desc">출생 차트 자동 생성 & AI 해석. 12궁도 행성 위치 실시간 계산. 호환성 분석: 두 사람의 차트 비교.</p>
+                            <div class="product-card__tags">
+                                <span class="tag tag--purple">점성술</span>
+                                <span class="tag">Dart</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ── 카드 6: AI 꿈 해몽 ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide">
+                                    <img src="dream1.png" alt="꿈해몽 화면1" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><path d=\'M17.5 19A6.5 6.5 0 0 1 11 12.5c0-1.49.5-2.86 1.34-3.95A6.5 6.5 0 1 0 17.5 19z\'/></svg><span>슬라이드 1</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="dream2.png" alt="꿈해몽 화면2" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><path d=\'M17.5 19A6.5 6.5 0 0 1 11 12.5c0-1.49.5-2.86 1.34-3.95A6.5 6.5 0 1 0 17.5 19z\'/></svg><span>슬라이드 2</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="dream3.png" alt="꿈해몽 화면3" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><path d=\'M17.5 19A6.5 6.5 0 0 1 11 12.5c0-1.49.5-2.86 1.34-3.95A6.5 6.5 0 1 0 17.5 19z\'/></svg><span>슬라이드 3</span></div>'">
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--new">NEW</span>
+                            <div class="product-card__title">AI 꿈 해몽 분석</div>
+                            <p class="product-card__desc">꿈 내용 텍스트 입력 → 7인 AI 심층 해석. 심리학·동양철학·현대 분석 통합. 반복되는 꿈 패턴 추적.</p>
+                            <div class="product-card__tags">
+                                <span class="tag">AI×7</span>
+                                <span class="tag tag--pink">심리분석</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ── 카드 7: 수비학 AI ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide">
+                                    <img src="num1.png" alt="수비학 화면1" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><path d=\'M4 7h16M4 12h16M4 17h16\'/></svg><span>슬라이드 1</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="num2.png" alt="수비학 화면2" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><path d=\'M4 7h16M4 12h16M4 17h16\'/></svg><span>슬라이드 2</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="num3.png" alt="수비학 화면3" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><path d=\'M4 7h16M4 12h16M4 17h16\'/></svg><span>슬라이드 3</span></div>'">
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--dev">개발중</span>
+                            <div class="product-card__title">수비학 AI 분석기</div>
+                            <p class="product-card__desc">이름·생년월일 수비 계산 → AI 해석. 생명수·운명수·영혼수 자동 산출. 인생 사이클 예측 & 길흉 분석.</p>
+                            <div class="product-card__tags">
+                                <span class="tag tag--purple">수비학</span>
+                                <span class="tag">Flutter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ── 카드 8: AI 풍수 분석 ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide">
+                                    <img src="feng1.png" alt="풍수 화면1" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><path d=\'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\'/></svg><span>슬라이드 1</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="feng2.png" alt="풍수 화면2" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><path d=\'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\'/></svg><span>슬라이드 2</span></div>'">
+                                </div>
+                                <div class="card-slider__slide">
+                                    <img src="feng3.png" alt="풍수 화면3" onerror="this.parentNode.innerHTML='<div class=\'card-slider__placeholder\'><svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#334488\' stroke-width=\'1.5\'><path d=\'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\'/></svg><span>슬라이드 3</span></div>'">
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--hold">⚠ 준비</span>
+                            <div class="product-card__title">AI 풍수 인테리어</div>
+                            <p class="product-card__desc">사진 업로드 → AI 풍수 에너지 분석. 방위·색상·가구 배치 개선 제안. 집·사무실·상가 맞춤 풍수 리포트.</p>
+                            <div class="product-card__tags">
+                                <span class="tag tag--pink">풍수</span>
+                                <span class="tag tag--purple">AI×5</span>
+                                <span class="tag">비전AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ─── 로드맵 ────────────────────────────────────────────────── -->
+        <section>
+            <div class="container">
+                <div class="section-label">Roadmap</div>
+                <h2 class="section-title">10년 로드맵</h2>
+                <div class="roadmap">
+                    <div class="roadmap-item fade-up">
+                        <div class="roadmap-year">Year 1~2</div>
+                        <div class="roadmap-content">
+                            <h4>외형 CAD + 기본 설계</h4>
+                            <p>앙상블 플러터 Lite 출시. 웹 제조기 공개. 홈페이지 오픈.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item fade-up">
+                        <div class="roadmap-year">Year 3~5</div>
+                        <div class="roadmap-content">
+                            <h4>AI 고도화 + 앱 100개 돌파</h4>
+                            <p>앙상블 Pro 버전 출시. API 연동 확장. 월 10개 페이스 정착.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item fade-up">
+                        <div class="roadmap-year">Year 6~8</div>
+                        <div class="roadmap-content">
+                            <h4>앱 500개 + 국제 콘테스트 참가</h4>
+                            <p>AI 감정·기억 복제 모듈 탑재.
+               MIT·DARPA 설계 콘테스트 제출 준비.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item fade-up">
+                        <div class="roadmap-year">Year 9~10</div>
+                        <div class="roadmap-content">
+                            <h4>앱 1,000개 달성 + 라이선스 판매</h4>
+                            <p>최종 도면 완성 → 국제 로봇 설계 콘테스트 제출.
+               관심 기업 라이선스 판매 협상.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ─── CTA ──────────────────────────────────────────────────── -->
+        <section style="
+    background: linear-gradient(135deg,
+      rgba(180,79,255,0.08),
+      rgba(0,245,255,0.05));
+    border-top: 1px solid rgba(180,79,255,0.25);
+    border-bottom: 1px solid rgba(180,79,255,0.25);
+    text-align: center;">
+            <div class="container" style="max-width:960px;">
+                <div class="section-label" style="justify-content:center;">Contact</div>
+                <h2 class="section-title">도입 문의 · 협업 제안</h2>
+                <p class="section-desc" style="margin:var(--space-4) auto var(--space-10);
+                text-align:center; max-width:52ch;">
+        Queen of Millennium Session AI팀과 함께<br>
+        미래 기술을 미리 꿰매는 설계 파트너가 되세요.<br>
+        월 10개 페이스로 1,000개를 향해 — <strong style="color:var(--cp-cyan);">
+          AI Team Leading the Future </strong> </p>
+                <div style="display:flex; flex-wrap:wrap;
+                  gap:var(--space-4); justify-content:center;">
+                    <a href="https://gooriblog.wordpress.com" target="_blank" rel="noopener" class="btn-primary" style="font-size:var(--text-base);">
+          홈페이지 방문 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg> </a>
+                    <a href="ensemble-maker.html" class="btn-secondary" style="font-size:var(--text-base);">
+          웹 제조기 체험 → </a>
+                </div>
+            </div>
+        </section>
+        <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+        <footer>
+            <div class="container">
+                <div class="footer__inner">
+                    <div class="logo" style="font-size:var(--text-base);">
+                        <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+                            <rect width="36" height="36" rx="10" fill="url(#logoGrad2)"/>
+                            <path d="M18 7 L21 13 L28 14 L23 19
+                     L24.5 26 L18 23 L11.5 26
+                     L13 19 L8 14 L15 13 Z" fill="white" opacity="0.9"/>
+                            <defs>
+                                <linearGradient id="logoGrad2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#b44fff"/>
+                                    <stop offset="1" stop-color="#00f5ff"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        QMS
+                    </div>
+                    <div class="footer__links">
+                        <a href="index.html">홈</a>
+                        <a href="index.html#team">AI팀</a>
+                        <a href="index.html#tools">Tools</a>
+                        <a href="ensemble-maker.html">웹 제조기</a>
+                        <a href="index.html#about">About</a>
+                        <a href="https://gooriblog.wordpress.com" target="_blank" rel="noopener">Blog</a>
+                    </div>
+                </div>
+                <div class="footer__copy" style="margin-top:var(--space-6); text-align:center;">
+                    © 2026 Queen of Millennium Session — AI Team Leading the Future
+</div>
+            </div>
+        </footer>
+        <!-- ─── SCRIPTS ──────────────────────────────────────────────── -->
+        <script>
+    /* ── 헤더 스크롤 쉐도우 ─────────────────────────────────── */
+    const header = document.querySelector('.qms-header');
+
+    window.addEventListener('scroll', () => {
+      if(!header) return;
+      header.style.boxShadow = window.scrollY > 20
+        ? '0 0 30px rgba(0,245,255,0.2)'
+        : '0 0 20px rgba(0,245,255,0.1)';
+    }, { passive: true });
+
+
+    /* ── 스크롤 fade-up 애니메이션 ──────────────────────────── */
+
+    const fadeEls = document.querySelectorAll('.fade-up');
+
+    const io = new IntersectionObserver(entries => {
+
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => io.observe(el));
+
+
+    /* ── 카드 미니 슬라이더 ────────────────────────────────── */
+    document.querySelectorAll('[data-card-slider]').forEach(function(slider) {
+      var track = slider.querySelector('.card-slider__track');
+      var dots  = slider.querySelectorAll('.card-slider__dot');
+      var prev  = slider.querySelector('.card-slider__btn--prev');
+      var next  = slider.querySelector('.card-slider__btn--next');
+      var total = dots.length;
+      var cur   = 0;
+
+      function goTo(idx) {
+        cur = (idx + total) % total;
+        track.style.transform = 'translateX(-' + (cur * 33.3333) + '%)';
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+      }
+
+      if (prev) prev.addEventListener('click', function() { goTo(cur - 1); });
+      if (next) next.addEventListener('click', function() { goTo(cur + 1); });
+      dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); }); });
+
+      /* 터치 스와이프 */
+      var startX = 0;
+      slider.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      slider.addEventListener('touchend',   function(e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? cur + 1 : cur - 1);
+      });
+    });
+    </script>
+        <script>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==
+                                    <span>슬라이드 2</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 8v4l3 3"/>
+                                    </svg>
+                                    <span>슬라이드 3</span>
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--dev">개발중</span>
+                            <div class="product-card__title">AI 고대 사주풀이</div>
+                            <p class="product-card__desc">생년월일시 입력 → 7인 AI가 협업 분석. 동양 고전 명리학과 현대 데이터사이언스 결합. 운세·성격·진로 리포트 자동 생성.</p>
+                            <div class="product-card__tags">
+                                <span class="tag">AI×7</span>
+                                <span class="tag tag--purple">명리학</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ── 카드 4: 타로 AI ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                        <path d="M9 7h6M9 12h6M9 17h4"/>
+                                    </svg>
+                                    <span>슬라이드 1</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                        <path d="M9 7h6M9 12h6M9 17h4"/>
+                                    </svg>
+                                    <span>슬라이드 2</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                        <path d="M9 7h6M9 12h6M9 17h4"/>
+                                    </svg>
+                                    <span>슬라이드 3</span>
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--dev">개발중</span>
+                            <div class="product-card__title">AI 타로 리딩</div>
+                            <p class="product-card__desc">78장 타로 덱 기반 AI 해석 엔진. 질문 입력 → 카드 드로우 → 멀티모델 해석. 연애·재물·커리어 테마별 리딩. 일별/주별 리포트 푸시 알림.</p>
+                            <div class="product-card__tags">
+                                <span class="tag tag--pink">타로</span>
+                                <span class="tag">Flutter</span>
+                                <span class="tag tag--purple">AI×4</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ── 카드 5: 별자리 점성술 ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/>
+                                    </svg>
+                                    <span>슬라이드 1</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/>
+                                    </svg>
+                                    <span>슬라이드 2</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/>
+                                    </svg>
+                                    <span>슬라이드 3</span>
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--new">NEW</span>
+                            <div class="product-card__title">별자리 AI 점성술</div>
+                            <p class="product-card__desc">출생 차트 자동 생성 & AI 해석. 12궁도 행성 위치 실시간 계산. 호환성 분석: 두 사람의 차트 비교. 월별 운세 예측 리포트 자동 발송.</p>
+                            <div class="product-card__tags">
+                                <span class="tag tag--purple">점성술</span>
+                                <span class="tag">Dart</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ── 카드 6: AI 꿈 해몽 ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <path d="M17.5 19A6.5 6.5 0 0 1 11 12.5c0-1.49.5-2.86 1.34-3.95A6.5 6.5 0 1 0 17.5 19z"/>
+                                    </svg>
+                                    <span>슬라이드 1</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <path d="M17.5 19A6.5 6.5 0 0 1 11 12.5c0-1.49.5-2.86 1.34-3.95A6.5 6.5 0 1 0 17.5 19z"/>
+                                    </svg>
+                                    <span>슬라이드 2</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <path d="M17.5 19A6.5 6.5 0 0 1 11 12.5c0-1.49.5-2.86 1.34-3.95A6.5 6.5 0 1 0 17.5 19z"/>
+                                    </svg>
+                                    <span>슬라이드 3</span>
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--new">NEW</span>
+                            <div class="product-card__title">AI 꿈 해몽 분석</div>
+                            <p class="product-card__desc">꿈 내용 텍스트 입력 → 7인 AI 심층 해석. 심리학·동양철학·현대 분석 통합. 반복되는 꿈 패턴 추적 & 리포트. 꿈 일기 자동 저장 및 월별 분석.</p>
+                            <div class="product-card__tags">
+                                <span class="tag">AI×7</span>
+                                <span class="tag tag--pink">심리분석</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ── 카드 7: 수비학 AI ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <path d="M4 7h16M4 12h16M4 17h16"/>
+                                        <circle cx="2" cy="7" r="1" fill="#334488"/>
+                                        <circle cx="2" cy="12" r="1" fill="#334488"/>
+                                        <circle cx="2" cy="17" r="1" fill="#334488"/>
+                                    </svg>
+                                    <span>슬라이드 1</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <path d="M4 7h16M4 12h16M4 17h16"/>
+                                    </svg>
+                                    <span>슬라이드 2</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <path d="M4 7h16M4 12h16M4 17h16"/>
+                                    </svg>
+                                    <span>슬라이드 3</span>
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--dev">개발중</span>
+                            <div class="product-card__title">수비학 AI 분석기</div>
+                            <p class="product-card__desc">이름·생년월일 수비 계산 → AI 해석. 생명수·운명수·영혼수 자동 산출. 인생 사이클 예측 & 길흉 분석. 이름 개명 추천 기능 포함.</p>
+                            <div class="product-card__tags">
+                                <span class="tag tag--purple">수비학</span>
+                                <span class="tag">Flutter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ── 카드 8: AI 풍수 분석 ── -->
+                    <div class="product-card fade-up">
+                        <div class="card-slider" data-card-slider>
+                            <div class="card-slider__track">
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                        <polyline points="9 22 9 12 15 12 15 22"/>
+                                    </svg>
+                                    <span>슬라이드 1</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    </svg>
+                                    <span>슬라이드 2</span>
+                                </div>
+                                <div class="card-slider__slide card-slider__placeholder">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#334488" stroke-width="1.5">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    </svg>
+                                    <span>슬라이드 3</span>
+                                </div>
+                            </div>
+                            <button class="card-slider__btn card-slider__btn--prev" aria-label="이전">&#8249;</button>
+                            <button class="card-slider__btn card-slider__btn--next" aria-label="다음">&#8250;</button>
+                            <div class="card-slider__dots">
+                                <div class="card-slider__dot active"></div>
+                                <div class="card-slider__dot"></div>
+                                <div class="card-slider__dot"></div>
+                            </div>
+                        </div>
+                        <div class="product-card__body">
+                            <span class="product-card__badge badge--hold">⚠ 준비</span>
+                            <div class="product-card__title">AI 풍수 인테리어</div>
+                            <p class="product-card__desc">사진 업로드 → AI 풍수 에너지 분석. 방위·색상·가구 배치 개선 제안. 집·사무실·상가 맞춤 풍수 리포트. 길한 날짜 이사·개업일 자동 추천.</p>
+                            <div class="product-card__tags">
+                                <span class="tag tag--pink">풍수</span>
+                                <span class="tag tag--purple">AI×5</span>
+                                <span class="tag">비전AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ─── 로드맵 ────────────────────────────────────────────────── -->
+        <section>
+            <div class="container">
+                <div class="section-label">Roadmap</div>
+                <h2 class="section-title">10년 로드맵</h2>
+                <div class="roadmap">
+                    <div class="roadmap-item fade-up">
+                        <div class="roadmap-year">Year 1~2</div>
+                        <div class="roadmap-content">
+                            <h4>외형 CAD + 기본 설계</h4>
+                            <p>앙상블 플러터 Lite 출시. 웹 제조기 공개. 홈페이지 오픈.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item fade-up">
+                        <div class="roadmap-year">Year 3~5</div>
+                        <div class="roadmap-content">
+                            <h4>AI 고도화 + 앱 100개 돌파</h4>
+                            <p>앙상블 Pro 버전 출시. API 연동 확장. 월 10개 페이스 정착.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item fade-up">
+                        <div class="roadmap-year">Year 6~8</div>
+                        <div class="roadmap-content">
+                            <h4>앱 500개 + 국제 콘테스트 참가</h4>
+                            <p>AI 감정·기억 복제 모듈 탑재.
+               MIT·DARPA 설계 콘테스트 제출 준비.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-item fade-up">
+                        <div class="roadmap-year">Year 9~10</div>
+                        <div class="roadmap-content">
+                            <h4>앱 1,000개 달성 + 라이선스 판매</h4>
+                            <p>최종 도면 완성 → 국제 로봇 설계 콘테스트 제출.
+               관심 기업 라이선스 판매 협상.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ─── CTA ──────────────────────────────────────────────────── -->
+        <section style="
+    background: linear-gradient(135deg,
+      rgba(180,79,255,0.08),
+      rgba(0,245,255,0.05));
+    border-top: 1px solid rgba(180,79,255,0.25);
+    border-bottom: 1px solid rgba(180,79,255,0.25);
+    text-align: center;">
+            <div class="container" style="max-width:960px;">
+                <div class="section-label" style="justify-content:center;">Contact</div>
+                <h2 class="section-title">도입 문의 · 협업 제안</h2>
+                <p class="section-desc" style="margin:var(--space-4) auto var(--space-10);
+                text-align:center; max-width:52ch;">
+        Queen of Millennium Session AI팀과 함께<br>
+        미래 기술을 미리 꿰매는 설계 파트너가 되세요.<br>
+        월 10개 페이스로 1,000개를 향해 — <strong style="color:var(--cp-cyan);">
+          AI Team Leading the Future </strong> </p>
+                <div style="display:flex; flex-wrap:wrap;
+                  gap:var(--space-4); justify-content:center;">
+                    <a href="https://gooriblog.wordpress.com" target="_blank" rel="noopener" class="btn-primary" style="font-size:var(--text-base);">
+          홈페이지 방문 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg> </a>
+                    <a href="ensemble-maker.html" class="btn-secondary" style="font-size:var(--text-base);">
+          웹 제조기 체험 → </a>
+                </div>
+            </div>
+        </section>
+        <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+        <footer>
+            <div class="container">
+                <div class="footer__inner">
+                    <div class="logo" style="font-size:var(--text-base);">
+                        <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+                            <rect width="36" height="36" rx="10" fill="url(#logoGrad2)"/>
+                            <path d="M18 7 L21 13 L28 14 L23 19
+                     L24.5 26 L18 23 L11.5 26
+                     L13 19 L8 14 L15 13 Z" fill="white" opacity="0.9"/>
+                            <defs>
+                                <linearGradient id="logoGrad2"
+                                x1="0" y1="0" x2="36" y2="36"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#b44fff"/>
+                                <stop offset="1" stop-color="#00f5ff"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    QMS
+                </div>
+                <div class="footer__links">
+                    <a href="index.html">홈</a>
+                    <a href="index.html#team">AI팀</a>
+                    <a href="index.html#tools">Tools</a>
+                    <a href="ensemble-maker.html">웹 제조기</a>
+                    <a href="index.html#about">About</a>
+                    <a href="https://gooriblog.wordpress.com" target="_blank" rel="noopener">Blog</a>
+                </div>
+            </div>
+            <div class="footer__copy" style="margin-top:var(--space-6); text-align:center;">
+                © 2026 Queen of Millennium Session — AI Team Leading the Future
+</div>
+        </div>
+    </footer>
+    <!-- ─── SCRIPTS ──────────────────────────────────────────────── -->
+    <script>
+    /* ── 헤더 스크롤 쉐도우 ─────────────────────────────────── */
+    const header = document.querySelector('.qms-header');
+
+    window.addEventListener('scroll', () => {
+      if(!header) return;
+      header.style.boxShadow = window.scrollY > 20
+        ? '0 0 30px rgba(0,245,255,0.2)'
+        : '0 0 20px rgba(0,245,255,0.1)';
+    }, { passive: true });
+
+
+    /* ── 스크롤 fade-up 애니메이션 ──────────────────────────── */
+
+    const fadeEls = document.querySelectorAll('.fade-up');
+
+    const io = new IntersectionObserver(entries => {
+
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => io.observe(el));
+
+
+    /* ── 카드 미니 슬라이더 ────────────────────────────────── */
+    document.querySelectorAll('[data-card-slider]').forEach(function(slider) {
+      var track = slider.querySelector('.card-slider__track');
+      var dots  = slider.querySelectorAll('.card-slider__dot');
+      var prev  = slider.querySelector('.card-slider__btn--prev');
+      var next  = slider.querySelector('.card-slider__btn--next');
+      var total = dots.length;
+      var cur   = 0;
+
+      function goTo(idx) {
+        cur = (idx + total) % total;
+        track.style.transform = 'translateX(-' + (cur * 33.3333) + '%)';
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+      }
+
+      if (prev) prev.addEventListener('click', function() { goTo(cur - 1); });
+      if (next) next.addEventListener('click', function() { goTo(cur + 1); });
+      dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); }); });
+
+      /* 터치 스와이프 */
+      var startX = 0;
+      slider.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      slider.addEventListener('touchend',   function(e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? cur + 1 : cur - 1);
+      });
+    });
+    </script>
+        <script>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script>
+    </body>

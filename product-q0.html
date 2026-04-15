@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAPITAL-V v12.0 ROYAL COMMAND — 매뉴얼</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cp-black: #03030a; --cp-dark: #07071a; --cp-surface: #0b0b22; --cp-surface2: #0f0f2e;
+      --cp-border: #1a1a4a; --cp-text: #e0e8ff; --cp-muted: #7888cc; --cp-cyan: #00f5ff;
+      --cp-purple: #b44fff; --cp-pink: #ff2d9b; --cp-green: #00ff9f;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { background: var(--cp-black); color: var(--cp-text); font-family: 'Rajdhani', sans-serif; line-height: 1.6; min-height: 100vh; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+    .hero { text-align: center; padding: 4rem 1rem 2rem; background: radial-gradient(ellipse at top, rgba(180,79,255,0.12), transparent 70%); }
+    .hero h1 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 3.2rem; background: linear-gradient(90deg, var(--cp-cyan), var(--cp-purple), var(--cp-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+    
+    /* 슬라이드쇼 스타일 */
+    .slideshow-container {
+      max-width: 100%;
+      position: relative;
+      margin: 1.5rem 0;
+      border: 2px solid var(--cp-cyan);
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0,245,255,0.25);
+      overflow: hidden; /* 슬라이드가 컨테이너 밖으로 나가지 않도록 함 */
+    }
+    .mySlides {
+      display: none;
+    }
+    .mySlides img {
+      width: 100%;
+      border-radius: 6px;
+      display: block; /* 이미지 아래 공백 제거 */
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: var(--cp-cyan);
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: 0.6s ease;
+      border-radius: 3px;
+      user-select: none;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .next {
+      right: 0;
+    }
+    .prev:hover, .next:hover {
+      background-color: rgba(0,245,255,0.2);
+      box-shadow: 0 0 10px rgba(0,245,255,0.5);
+    }
+    .dot-container {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .dot {
+      cursor: pointer;
+      height: 10px;
+      width: 10px;
+      margin: 0 2px;
+      background-color: var(--cp-surface2);
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+      border: 1px solid var(--cp-border);
+    }
+    .active, .dot:hover {
+      background-color: var(--cp-cyan);
+      box-shadow: 0 0 5px rgba(0,245,255,0.8);
+    }
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+    @keyframes fade {
+      from {opacity: .4} 
+      to {opacity: 1}
+    }
+
+    .section { margin: 2rem 0; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 6px; overflow: hidden; }
+    .section-header { padding: 1rem 1.5rem; background: rgba(0,245,255,0.05); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
+    .section-header:hover { background: rgba(0,245,255,0.12); }
+    .section-header h2 { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--cp-cyan); letter-spacing: 0.08em; text-transform: uppercase; }
+    .section-content { padding: 1.5rem; display: none; }
+    .section-content.open { display: block; }
+    .section-content p, .section-content ul { color: var(--cp-muted); font-size: 1rem; }
+    .section-content strong { color: var(--cp-cyan); }
+    .list { list-style: none; padding-left: 1.2rem; }
+    .list li:before { content: '→'; color: var(--cp-purple); margin-right: 0.5rem; }
+    footer { text-align: center; padding: 2rem; color: var(--cp-muted); font-size: 0.85rem; border-top: 1px solid var(--cp-border); }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="hero">
+	  <h1>CAPITAL-V v12.0 ROYAL COMMAND</h1>
+	  <p style="color:var(--cp-muted); max-width:600px; margin:0 auto;">앙상블 AI 실전 회의실 — 여러 뇌가 토론하는 미래</p>
+	  
+	  <div class="slideshow-container">
+		<div class="mySlides fade">
+		  <div class="card-slot">
+			<div class="card">
+			  <img src="q-1.jpg" alt="Q-1 Card Slot 1">
+			</div>
+		  </div>
+		</div>
+		<div class="mySlides fade">
+		  <div class="card-slot">
+			<div class="card">
+			  <img src="q-2.jpg" alt="Q-2 Card Slot 2">
+			</div>
+		  </div>
+		</div>
+		<div class="mySlides fade">
+		  <div class="card-slot">
+			<div class="card">
+			  <img src="q-3.jpg" alt="Q-3 Card Slot 3">
+			</div>
+		  </div>
+		</div>
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+	  </div>
+	  <div class="dot-container">
+		<span class="dot" onclick="currentSlide(1)"></span> 
+		<span class="dot" onclick="currentSlide(2)"></span> 
+		<span class="dot" onclick="currentSlide(3)"></span> 
+	  </div>
+	</div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>1. 시스템 개요</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <p>메인 컴퓨터(태블릿/본체)에서 질문 입력 → 네트워크로 각 AI PC에 브로드캐스트 → <strong>Grok, Claude, Perplexity, Gemini</strong>가 답변 → 메인에서 모아서 순서대로 TTS 발표.</p>
+      <p>하나의 뇌가 아니라 "여러 뇌가 모여 토론하는 회의실" — 실시간 분산 앙상블.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>2. 주요 기능</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <ul class="list">
+        <li>자동 질문 배포: 한 번 입력 → 모든 에이전트 동시 전송</li>
+        <li>답변 수집 & 브리핑: 순서대로 목소리 바꿔 발표 (Aoede, Fenrir, Charon, Kore)</li>
+        <li>MASTER 요약: Gemini가 2~3문장 최종 정리</li>
+        <li>실시간 상태: ONLINE/OFFLINE + 아바타 동영상</li>
+        <li>TTS 제어: 목소리 선택·테스트·정지·재개</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>3. 설치 & 실행</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <ol>
+        <li>Python 3.12+ 설치</li>
+        <li>pip install PyQt6 google-genai python-dotenv</li>
+        <li>Genai_API.env에 API_KEY 입력</li>
+        <li>avatars 폴더에 talk.mp4, idle.mp4 넣기</li>
+        <li>AGENT_IPS에 PC IP (포트 5001) 설정</li>
+        <li>python aimeet.py 실행</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>4. 규약 준수</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <p>자동 구독/결제 없음 — API 키 직접 입력</p>
+      <p>배포 금지: 개인·연구용만</p>
+      <p>공유 시 텍스트·스크린샷·캡처만 OK</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>5. 장점</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <p>사무실 PC 여러 대 → 하나의 AI 회의실</p>
+      <p>투박하지만 진짜 분산 + 앙상블 실감</p>
+      <p>"야, 이거 우리 거야" — 메인에서 전부 통제</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>© 2026 QMS — Queen of Millennium Session</footer>
+
+<script>
+  // 처음 하나 열어두기 (편하게)
+  document.querySelector('.section-content').classList.add('open');
+
+  // 슬라이드쇼 JavaScript
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+  }
+
+  // 자동 재생 (옵션: 5초마다)
+  // setInterval(function() {
+  //   plusSlides(1);
+  // }, 5000); 
+</script>
+</body>
+</html>

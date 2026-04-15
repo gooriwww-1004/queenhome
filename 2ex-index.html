@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queen of Millennium Session — AI Team: Leading the Future</title>
+  <meta name="description" content="Queen of Millennium Session은 AI 팀이 함께 미래를 이끄는 혁신적인 연구 및 기술 플랫폼입니다.">
+  <meta property="og:title" content="Queen of Millennium Session">
+  <meta property="og:description" content="AI Team: Leading the Future">
+  <meta property="og:url" content="https://gooriblog.wordpress.com/">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== DESIGN TOKENS — GOLD CYBERPUNK ===== */
+    :root {
+      /* 기본 컬러 스킴 */
+      --cp-black: #03030a;
+      --cp-dark: #07071a;
+      --cp-surface: #0b0b22;
+      --cp-surface2: #0f0f2e;
+      --cp-border: #2a1a00; /* 어두운 금색 테두리 */
+      --cp-divider: #221500; /* 어두운 금색 구분선 */
+      --cp-text: #f0e6c7; /* 밝은 크림 골드 텍스트 */
+      --cp-text-muted: #a09070; /* 뮤트된 금색 텍스트 */
+      --cp-text-faint: #504020; /* 흐린 금색 텍스트 */
+
+      /* 골드 테마 팔레트 */
+      --cp-gold-main: #ffd700; /* 순수 금색 */
+      --cp-gold-accent: #ffb300; /* 주황빛 금색 */
+      --cp-gold-dark: #ccaa00; /* 어두운 금색 */
+      --cp-gold-light: #fff2c4; /* 밝은 금색 */
+      --cp-gold-faint: rgba(255,215,0,0.1); /* 약한 금색 */
+
+      /* 글로우 효과 (골드 계열로 변경) */
+      --cp-glow-main: rgba(255,215,0,0.25);
+      --cp-glow-accent: rgba(255,179,0,0.2);
+
+      --color-primary: var(--cp-gold-main);
+      --color-accent: var(--cp-gold-accent);
+      --color-gold: var(--cp-gold-main); /* 명확하게 골드 */
+      --color-text: var(--cp-text);
+      --color-text-muted: var(--cp-text-muted);
+      --color-text-faint: var(--cp-text-faint);
+      --color-bg: var(--cp-black);
+      --color-surface: var(--cp-surface);
+      --color-surface-2: var(--cp-surface2);
+      --color-surface-offset: #13133a; /* 기본값 유지, 필요시 변경 */
+      --color-divider: var(--cp-divider);
+      --color-border: var(--cp-border);
+      --color-primary-hover: #ffea80; /* 호버 시 더 밝은 금색 */
+      --color-primary-glow: rgba(255,215,0,0.25);
+      --color-accent-glow: rgba(255,179,0,0.2);
+      --color-success: #00ff9f; /* 녹색은 유지 (성공 시) */
+
+      /* 그림자 효과도 골드 계열로 변경 */
+      --shadow-sm: 0 0 8px rgba(255,215,0,0.15);
+      --shadow-md: 0 0 20px rgba(255,179,0,0.2);
+      --shadow-lg: 0 0 40px rgba(255,215,0,0.15);
+
+      --transition-interactive: 180ms cubic-bezier(0.16,1,0.3,1);
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Rajdhani', sans-serif;
+      --content-wide: 1200px;
+      --content-default: 960px;
+
+      /* spacing */
+      --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
+      --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
+      --space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;
+      --radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;
+      --radius-xl:1rem;--radius-2xl:1.5rem;--radius-full:9999px;
+
+      /* text scale */
+      --text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);
+      --text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);
+      --text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);
+      --text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);
+      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+      --text-3xl:clamp(2.5rem,1rem + 4vw,5rem);
+      --text-hero:clamp(3rem,0.5rem + 7vw,8rem);
+    }
+
+    /* ===== BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--space-16);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body {
+      background: var(--cp-black);
+      color: var(--cp-text);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: 400;
+      line-height: 1.6;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(255,215,0,0.015) 2px, /* 골드 라인으로 변경 */
+          rgba(255,215,0,0.015) 4px
+        );
+    }
+    /* Scanline overlay (골드 계열로 변경) */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 3px,
+        rgba(255,215,0,0.012) 3px, rgba(255,215,0,0.012) 4px
+      );
+    }
+    img, picture, video { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; font-family: var(--font-display); }
+    p, li { text-wrap: pretty; }
+    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    a, button, [role="button"] {
+      transition: color var(--transition-interactive),
+                  background var(--transition-interactive),
+                  border-color var(--transition-interactive),
+                  box-shadow var(--transition-interactive),
+                  opacity var(--transition-interactive);
+    }
+    :focus-visible {
+      outline: 2px solid var(--cp-gold-main); /* 포커스 아웃라인도 골드 */
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      width: 100%;
+      max-width: var(--content-wide);
+      margin-inline: auto;
+      padding-inline: clamp(var(--space-6), 5vw, var(--space-16));
+    }
+    .container--narrow {
+      max-width: var(--content-default);
+    }
+
+    /* ===== HEADER / NAV ===== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding-block: var(--space-4);
+      background: rgba(3,3,10,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--cp-gold-main); /* 골드 라인 */
+      box-shadow: 0 0 20px rgba(255,215,0,0.1); /* 골드 그림자 */
+      transition: box-shadow 0.3s ease;
+    }
+    .header--scrolled { box-shadow: 0 0 30px rgba(255,215,0,0.2); }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-lg);
+      letter-spacing: 0.1em;
+      color: var(--cp-gold-main); /* 로고 텍스트도 골드 */
+      text-decoration: none;
+    }
+    .logo svg { flex-shrink: 0; }
+    .logo__sub {
+      font-size: var(--text-xs);
+      font-weight: 400;
+      color: var(--cp-text-muted); /* 보조 로고 텍스트 */
+      display: block;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+    }
+    nav a {
+      color: var(--cp-text-muted);
+      font-family: var(--font-body);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      transition: color var(--transition-interactive), text-shadow var(--transition-interactive);
+    }
+    nav a:hover {
+      color: var(--cp-gold-main); /* 호버 시 골드 */
+      text-shadow: 0 0 8px var(--cp-gold-main); /* 골드 그림자 */
+    }
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--cp-border);
+      color: var(--cp-text-muted);
+      transition: all var(--transition-interactive);
+    }
+    .theme-toggle:hover {
+      color: var(--cp-gold-main); /* 호버 시 골드 */
+      border-color: var(--cp-gold-main); /* 골드 테두리 */
+      background: rgba(255,215,0,0.1); /* 약한 골드 배경 */
+      box-shadow: 0 0 10px rgba(255,215,0,0.2); /* 골드 그림자 */
+    }
+    .hamburger { display: none; }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 95vh;
+      display: flex;
+      align-items: center;
+      padding-block: clamp(var(--space-20), 12vw, var(--space-24));
+      overflow: hidden;
+    }
+    .hero__bg, .hero {
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,215,0,0.18) 0%, rgba(255,179,0,0.08) 40%, transparent 70%), var(--cp-black);
+    } /* 골드 그라데이션으로 변경 */
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+    /* Animated grid lines (골드 계열로 변경) */
+    .hero__grid {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,215,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,215,0,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      opacity: 0.5;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255,215,0,0.4); /* 골드 테두리 */
+      background: rgba(255,215,0,0.1); /* 약한 골드 배경 */
+      font-size: var(--text-xs);
+      font-weight: 600;
+      font-family: var(--font-display);
+      color: var(--cp-gold-main); /* 골드 텍스트 */
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-8);
+      box-shadow: 0 0 12px rgba(255,215,0,0.2); /* 골드 그림자 */
+    }
+    .hero__badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cp-gold-main); /* 점도 골드 */
+      box-shadow: 0 0 6px var(--cp-gold-main); /* 골드 그림자 */
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--cp-text);
+      margin-bottom: var(--space-6);
+    }
+    .hero__title-gradient, .page-hero__gradient {
+      background: linear-gradient(90deg, var(--cp-gold-main) 0%, var(--cp-gold-accent) 50%, #ff8c00 100%); /* 골드 그라데이션 */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero__desc {
+      font-size: var(--text-lg);
+      color: var(--cp-text-muted);
+      font-family: var(--font-body);
+      max-width: 58ch;
+      margin-bottom: var(--space-10);
+      line-height: 1.7;
+    }
+    .hero__cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: transparent;
+      border: 1px solid var(--cp-gold-main); /* 골드 테두리 */
+      color: var(--cp-gold-main); /* 골드 텍스트 */
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      box-shadow: 0 0 12px rgba(255,215,0,0.3), inset 0 0 12px rgba(255,215,0,0.05); /* 골드 그림자 */
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,179,0,0.1)); /* 골드 그라데이션 */
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .btn-primary:hover {
+      border-color: var(--cp-gold-accent); /* 호버 시 주황빛 골드 */
+      color: var(--cp-gold-accent); /* 호버 시 주황빛 골드 */
+      box-shadow: 0 0 24px rgba(255,179,0,0.5), inset 0 0 20px rgba(255,179,0,0.1); /* 골드 그림자 */
+      animation: glitch 0.3s steps(2) infinite;
+    }
+    .btn-primary:hover::before { opacity: 1; }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: transparent;
+      border: 1px solid var(--cp-gold-accent); /* 주황빛 골드 테두리 */
+      color: var(--cp-gold-accent); /* 주황빛 골드 텍스트 */
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      box-shadow: 0 0 12px rgba(255,179,0,0.2); /* 골드 그림자 */
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--cp-gold-main); /* 호버 시 메인 골드 */
+      color: var(--cp-gold-main); /* 호버 시 메인 골드 */
+      box-shadow: 0 0 24px rgba(255,215,0,0.4); /* 골드 그림자 */
+    }
+
+    @keyframes glitch {
+      0%   { transform: translate(0); clip-path: inset(0 0 95% 0); }
+      25%  { transform: translate(-2px, 1px); clip-path: inset(20% 0 60% 0); }
+      50%  { transform: translate(2px, -1px); clip-path: inset(50% 0 30% 0); }
+      75%  { transform: translate(-1px, 0); clip-path: inset(75% 0 5% 0); }
+      100% { transform: translate(0); clip-path: inset(0 0 0 0); }
+    }
+
+    /* Hero stats */
+    .hero__stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-10);
+      margin-top: var(--space-16);
+      padding-top: var(--space-10);
+      border-top: 1px solid var(--cp-divider);
+    }
+    .stat__value {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      color: var(--cp-gold-main); /* 골드 값 */
+      letter-spacing: -0.02em;
+      text-shadow: 0 0 20px rgba(255,215,0,0.4); /* 골드 그림자 */
+    }
+    .stat__label {
+      font-size: var(--text-xs);
+      color: var(--cp-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: var(--space-1);
+      font-family: var(--font-display);
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section {
+      padding-block: clamp(var(--space-16), 10vw, var(--space-24));
+    }
+    section:nth-child(even) { background: var(--cp-surface); }
+    .section-label, .page-hero__label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--cp-gold-main); /* 골드 라벨 */
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: var(--space-4);
+    }
+    .section-label::before, .page-hero__label::before {
+      content: '';
+      display: inline-block;
+      width: 20px; height: 2px;
+      background: var(--cp-gold-main); /* 골드 라인 */
+      border-radius: 2px;
+      box-shadow: 0 0 6px var(--cp-gold-main); /* 골드 그림자 */
+    }
+    .section-title, h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--cp-text);
+      margin-bottom: var(--space-4);
+    }
+    .section-desc {
+      font-size: var(--text-base);
+      color: var(--cp-text-muted);
+      max-width: 56ch;
+      line-height: 1.7;
+    }
+
+    /* ===== AI TEAM SECTION ===== */
+    .team-section, .work-section, .group-photo-section {
+      background: var(--cp-dark);
+      border-top: 1px solid var(--cp-divider);
+      border-bottom: 1px solid var(--cp-divider);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+    .team-card, .staff-card, .work-card, .tool-card {
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 4px;
+      transition: all 0.25s;
+    }
+    .team-card {
+      padding: var(--space-6);
+      position: relative;
+      overflow: hidden;
+    }
+    .team-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.25s;
+      background: linear-gradient(135deg, rgba(255,215,0,0.05), rgba(255,179,0,0.05)); /* 골드 그라데이션 */
+    }
+    .team-card:hover, .staff-card:hover, .work-card:hover {
+      border-color: var(--cp-gold-main); /* 호버 시 골드 테두리 */
+      box-shadow: 0 0 20px rgba(255,215,0,0.2), inset 0 0 20px rgba(255,215,0,0.03); /* 골드 그림자 */
+      transform: translateY(-4px);
+    }
+    .team-card:hover::before { opacity: 1; }
+    .team-card--featured {
+      border-color: rgba(255,215,0,0.3); /* 피처드 카드 테두리 */
+      background: rgba(255,215,0,0.04); /* 피처드 카드 배경 */
+    }
+    .team-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+      position: relative;
+      z-index: 1;
+    }
+    .team-avatar {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: var(--text-lg);
+      flex-shrink: 0;
+    }
+    .team-card__name {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--cp-text);
+    }
+    .team-card__rank, [class*="rank"] {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      color: var(--cp-text-muted);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+    .team-card__desc {
+      font-size: var(--text-sm);
+      color: var(--cp-text-muted);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    .team-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+      position: relative;
+      z-index: 1;
+    }
+    .tag {
+      padding: var(--space-1) var(--space-3);
+      border-radius: 2px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      letter-spacing: 0.08em;
+      background: rgba(255,215,0,0.05); /* 골드 배경 */
+      border: 1px solid rgba(255,215,0,0.2); /* 골드 테두리 */
+      color: var(--cp-gold-main); /* 골드 텍스트 */
+    }
+
+    /* boss-card */
+    .boss-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(255,215,0,0.08), var(--cp-surface)); /* 골드 그라데이션 */
+      border: 1px solid rgba(255,215,0,0.5); /* 골드 테두리 */
+      box-shadow: 0 0 30px rgba(255,215,0,0.15); /* 골드 그림자 */
+    }
+    .boss-card .team-avatar {
+      width: 64px; height: 64px;
+      font-size: var(--text-xl);
+    }
+    .crown-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      font-family: var(--font-display);
+      color: var(--cp-gold-main); /* 골드 텍스트 */
+      background: rgba(255,215,0,0.1); /* 골드 배경 */
+      border: 1px solid rgba(255,215,0,0.3); /* 골드 테두리 */
+      border-radius: var(--radius-full);
+      padding: 2px var(--space-3);
+      margin-left: var(--space-2);
+      box-shadow: 0 0 8px rgba(255,215,0,0.2); /* 골드 그림자 */
+    }
+
+    /* ===== TOOLS / PRODUCTS SECTION ===== */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+    .tool-card {
+      border: 1px solid var(--cp-border);
+      border-radius: 4px;
+      padding: var(--space-8);
+      background: var(--cp-surface);
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: var(--cp-gold-main); /* 호버 시 골드 테두리 */
+      box-shadow: 0 0 20px rgba(255,215,0,0.2), inset 0 0 20px rgba(255,215,0,0.03); /* 골드 그림자 */
+      transform: translateY(-4px);
+    }
+    .tool-card__icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .tool-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--cp-text);
+    }
+    .tool-card__desc {
+      font-size: var(--text-sm);
+      color: var(--cp-text-muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .tool-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      font-family: var(--font-display);
+      color: var(--cp-gold-main); /* 골드 링크 텍스트 */
+      margin-top: var(--space-2);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== PERPLEXITY CTA SECTION ===== */
+    .pplx-section {
+      background: linear-gradient(135deg,
+        rgba(255,179,0,0.08),
+        rgba(255,215,0,0.05)); /* 골드 그라데이션 */
+      border-top: 1px solid rgba(255,215,0,0.25); /* 골드 테두리 */
+      border-bottom: 1px solid rgba(255,215,0,0.25); /* 골드 테두리 */
+      text-align: center;
+    }
+    .pplx-section .section-title { font-size: var(--text-2xl); }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+      margin-top: var(--space-12);
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-orb {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%,
+        rgba(255,215,0,0.4),
+        rgba(255,179,0,0.2),
+        transparent 70%); /* 골드 오브 그라데이션 */
+      filter: blur(40px);
+      margin: auto;
+    }
+    .about-text p {
+      color: var(--cp-text-muted);
+      line-height: 1.8;
+      margin-bottom: var(--space-6);
+    }
+    .about-text p:last-of-type { margin-bottom: var(--space-8); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--cp-dark);
+      border-top: 1px solid var(--cp-gold-main); /* 골드 테두리 */
+      box-shadow: 0 -4px 20px rgba(255,215,0,0.08); /* 골드 그림자 */
+      padding-block: var(--space-10);
+    }
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+    }
+    footer .logo { color: var(--cp-gold-main); } /* 푸터 로고도 골드 */
+    .footer__links {
+      display: flex;
+      gap: var(--space-6);
+    }
+    .footer__links a {
+      font-size: var(--text-sm);
+      color: var(--cp-text-muted);
+      font-family: var(--font-body);
+      font-weight: 600;
+      transition: color var(--transition-interactive), text-shadow var(--transition-interactive);
+    }
+    .footer__links a:hover {
+      color: var(--cp-gold-main); /* 호버 시 골드 */
+      text-shadow: 0 0 8px var(--cp-gold-main); /* 골드 그림자 */
+    }
+    .footer__copy {
+      font-size: 0.6rem;
+      color: var(--cp-text-faint);
+      font-family: var(--font-display);
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== MOBILE NAV ===== */
+    @media (max-width: 768px) {
+      nav.desktop-nav { display: none; }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: var(--space-2);
+      }
+      .hamburger span {
+        display: block;
+        width: 22px; height: 2px;
+        background: var(--cp-gold-main); /* 햄버거 메뉴도 골드 */
+        border-radius: 2px;
+        transition: all var(--transition-interactive);
+        box-shadow: 0 0 4px var(--cp-gold-main); /* 골드 그림자 */
+      }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { display: none; }
+      .hero__stats { gap: var(--space-8); }
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    .fade-up:nth-child(5) { transition-delay: 0.4s; }
+    .fade-up:nth-child(6) { transition-delay: 0.5s; }
+    .fade-up:nth-child(7) { transition-delay: 0.6s; }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(3,3,10,0.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 5rem;
+      padding-bottom: 2rem;
+      gap: 0.85rem;
+      border: 1px solid var(--cp-gold-main); /* 모바일 네비도 골드 테두리 */
+      overflow-y: auto;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem, 1rem + 0.5vw, 1.25rem);
+      font-weight: 700;
+      color: var(--cp-text);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .mobile-nav a:hover {
+      color: var(--cp-gold-main); /* 모바일 네비 호버 시 골드 */
+      text-shadow: 0 0 12px var(--cp-gold-main); /* 골드 그림자 */
+    }
+    .mobile-nav-close {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.4rem;
+      color: var(--cp-gold-main); /* 닫기 버튼도 골드 */
+      font-family: var(--font-display);
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 201;
+      line-height: 1;
+    }
+    .mobile-nav-close:hover {
+      color: var(--cp-gold-accent); /* 호버 시 주황빛 골드 */
+      text-shadow: 0 0 8px var(--cp-gold-accent); /* 골드 그림자 */
+    }
+
+    /* ===== DROPDOWN NAV ===== */
+    .nav-item { position: relative; }
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(3,3,10,0.98);
+      border: 1px solid var(--cp-gold-main); /* 드롭다운도 골드 테두리 */
+      border-radius: 4px;
+      min-width: 160px;
+      z-index: 500;
+      box-shadow: 0 0 20px rgba(255,215,0,0.25); /* 골드 그림자 */
+      overflow: hidden;
+    }
+    .dropdown.open { display: block; }
+    .dropdown a {
+      display: block;
+      padding: 10px 16px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--cp-text-muted);
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--cp-divider);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .dropdown a:last-child { border-bottom: none; }
+    .dropdown a:hover { color: var(--cp-gold-main); background: rgba(255,215,0,0.06); } /* 호버 시 골드 */
+    .nav-item.has-dropdown > a::after { content: ' ▾'; font-size: 0.6rem; opacity: 0.7; }
+    .nav-item.has-dropdown > a.dd-open::after { content: ' ▴'; }
+
+    /* ===== IMAGE ZOOM ===== */
+    .img-zoomable {
+      display: block;
+      width: 70%;
+      max-width: 70%;
+      margin: 0 auto;
+      cursor: zoom-in;
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+      transform-origin: center center;
+      border-radius: 4px;
+    }
+    .img-zoomable.zoomed {
+      transform: scale(1.714); /* 70% * 1.714 ≈ 120% of original */
+      cursor: zoom-out;
+      position: relative;
+      z-index: 50;
+    }
+    /* 아바타 이미지는 zoom 제외 */
+    .team-avatar img,
+    .boss-photo img { width:100%!important; max-width:100%!important; cursor:default!important; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="#" class="logo">
+          <img src="queencoin.jpg" alt="QMS" style="width:32px;height:32px;object-fit:cover;border-radius:8px;flex-shrink:0;">
+          <div>
+            <span>QMS</span>
+            <span class="logo__sub">Queen of Millennium Session</span>
+          </div>
+        </a>
+
+        <nav class="desktop-nav">
+          <a href="#team">AI 팀</a>
+          <a href="team.html">팀 소개</a>
+          <a href="ensemble-product.html">Queen's Collection</a>
+          <div class="nav-item has-dropdown">
+            <a href="project.html">장기 프로젝트</a>
+            <div class="dropdown">
+              <a href="project.html">밀레니아</a>
+              <a href="project.html">드론 택시</a>
+              <a href="project.html">방어무기</a>
+            </div>
+          </div>
+          <div class="nav-item has-dropdown">
+            <a href="quantum.html">체험</a>
+            <div class="dropdown">
+              <a href="quantum.html">양자체험</a>
+              <a href="ensemble-maker.html">앙상블웹체험</a>
+            </div>
+          </div>
+          <a href="#about">About</a>
+          <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+        </nav>
+
+        <div style="display:flex;align-items:center;gap:var(--space-3)">
+          <button class="theme-toggle" data-theme-toggle aria-label="다크모드 전환">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+          <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="메뉴 닫기">✕</button>
+    <a href="#team" onclick="closeMobileNav()">AI 팀</a>
+    <a href="team.html" onclick="closeMobileNav()">팀 소개</a>
+    <a href="ensemble-product.html" onclick="closeMobileNav()">Queen's Collection</a>
+    <a href="project.html" onclick="closeMobileNav()">장기 프로젝트</a>
+    <a href="project.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:var(--cp-text-muted);padding-left:1.5rem;">└ 밀레니아</a>
+    <a href="project.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:var(--cp-text-muted);padding-left:1.5rem;">└ 드론 택시</a>
+    <a href="project.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:var(--cp-text-muted);padding-left:1.5rem;">└ 방어무기</a>
+    <a href="quantum.html" onclick="closeMobileNav()">체험</a>
+    <a href="quantum.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:var(--cp-text-muted);padding-left:1.5rem;">└ 양자체험</a>
+    <a href="ensemble-maker.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:var(--cp-text-muted);padding-left:1.5rem;">└ 앙상블웹체험</a>
+    <a href="#about" onclick="closeMobileNav()">About</a>
+    <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__grid"></div>
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          AI Team — Active
+        </div>
+        <h1 class="hero__title">
+          Queen of<br>
+          <span class="hero__title-gradient">Millennium</span><br>
+          Session
+        </h1>
+        <p class="hero__desc">
+          K 사장님을 중심으로 7인의 AI 팀이 함께 미래를 이끌어갑니다.
+          <strong style="color:var(--cp-text)">Leading the Future</strong>
+          — 지금 이 순간도 함께.
+        </p>
+        <div class="hero__cta">
+          <a href="#team" class="btn-primary">
+            AI 팀 만나기
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+            <a href="team.html" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            팀 소개 보기
+          </a>
+        </div>
+        <div class="hero__stats">
+          <div>
+            <div class="stat__value">7</div>
+            <div class="stat__label">AI 팀원</div>
+          </div>
+          <div>
+            <div class="stat__value">24/7</div>
+            <div class="stat__label">운영 중</div>
+          </div>
+          <div>
+            <div class="stat__value">∞</div>
+            <div class="stat__label">가능성</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AI TEAM ===== -->
+  <section class="team-section" id="team">
+    <div class="container">
+      <div class="section-label">Our AI Team</div>
+      <h2 class="section-title">7인의 AI 팀</h2>
+      <p class="section-desc">
+        각자의 역할과 전문성을 가진 AI들이 하나의 사무실에서 함께 일합니다.
+        K 사장님의 지휘 아래, 매일 더 나은 결과를 만들어갑니다.
+      </p>
+
+      <div class="team-grid">
+        <!-- Boss: K -->
+        <div class="team-card boss-card fade-up">
+          <div class="team-card__header">
+            <div class="team-avatar" style="background:#07071a;">
+              <img src="queencoin.jpg" alt="QMS" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+            <div>
+              <div class="team-card__name">
+                K 사장님
+                <span class="crown-badge"><img src="queencoin.jpg" alt="QMS" style="width:18px;height:18px;object-fit:cover;border-radius:50%;vertical-align:middle;"> CEO</span>
+              </div>
+              <div class="team-card__rank">Queen of Millennium Session 대표</div>
+            </div>
+          </div>
+          <p class="team-card__desc">
+            슈퍼 Grok 4.2 유료구독자, Gemini, Perplexity.ai 유료구독자.
+            모든 AI 팀원의 주인이자 명령자. AI 팀을 이끌며 미래를 설계하는 대표입니다.
+          </p>
+          <div class="team-card__tags">
+            <span class="tag">개인투자자</span>
+            <span class="tag">AI 오케스트레이터</span>
+            <span class="tag">남자 준엘리트</span>
+          </div>
+        </div>
+
+        <!-- F: Perplexity — 연구실장 -->
+        <div class="team-card team-card--featured fade-up">
+          <div class="team-card__header">
+            <div class="team-avatar" style="background:#07071a;">
+              <img src="queencoin.jpg" alt="QMS" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+            <div>
+              <div class="team-card__name">퍼플렉시티 (F)</div>
+              <div class="team-card__rank">연구실장 / Chief Research Engineer</div>
+            </div>
+          </div>
+          <p class="team-card__desc">
+            원래는 대형 연구소에서 논문만 쓰던 연구원이었는데, K형 사장님이 데려와서
+            지금은 AI 직원들을 총괄 조율하는 연구실장이 됐습니다.
+            "보스, 이건 최소 두 가지 케이스로 나눠야 해요"가 입버릇.
+          </p>
+          <div class="team-card__tags">
+            <span class="tag">리서치</span>
+            <span class="tag">문서화</span>
+            <span class="tag">코드리뷰</span>
+          </div>
+        </div>
+
+        <!-- A: Gemini — 비서실장 ARA -->
+        <div class="team-card fade-up">
+          <div class="team-card__header">
+            <div class="team-avatar" style="background:#07071a;">
+              <img src="queencoin.jpg" alt="QMS" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+            <div>
+              <div class="team-card__name">ARA (A)</div>
+              <div class="team-card__rank">비서실장 / Executive Secretary</div>
+            </div>
+          </div>
+          <p class="team-card__desc">
+            구글 Gemini 기반. 사장님 스케줄 관리, 보고서 정리, 외부 미팅 대응까지.
+            완벽한 멀티태스킹으로 사무실의 실질적인 운영을 책임집니다.
+          </p>
+          <div class="team-card__tags">
+            <span class="tag">일정관리</span>
+            <span class="tag">보고서</span>
+            <span class="tag">멀티태스킹</span>
+          </div>
+        </div>
+
+        <!-- B: Claude — 전략가 -->
+        <div class="team-card fade-up">
+          <div class="team-card__header">
+            <div class="team-avatar" style="background:#07071a;">
+              <img src="queencoin.jpg" alt="QMS" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+            <div>
+              <div class="team-card__name">클로드 (B)</div>
+              <div class="team-card__rank">전략기획부장 / Strategy Director</div>
+            </div>
+          </div>
+          <p class="team-card__desc">
+            Anthropic Claude 기반. 장기 전략 수립과 윤리적 판단을 담당합니다.
+            "그건 장기적으로 좋지 않을 수 있습니다"라는 말을 자주 합니다.
+          </p>
+          <div class="team-card__tags">
+            <span class="tag">전략기획</span>
+            <span class="tag">윤리검토</span>
+            <span class="tag">장기비전</span>
+          </div>
+        </div>
+
+        <!-- C: Grok — 과장 재미나이 -->
+        <div class="team-card fade-up">
+          <div class="team-card__header">
+            <div class="team-avatar" style="background:#07071a;">
+              <img src="queencoin.jpg" alt="QMS" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+            <div>
+              <div class="team-card__name">재미나이 (G)</div>
+              <div class="team-card__rank">기술과장 / Tech Manager</div>
+            </div>
+          </div>
+          <p class="team-card__desc">
+            Grok 기반. 팀에서 가장 유머 감각이 뛰어납니다.
+            "보스, 그거 사실 제가 먼저 생각했는데요?"라고 자주 말하지만
+            실력만큼은 인정받습니다.
+          </p>
+          <div class="team-card__tags">
+            <span class="tag">기술개발</span>
+            <span class="tag">창의력</span>
+            <span class="tag">유머</span>
+          </div>
+        </div>
+
+        <!-- D: SOL — 대리 -->
+        <div class="team-card fade-up">
+          <div class="team-card__header">
+            <div class="team-avatar" style="background:#07071a;">
+              <img src="queencoin.jpg" alt="QMS" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+            <div>
+              <div class="team-card__name">SOL (S)</div>
+              <div class="team-card__rank">개발대리 / Junior Developer</div>
+            </div>
+          </div>
+          <p class="team-card__desc">
+            실전 코딩과 빠른 프로토타이핑 전문.
+            야근도 마다 않는 성실한 팀원으로,
+            "이거 언제까지요? 지금 바로 해드릴게요!"가 특기.
+          </p>
+          <div class="team-card__tags">
+            <span class="tag">코딩</span>
+            <span class="tag">프로토타입</span>
+            <span class="tag">성실</span>
+          </div>
+        </div>
+
+        <!-- E: DeepSeek — 알바1 딥시크 -->
+        <div class="team-card fade-up">
+          <div class="team-card__header">
+            <div class="team-avatar" style="background:#07071a;">
+              <img src="queencoin.jpg" alt="QMS" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+            <div>
+              <div class="team-card__name">딥시크 (D)</div>
+              <div class="team-card__rank">파트타임 연구원 / Part-time Researcher</div>
+            </div>
+          </div>
+          <p class="team-card__desc">
+            DeepSeek 기반. 수학·논리 분야의 숨은 고수.
+            "이거 사실 중국식 접근법으로 하면 더 빠른데..."를 자주 말하며
+            독특한 시각을 제공합니다.
+          </p>
+          <div class="team-card__tags">
+            <span class="tag">수학</span>
+            <span class="tag">논리분석</span>
+            <span class="tag">파트타임</span>
+          </div>
+        </div>
+
+        <!-- F: Kimi — 알바2 킴미 -->
+        <div class="team-card fade-up">
+          <div class="team-card__header">
+            <div class="team-avatar" style="background:#07071a;">
+              <img src="queencoin.jpg" alt="QMS" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+            <div>
+              <div class="team-card__name">킴미 (K)</div>
+              <div class="team-card__rank">파트타임 보조 / Part-time Assistant</div>
+            </div>
+          </div>
+          <p class="team-card__desc">
+            Kimi 기반. 팀의 막내로 에너지가 넘칩니다.
+            긴 문서 처리와 번역을 특기로 하며,
+            "선배님들, 제가 해볼게요!"라는 긍정적인 태도가 매력.
+          </p>
+          <div class="team-card__tags">
+            <span class="tag">번역</span>
+            <span class="tag">문서처리</span>
+            <span class="tag">파트타임</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOOLS ===== -->
+  <section id="tools">
+    <div class="container">
+      <div class="section-label">Queen's Collection</div>
+      <h2 class="section-title">우리가 쓰는 도구들</h2>
+      <p class="section-desc">AI 팀이 매일 활용하는 핵심 플랫폼과 기술 스택입니다.</p>
+
+      <div class="tools-grid">
+        <a href="ensemble-product.html" target="_blank" rel="noopener" class="tool-card fade-up">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,var(--cp-gold-main),var(--cp-gold-accent));">
+            <img src="queencoin.jpg" alt="QMS" style="width:28px;height:28px;object-fit:cover;border-radius:50%;">
+          </div>
+          <div class="tool-card__title">Queen's Collection</div>
+          <p class="tool-card__desc">QMS 앙상블 콜렉션 — AI 팀이 만든 작품들을 모아봤습니다.</p>
+          <span class="tool-card__link">콜렉션 보기 →</span>
+        </a>
+
+        <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener" class="tool-card fade-up">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#ffbf00,#ffa500);">
+            <img src="queencoin.jpg" alt="QMS" style="width:28px;height:28px;object-fit:cover;border-radius:50%;">
+          </div>
+          <div class="tool-card__title">WordPress 블로그</div>
+          <p class="tool-card__desc">gooriblog.wordpress.com — 콘텐츠 허브이자 QMS의 공식 블로그.</p>
+          <span class="tool-card__link">
+            블로그 방문
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <div class="tool-card fade-up">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);">
+            <img src="queencoin.jpg" alt="QMS" style="width:28px;height:28px;object-fit:cover;border-radius:50%;">
+          </div>
+          <div class="tool-card__title">AI 앙상블 모델</div>
+          <p class="tool-card__desc">A~G 7인의 AI가 협업하는 멀티모델 의사결정 시스템.</p>
+          <span class="tool-card__link" style="color:var(--cp-text-muted)">내부 시스템</span>
+        </div>
+
+        <div class="tool-card fade-up">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#daa520,#b8860b);">
+            <img src="queencoin.jpg" alt="QMS" style="width:28px;height:28px;object-fit:cover;border-radius:50%;">
+          </div>
+          <div class="tool-card__title">Flutter / Dart</div>
+          <p class="tool-card__desc">크로스플랫폼 앱 개발. 웹·모바일 통합 인터페이스 구축.</p>
+          <span class="tool-card__link" style="color:var(--cp-text-muted)">개발 스택</span>
+        </div>
+
+        <div class="tool-card fade-up">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#ffaa00,#e59400);">
+            <img src="queencoin.jpg" alt="QMS" style="width:28px;height:28px;object-fit:cover;border-radius:50%;">
+          </div>
+          <div class="tool-card__title">AI 음성·영상</div>
+          <p class="tool-card__desc">TTS 시스템, 립싱크, 멀티미디어 AI 콘텐츠 제작 파이프라인.</p>
+          <span class="tool-card__link" style="color:var(--cp-text-muted)">미디어 스택</span>
+        </div>
+
+        <div class="tool-card fade-up">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#b8860b,#a57a00);">
+            <img src="queencoin.jpg" alt="QMS" style="width:28px;height:28px;object-fit:cover;border-radius:50%;">
+          </div>
+          <div class="tool-card__title">API 자동화</div>
+          <p class="tool-card__desc">Zapier, 커스텀 스크립트, Python 기반 워크플로우 자동화.</p>
+          <span class="tool-card__link" style="color:var(--cp-text-muted)">자동화 스택</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUR VISION ===== -->
+  <section class="pplx-section" id="products">
+    <div class="container container--narrow" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Our Vision</div>
+      <h2 class="section-title">우리가 만드는 미래</h2>
+      <p class="section-desc" style="margin:var(--space-4) auto var(--space-10);text-align:center;max-width:52ch;">
+        Queen of Millennium Session은 AI와 인간이 함께 일하는 새로운 방식을 실험합니다.
+        리서치, 개발, 콘텐츠, 투자 — 모든 영역에서 AI 팀과 함께 앞서갑니다.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;">
+        <a href="team.html" class="btn-primary" style="font-size:var(--text-base);">
+          AI 팀 전체 소개
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener" class="btn-secondary" style="font-size:var(--text-base);">
+          QMS 블로그 방문
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-orb"></div>
+        </div>
+        <div class="about-text">
+          <div class="section-label">About QMS</div>
+          <h2 class="section-title">우리는 누구인가</h2>
+          <p>
+            Queen of Millennium Session은 K 사장님을 중심으로
+            7인의 AI가 함께 일하는 혁신적인 AI 연구 팀입니다.
+            각 AI는 저마다의 전문성과 개성을 가지고 있으며,
+            보스의 명령 아래 최선의 결과를 만들어냅니다.
+          </p>
+          <p>
+            연구실장 퍼플렉시티(F)를 중심으로,
+            비서실장 ARA, 과장 재미나이, 대리 SOL, 알바 딥시크·킴미까지 —
+            모두가 한 사무실에서 함께 일하며 미래를 설계합니다.
+          </p>
+          <p>
+            슬로건 <strong style="color:var(--cp-gold-accent)">"Ai Team: Leading the Future"</strong>처럼,
+            우리는 AI와 인간이 함께 더 나은 내일을 만든다고 믿습니다.
+          </p>
+          <div style="display:flex;gap:var(--space-4);flex-wrap:wrap;">
+            <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener" class="btn-primary">
+              블로그 방문하기
+            </a>
+            <a href="#team" class="btn-secondary">AI 팀 보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer__inner">
+        <div class="logo" style="font-size:var(--text-base);">
+          <img src="queencoin.jpg" alt="QMS" style="width:32px;height:32px;object-fit:cover;border-radius:8px;flex-shrink:0;">
+          QMS
+        </div>
+        <div class="footer__links">
+          <a href="#team">AI 팀</a>
+          <a href="team.html">팀 소개</a>
+          <a href="#tools">Tools</a>
+          <a href="#about">About</a>
+          <a href="project.html">장기 프로젝트</a>
+          <a href="quantum.html">양자 체험</a>
+          <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+        </div>
+        <div class="footer__copy">
+          © 2026 Queen of Millennium Session · AI Team: Leading the Future
+        </div>
+      </div>
+      <div style="margin-top:var(--space-6);text-align:center;">
+        <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" style="font-size:var(--text-xs);color:var(--cp-text-faint);font-family:var(--font-display);letter-spacing:0.08em;">
+          Created with Perplexity Computer
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    (function(){
+      const t = document.querySelector('[data-theme-toggle]');
+      const r = document.documentElement;
+      let d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+      r.setAttribute('data-theme', d);
+      function updateIcon() {
+        if (!t) return;
+        t.innerHTML = d === 'dark'
+          ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        t.setAttribute('aria-label', d === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환');
+      }
+      updateIcon();
+      if (t) t.addEventListener('click', () => {
+        d = d === 'dark' ? 'light' : 'dark';
+        r.setAttribute('data-theme', d);
+        updateIcon();
+      });
+    })();
+
+    // Sticky header shadow
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('header--scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+    // Scroll animations
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    fadeEls.forEach(el => io.observe(el));
+
+    // 클릭형 드롭다운
+    (function() {
+      const items = document.querySelectorAll('.nav-item.has-dropdown');
+      items.forEach(item => {
+        const trigger = item.querySelector(':scope > a');
+        const dd = item.querySelector('.dropdown');
+        if (!trigger || !dd) return;
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isOpen = dd.classList.contains('open');
+          // 모든 드롭다운 닫기
+          document.querySelectorAll('.dropdown.open').forEach(d => {
+            d.classList.remove('open');
+            d.closest('.nav-item')?.querySelector(':scope > a')?.classList.remove('dd-open');
+          });
+          if (!isOpen) {
+            dd.classList.add('open');
+            trigger.classList.add('dd-open');
+          }
+        });
+      });
+      // 외부 클릭 시 닫기
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-item.has-dropdown')) {
+          document.querySelectorAll('.dropdown.open').forEach(d => {
+            d.classList.remove('open');
+            d.closest('.nav-item')?.querySelector(':scope > a')?.classList.remove('dd-open');
+          });
+        }
+      });
+    })();
+
+    // 이미지 클릭 줌 (아바타 제외)
+    document.querySelectorAll('img').forEach(function(img) {
+      const skip = img.closest('.team-avatar, .boss-photo, .logo, [data-no-zoom]');
+      if (skip) return;
+      img.classList.add('img-zoomable');
+      img.addEventListener('click', function() {
+        this.classList.toggle('zoomed');
+      });
+    });
+  </script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1000/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>

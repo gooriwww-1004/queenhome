@@ -1,0 +1,107 @@
+<!DOCTYPE html> 
+<html lang="ko"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>하이브리드 관제 센터 V21.7 — 주민 사장님 트레이딩 봇</title>         
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet"> 
+        <style>:root { --cp-black: #03030a; --cp-dark: #07071a; --cp-surface: #0b0b22; --cp-surface2: #0f0f2e; --cp-border: #1a1a4a; --cp-text: #e0e8ff; --cp-muted: #7888cc; --cp-cyan: #00f5ff; --cp-purple: #b44fff; --cp-pink: #ff2d9b; --cp-green: #00ff9f; } * { box-sizing: border-box; margin: 0; padding: 0; } body { background: var(--cp-black); color: var(--cp-text); font-family: 'Rajdhani', sans-serif; line-height: 1.6; min-height: 100vh; } .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; } .hero { text-align: center; padding: 4rem 1rem 2rem; background: radial-gradient(ellipse at top, rgba(0,245,255,0.12), transparent 70%); } .hero h1 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 3.2rem; background: linear-gradient(90deg, var(--cp-cyan), var(--cp-purple), var(--cp-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; } .hero img { max-width: 100%; border: 2px solid var(--cp-cyan); border-radius: 8px; box-shadow: 0 0 30px rgba(0,245,255,0.25); margin: 1.5rem 0; } .section { margin: 2rem 0; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 6px; overflow: hidden; } .section-header { padding: 1rem 1.5rem; background: rgba(0,245,255,0.05); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; } .section-header:hover { background: rgba(0,245,255,0.12); } .section-header h2 { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--cp-cyan); letter-spacing: 0.08em; text-transform: uppercase; } .section-content { padding: 1.5rem; display: none; } .section-content.open { display: block; } .section-content p, .section-content ul { color: var(--cp-muted); font-size: 1rem; } .section-content strong { color: var(--cp-cyan); } .list { list-style: none; padding-left: 1.2rem; } .list li:before { content: '→'; color: var(--cp-purple); margin-right: 0.5rem; } footer { text-align: center; padding: 2rem; color: var(--cp-muted); font-size: 0.85rem; border-top: 1px solid var(--cp-border); }</style>         
+    </head>     
+    <body> 
+        <div class="container"> 
+            <div class="hero"> 
+                <h1>하이브리드 관제 센터 V1.7</h1> 
+                <p style="color:var(--cp-muted); max-width:600px; margin:0 auto;">주민 사장님 전용 — 코인원 자동 사냥 봇</p> 
+                <!-- 네온 트레이딩 대시보드 느낌 그림 -->                 
+                <img src="https://media.craiyon.com/2025-10-09/YDRBDTB0SCe-tYo8pl_wuw.webp" alt="Neon trading dashboard with charts and alerts"> 
+            </div>             
+            <div class="section"> 
+                <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')"> 
+                    <h2>1. 시스템 개요</h2> 
+                    <span>▼</span> 
+                </div>                 
+                <div class="section-content"> 
+                    <p>코인원 API + Tkinter GUI 자동 트레이딩 봇.  
+      실매매/시뮬 토글 가능, 전략 ini 파일로 커스텀, 시간대별(한국·미국) 스캔, 익절·손절 자동.</p> 
+                    <p>전광판 + 음성 안내 + 로그 실시간 표시 — "사장님, 지금 올라요!" 느낌 그대로.</p> 
+                </div>                 
+            </div>             
+            <div class="section-content"> 
+                <p>이 봇은 **API 키 없이도** 완벽히 가동돼요.  
+  REAL TRADE 체크박스만 해제하면 **가상 매매**로 실시간 시세 따라가면서 매수·매도 시뮬레이션만 돌려볼 수 있어요.  
+  실제 돈 안 쓰고도 "아, 이 전략 괜찮네?" 테스트 가능합니다.</p> 
+                <p><strong>핵심: API 없어도 내 스타일 만들기</strong> 
+  strategy_config.ini 파일만 열어서 —  
+  진입 조건(RISE_RATE >= 2), 매수 비율(98% 올인), 손절(-1.5%), 익절(3%)  
+  원하는 대로 바꾸면 돼요.  
+  코딩 몰라도 ini 수정 한 줄로 "나만의 트레이딩 로직" 완성.  
+  MACRO, SCALPING, DEFENCE 프리셋도 다 ini로 조합 가능 — 자유롭게 튜닝하세요.</p> 
+                <p>실제 매매는 API 키 넣고 REAL TRADE 체크만 하면 바로 전환.  
+  하지만 처음엔 가상으로 충분히 놀아보세요. 안전하게, 재미있게.</p> 
+            </div>             
+            <div class="section"> 
+                <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')"> 
+                    <h2>2. 주요 기능</h2> 
+                    <span>▼</span> 
+                </div>                 
+                <div class="section-content"> 
+                    <ul class="list"> 
+                        <li>실매매 토글 (REAL TRADE 체크)</li>                         
+                        <li>전략 4개 프리셋 (MACRO, SCALPING, DEFENCE, CUSTOM)</li>                         
+                        <li>시장가 매수/전량 매도 (98%, 50%, 고정금액)</li>                         
+                        <li>시간대 인지: 한국 오전·오후, 미국 초반 3~20초 주기 스캔</li>                         
+                        <li>익절/손절 자동 (기본 3% / -1.5%, 전략 우선)</li>                         
+                        <li>보유코인 드롭다운 + 수동 전량 매도</li>                         
+                        <li>AI 명령 하달 (텍스트 입력 → 음성 응답)</li>                         
+                        <li>잔고·로그·전광판 실시간 업데이트</li>                         
+                    </ul>                     
+                </div>                 
+            </div>             
+            <div class="section"> 
+                <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')"> 
+                    <h2>3. 설치 & 실행</h2> 
+                    <span>▼</span> 
+                </div>                 
+                <div class="section-content"> 
+                    <ol> 
+                        <li>Python 3.8+ 설치</li>                         
+                        <li>pip install requests python-dotenv tkinter winsound (윈도우)</li>                         
+                        <li>.ENV 파일에 COINONE_ACCESS_TOKEN, SECRET_KEY 입력</li>                         
+                        <li>strategy_config.ini 수정 (기본 템플릿 있음)</li>                         
+                        <li>python trading_bot.py 실행</li>                         
+                    </ol>                     
+                    <p>실매매 전에 API 테스트 버튼 먼저 눌러봐!</p> 
+                </div>                 
+            </div>             
+            <div class="section"> 
+                <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')"> 
+                    <h2>4. 주의사항</h2> 
+                    <span>▼</span> 
+                </div>                 
+                <div class="section-content"> 
+                    <p>실매매는 본인 책임. API 키 유출 금지.</p> 
+                    <p>시장가 주문 → 슬리피지 주의 (특히 저유동성 코인).</p> 
+                    <p>코인원 KYC 인증 필수. 잔고 조회 실패 시 .ENV 재확인.</p> 
+                    <p>전략 ini 수정 후 프로그램 재시작 or 재로딩 필요.</p> 
+                </div>                 
+            </div>             
+            <div class="section"> 
+                <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')"> 
+                    <h2>5. 장점</h2> 
+                    <span>▼</span> 
+                </div>                 
+                <div class="section-content"> 
+                    <p>GUI + 음성 + 전광판으로 "사장님 관제실" 느낌 그대로.</p> 
+                    <p>ini 파일로 전략 자유 변경 — 코딩 없이 튜닝 가능.</p> 
+                    <p>시뮬 → 실매매 전환 쉬움. 시간대 자동 조절로 배터리·CPU 부담 ↓</p> 
+                    <p>"야, 이거 진짜 내 거야" — 완전 커스텀 봇.</p> 
+                </div>                 
+            </div>             
+        </div>         
+        <footer>© 2026 QMS — Queen of Millennium Session Trading Division</footer>         
+        <script>
+  // 첫 섹션 기본 열어두기
+  document.querySelector('.section-content').classList.add('open');
+</script>         
+    </body>     
+</html>

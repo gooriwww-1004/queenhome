@@ -1,0 +1,963 @@
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>장기 프로젝트 — Queen of Millennium Session</title>
+  <meta name="description" content="QMS 장기 로드맵: 생활형 AI 로봇, 드론 택시, 방어 드론 시스템">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cp-black:#03030a; --cp-dark:#07071a; --cp-surface:#0b0b22; --cp-surface2:#0f0f2e;
+      --cp-border:#1a1a4a; --cp-divider:#12123a;
+      --cp-text:#e0e8ff; --cp-text-muted:#7888cc; --cp-text-faint:#334488;
+      --cp-cyan:#00f5ff; --cp-purple:#b44fff; --cp-pink:#ff2d9b;
+      --cp-gold:#ffd700; --cp-green:#00ff9f; --cp-red:#ff4466;
+      --cp-glow-cyan:rgba(0,245,255,0.25); --cp-glow-purple:rgba(180,79,255,0.25);
+      --font-display:'Orbitron',sans-serif; --font-body:'Rajdhani',sans-serif;
+      --content-wide:1200px;
+      --sp-1:.25rem;--sp-2:.5rem;--sp-3:.75rem;--sp-4:1rem;
+      --sp-6:1.5rem;--sp-8:2rem;--sp-10:2.5rem;--sp-12:3rem;
+      --sp-16:4rem;--sp-20:5rem;--sp-24:6rem;
+      --r-sm:.375rem;--r-md:.5rem;--r-lg:.75rem;--r-xl:1rem;--r-full:9999px;
+      --tx-xs:clamp(.75rem,.7rem + .25vw,.875rem);
+      --tx-sm:clamp(.875rem,.8rem + .35vw,1rem);
+      --tx-base:clamp(1rem,.95rem + .25vw,1.125rem);
+      --tx-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+      --tx-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --tx-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+      --tx-3xl:clamp(2.5rem,1rem + 4vw,5rem);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+    body{
+      min-height:100dvh;font-family:var(--font-body);font-size:var(--tx-base);
+      color:var(--cp-text);background:var(--cp-black);line-height:1.6;overflow-x:hidden;
+    }
+    body::after{
+      content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+      background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,245,255,.012) 3px,rgba(0,245,255,.012) 4px);
+    }
+    img,picture{display:block;max-width:100%;height:auto;}
+    h1,h2,h3,h4{font-family:var(--font-display);text-wrap:balance;line-height:1.15;}
+    a{color:inherit;text-decoration:none;}
+    button{cursor:pointer;background:none;border:none;font:inherit;color:inherit;}
+
+    .container{width:100%;max-width:var(--content-wide);margin-inline:auto;padding-inline:clamp(var(--sp-6),5vw,var(--sp-16));}
+
+    /* ===== HEADER ===== */
+    .header{
+      position:sticky;top:0;z-index:200;padding-block:var(--sp-4);
+      background:rgba(3,3,10,.95);
+      backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--cp-cyan);
+      box-shadow:0 0 20px rgba(0,245,255,.1);
+    }
+    .header__inner{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-6);}
+    .logo{
+      display:flex;align-items:center;gap:var(--sp-3);
+      font-family:var(--font-display);font-weight:800;font-size:var(--tx-lg);
+      letter-spacing:.1em;color:var(--cp-cyan);
+    }
+    .logo__sub{font-size:var(--tx-xs);font-weight:400;color:var(--cp-purple);display:block;letter-spacing:.06em;text-transform:uppercase;}
+    nav.desktop-nav{display:flex;align-items:center;gap:var(--sp-6);flex-wrap:wrap;}
+    nav.desktop-nav a{
+      font-size:.72rem;font-weight:600;color:var(--cp-text-muted);
+      font-family:var(--font-body);letter-spacing:.06em;text-transform:uppercase;
+      transition:color .2s,text-shadow .2s;
+    }
+    nav.desktop-nav a:hover,nav.desktop-nav a.active{color:var(--cp-cyan);text-shadow:0 0 8px var(--cp-cyan);}
+    .hamburger{display:none;flex-direction:column;gap:5px;padding:var(--sp-2);}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--cp-cyan);border-radius:2px;}
+    .mobile-nav{
+      display:none;position:fixed;inset:0;z-index:300;
+      background:rgba(3,3,10,.97);backdrop-filter:blur(20px);
+      flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-8);
+    }
+    .mobile-nav.open{display:flex;}
+    .mobile-nav a{font-family:var(--font-display);font-size:var(--tx-xl);font-weight:700;color:var(--cp-text);}
+    .mobile-nav a:hover{color:var(--cp-cyan);}
+    .mobile-nav-close{position:absolute;top:var(--sp-6);right:clamp(var(--sp-6),5vw,var(--sp-16));font-size:var(--tx-lg);color:var(--cp-text-muted);}
+    @media(max-width:900px){nav.desktop-nav{display:none;}.hamburger{display:flex;}}
+
+    /* ===== HERO ===== */
+    .hero{
+      position:relative;overflow:hidden;
+      padding-block:clamp(var(--sp-12),8vw,var(--sp-20));
+      border-bottom:1px solid var(--cp-divider);
+    }
+    .hero__bg{
+      position:absolute;inset:0;z-index:-1;
+      background:
+        radial-gradient(ellipse 70% 80% at 50% -10%,rgba(180,79,255,.18) 0%,rgba(0,245,255,.08) 45%,transparent 70%),
+        var(--cp-black);
+    }
+    .hero__label{
+      display:inline-flex;align-items:center;gap:var(--sp-2);
+      font-size:var(--tx-xs);font-weight:700;color:var(--cp-cyan);
+      text-transform:uppercase;letter-spacing:.18em;margin-bottom:var(--sp-4);
+      font-family:var(--font-display);
+    }
+    .hero__label::before{content:'';display:inline-block;width:24px;height:2px;background:var(--cp-cyan);box-shadow:0 0 6px var(--cp-cyan);}
+    .hero__title{
+      font-family:var(--font-display);font-size:var(--tx-3xl);font-weight:900;
+      letter-spacing:-.02em;color:var(--cp-text);margin-bottom:var(--sp-6);
+      line-height:1.05;
+    }
+    .hero__title-grad{
+      background:linear-gradient(90deg,var(--cp-cyan) 0%,var(--cp-purple) 50%,var(--cp-pink) 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .hero__sub{font-size:var(--tx-lg);color:var(--cp-text-muted);max-width:52ch;line-height:1.7;margin-bottom:var(--sp-8);}
+    .hero__badge{
+      display:inline-flex;align-items:center;gap:var(--sp-3);
+      font-family:var(--font-display);font-size:var(--tx-xs);font-weight:700;
+      color:var(--cp-pink);letter-spacing:.12em;text-transform:uppercase;
+      border:1px solid rgba(255,45,155,.35);
+      padding:var(--sp-2) var(--sp-6);border-radius:2px;
+      background:rgba(255,45,155,.06);
+      animation:pulse-border 2s ease-in-out infinite;
+    }
+    @keyframes pulse-border{0%,100%{box-shadow:0 0 8px rgba(255,45,155,.3);}50%{box-shadow:0 0 20px rgba(255,45,155,.6);}}
+
+    /* ===== HERO IMAGE ===== */
+    .hero-img-wrap{
+      margin-top:var(--sp-10);
+      position:relative;
+      border:1px solid var(--cp-cyan);
+      box-shadow:0 0 40px rgba(0,245,255,.2),0 0 80px rgba(180,79,255,.1);
+      border-radius:4px;overflow:hidden;
+      max-height:680px;
+      display:flex;align-items:center;justify-content:center;
+      background:var(--cp-dark);
+    }
+    .hero-img-wrap img{width:100%;height:100%;object-fit:contain;max-height:680px;display:block;}
+    /* corner decorations */
+    .hero-img-wrap::before,.hero-img-wrap::after{
+      content:'';position:absolute;width:28px;height:28px;border-style:solid;border-color:var(--cp-cyan);z-index:2;
+    }
+    .hero-img-wrap::before{top:10px;left:10px;border-width:2px 0 0 2px;}
+    .hero-img-wrap::after{bottom:10px;right:10px;border-width:0 2px 2px 0;}
+    .hero-img-overlay{
+      position:absolute;bottom:0;left:0;right:0;
+      background:linear-gradient(transparent,rgba(3,3,10,.9));
+      padding:var(--sp-6) var(--sp-8);
+      display:flex;justify-content:space-between;align-items:flex-end;
+    }
+    .hero-img-tag{font-family:var(--font-display);font-size:var(--tx-xs);color:var(--cp-cyan);letter-spacing:.15em;}
+    .hero-img-year{font-family:var(--font-display);font-size:var(--tx-xs);color:var(--cp-purple);letter-spacing:.1em;}
+
+    /* ===== SUB TABS ===== */
+    .subtab-nav{
+      position:sticky;top:73px;z-index:100;
+      background:rgba(3,3,10,.97);
+      border-bottom:1px solid var(--cp-divider);
+      padding-block:0;
+    }
+    .subtab-inner{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+    .subtab-inner::-webkit-scrollbar{display:none;}
+    .subtab-btn{
+      flex-shrink:0;
+      font-family:var(--font-display);font-size:.72rem;font-weight:700;
+      letter-spacing:.1em;text-transform:uppercase;
+      color:var(--cp-text-muted);
+      padding:var(--sp-4) var(--sp-8);
+      border-bottom:2px solid transparent;
+      transition:all .2s;white-space:nowrap;
+    }
+    .subtab-btn:hover{color:var(--cp-cyan);}
+    .subtab-btn.active{
+      color:var(--cp-cyan);
+      border-bottom-color:var(--cp-cyan);
+      text-shadow:0 0 8px var(--cp-cyan);
+    }
+    .subtab-btn span.num{
+      font-size:.6rem;color:var(--cp-text-faint);margin-right:var(--sp-2);
+    }
+
+    /* ===== CONTENT PANELS ===== */
+    .tab-panel{display:none;padding-block:clamp(var(--sp-12),8vw,var(--sp-20));}
+    .tab-panel.active{display:block;}
+
+    /* ===== SECTION LABEL ===== */
+    .sec-label{
+      display:inline-flex;align-items:center;gap:var(--sp-2);
+      font-family:var(--font-display);font-size:var(--tx-xs);font-weight:700;
+      color:var(--cp-cyan);text-transform:uppercase;letter-spacing:.18em;
+      margin-bottom:var(--sp-4);
+    }
+    .sec-label::before{content:'';display:inline-block;width:20px;height:2px;background:var(--cp-cyan);box-shadow:0 0 6px var(--cp-cyan);}
+    .sec-title{
+      font-family:var(--font-display);font-size:var(--tx-2xl);font-weight:800;
+      letter-spacing:-.02em;color:var(--cp-text);margin-bottom:var(--sp-4);
+    }
+    .sec-desc{font-size:var(--tx-base);color:var(--cp-text-muted);max-width:60ch;line-height:1.8;margin-bottom:var(--sp-10);}
+
+    /* ===== IMAGE GALLERY ===== */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-4);margin-bottom:var(--sp-12);}
+    .gallery-item{
+      border:1px solid var(--cp-border);border-radius:4px;overflow:hidden;
+      background:var(--cp-dark);
+      transition:all .25s;
+      display:flex;align-items:center;justify-content:center;
+      padding:0.75rem 0;
+    }
+    .gallery-item:hover{border-color:var(--cp-cyan);box-shadow:0 0 24px rgba(0,245,255,.2);}
+    .gallery-item img{
+      display:block;
+      width:70%;
+      height:auto;
+      object-fit:contain;
+      position:static;
+      border-radius:4px;
+      cursor:zoom-in;
+      transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);
+      transform-origin:center;
+    }
+    .gallery-item img.zoomed{
+      transform:scale(1.714);
+      cursor:zoom-out;
+      position:relative;
+      z-index:50;
+    }
+    .gallery-item__cap{
+      display:block;
+      width:100%;
+      padding:0.5rem 0.75rem 0.5rem;
+      background:rgba(3,3,10,0.7);
+      font-family:var(--font-display);font-size:var(--tx-xs);
+      color:var(--cp-cyan);letter-spacing:.1em;
+      text-align:center;
+    }
+    /* placeholder when no image */
+    .gallery-item--placeholder{
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-3);
+      background:var(--cp-dark);border:1px dashed rgba(0,245,255,.2);
+    }
+    .gallery-item--placeholder .ph-icon{font-size:3rem;opacity:.4;}
+    .gallery-item--placeholder .ph-text{font-family:var(--font-display);font-size:var(--tx-xs);color:var(--cp-text-faint);letter-spacing:.1em;text-align:center;}
+
+    /* ===== REPORT ===== */
+    .report{
+      border:1px solid var(--cp-border);border-radius:4px;
+      background:var(--cp-surface);overflow:hidden;
+    }
+    .report__header{
+      background:linear-gradient(90deg,rgba(0,245,255,.08),rgba(180,79,255,.06));
+      border-bottom:1px solid var(--cp-border);
+      padding:var(--sp-6) var(--sp-8);
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-4);
+    }
+    .report__title{font-family:var(--font-display);font-size:var(--tx-lg);font-weight:700;color:var(--cp-cyan);letter-spacing:.03em;}
+    .report__badges{display:flex;gap:var(--sp-2);flex-wrap:wrap;}
+    .badge{
+      font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.1em;
+      padding:3px 10px;border-radius:2px;border:1px solid;
+    }
+    .badge--proto{color:var(--cp-purple);border-color:rgba(180,79,255,.4);background:rgba(180,79,255,.08);}
+    .badge--year{color:var(--cp-cyan);border-color:rgba(0,245,255,.3);background:rgba(0,245,255,.06);}
+    .badge--concept{color:var(--cp-gold);border-color:rgba(255,215,0,.3);background:rgba(255,215,0,.06);}
+
+    .report__body{padding:var(--sp-8);}
+    .report__section{margin-bottom:var(--sp-8);}
+    .report__section-title{
+      font-family:var(--font-display);font-size:.75rem;font-weight:700;
+      color:var(--cp-purple);letter-spacing:.12em;text-transform:uppercase;
+      margin-bottom:var(--sp-4);padding-bottom:var(--sp-2);
+      border-bottom:1px solid var(--cp-divider);
+    }
+    .report__section-title::before{content:'▶ ';}
+    .report p{font-family:var(--font-body);font-size:var(--tx-sm);color:var(--cp-text-muted);line-height:1.85;margin-bottom:var(--sp-3);}
+    .report p strong{color:var(--cp-text);font-weight:600;}
+
+    /* spec list */
+    .spec-list{list-style:none;display:flex;flex-direction:column;gap:var(--sp-3);}
+    .spec-list li{
+      display:flex;gap:var(--sp-4);align-items:flex-start;
+      padding:var(--sp-3) var(--sp-4);
+      border:1px solid var(--cp-border);border-radius:4px;background:var(--cp-surface2);
+      font-family:var(--font-body);font-size:var(--tx-sm);color:var(--cp-text-muted);
+    }
+    .spec-list li::before{
+      content:'◆';color:var(--cp-cyan);flex-shrink:0;margin-top:.1em;font-size:.7rem;
+    }
+    .spec-list li strong{color:var(--cp-cyan);font-family:var(--font-display);font-size:.72rem;letter-spacing:.06em;white-space:nowrap;}
+
+    /* advantage / limit grid */
+    .adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);}
+    .adv-card{
+      border:1px solid var(--cp-border);border-radius:4px;padding:var(--sp-4) var(--sp-6);
+      background:var(--cp-surface2);
+    }
+    .adv-card--pro{border-color:rgba(0,255,159,.2);}
+    .adv-card--con{border-color:rgba(255,68,102,.2);}
+    .adv-card__title{
+      font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.1em;
+      margin-bottom:var(--sp-3);
+    }
+    .adv-card--pro .adv-card__title{color:var(--cp-green);}
+    .adv-card--con .adv-card__title{color:var(--cp-red);}
+    .adv-items{display:flex;flex-direction:column;gap:var(--sp-2);}
+    .adv-item{font-size:var(--tx-sm);color:var(--cp-text-muted);display:flex;gap:var(--sp-2);align-items:flex-start;}
+    .adv-item::before{flex-shrink:0;margin-top:.15em;font-size:.7rem;}
+    .adv-card--pro .adv-item::before{content:'✓';color:var(--cp-green);}
+    .adv-card--con .adv-item::before{content:'✕';color:var(--cp-red);}
+    @media(max-width:640px){.adv-grid{grid-template-columns:1fr;}}
+
+    /* timeline */
+    .timeline{display:flex;flex-direction:column;gap:var(--sp-4);}
+    .tl-item{display:flex;gap:var(--sp-4);align-items:flex-start;}
+    .tl-year{
+      font-family:var(--font-display);font-size:.7rem;font-weight:700;
+      color:var(--cp-purple);letter-spacing:.06em;white-space:nowrap;
+      min-width:80px;padding-top:.15em;
+    }
+    .tl-bar{width:2px;background:linear-gradient(var(--cp-cyan),var(--cp-purple));flex-shrink:0;min-height:40px;margin-top:.4em;border-radius:2px;}
+    .tl-text{font-size:var(--tx-sm);color:var(--cp-text-muted);padding-top:.1em;}
+
+    /* fade-up */
+    .fu{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
+    .fu.vis{opacity:1;transform:translateY(0);}
+
+    /* Dropdown nav */
+    .nav-item { position: relative; }
+    .dropdown {
+      display: none; position: absolute;
+      top: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+      background: rgba(3,3,10,0.98); border: 1px solid #00f5ff;
+      border-radius: 4px; min-width: 160px; z-index: 500;
+      box-shadow: 0 0 20px rgba(0,245,255,0.25); overflow: hidden;
+    }
+    .dropdown.open { display: block; }
+    .dropdown a {
+      display: block; padding: 10px 16px;
+      font-size: 0.82rem; font-weight: 600; color: #7888cc;
+      letter-spacing: 0.04em; border-bottom: 1px solid #12123a;
+      transition: all 0.15s; white-space: nowrap; text-decoration: none;
+    }
+    .dropdown a:last-child { border-bottom: none; }
+    .dropdown a:hover { color: #00f5ff; background: rgba(0,245,255,0.06); }
+    .nav-item.has-dropdown > a::after { content: ' ▾'; font-size: 0.6rem; opacity: 0.7; }
+    .nav-item.has-dropdown > a.dd-open::after { content: ' ▴'; }
+
+    /* Image zoom */
+    .img-zoomable {
+      display: block; width: 70%; max-width: 70%;
+      margin: 0 auto; cursor: zoom-in;
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+      transform-origin: center;
+    }
+    .img-zoomable.zoomed {
+      transform: scale(1.714);
+      cursor: zoom-out; position: relative; z-index: 50;
+    }
+    .img-zoomable, .gallery-item img, .staff-photo img {
+      cursor: zoom-in;
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+    }
+    .img-zoomable.zoomed, .gallery-item img.zoomed, .staff-photo img.zoomed {
+      transform: scale(1.714);
+      cursor: zoom-out;
+      position: relative;
+      z-index: 50;
+    }
+
+    /* ===== FOOTER ===== */
+    footer{
+      border-top:1px solid var(--cp-cyan);padding-block:var(--sp-10);
+      background:var(--cp-dark);box-shadow:0 -4px 20px rgba(0,245,255,.08);
+    }
+    .footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-6);}
+    .footer__links{display:flex;gap:var(--sp-6);}
+    .footer__links a{font-size:var(--tx-sm);color:var(--cp-text-muted);font-weight:600;transition:color .2s;}
+    .footer__links a:hover{color:var(--cp-cyan);}
+    .footer__copy{font-family:var(--font-display);font-size:.6rem;color:var(--cp-text-faint);letter-spacing:.1em;}
+    .disclaimer{
+      margin-top:var(--sp-6);padding:var(--sp-4) var(--sp-6);
+      border:1px solid rgba(255,68,102,.2);border-radius:4px;
+      background:rgba(255,68,102,.04);
+      font-family:var(--font-body);font-size:.78rem;color:var(--cp-text-faint);
+      line-height:1.7;text-align:center;
+    }
+    .disclaimer strong{color:rgba(255,68,102,.7);font-family:var(--font-display);font-size:.65rem;letter-spacing:.1em;}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <div class="header__inner">
+      <a href="index.html" class="logo">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-label="QMS">
+          <rect width="36" height="36" rx="10" fill="url(#lg1)"/>
+          <path d="M18 7L21 13L28 14L23 19L24.5 26L18 23L11.5 26L13 19L8 14L15 13Z" fill="white" opacity="0.9"/>
+          <defs><linearGradient id="lg1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#b44fff"/><stop offset="1" stop-color="#00f5ff"/>
+          </linearGradient></defs>
+        </svg>
+        <div><span>QMS</span><span class="logo__sub">Queen of Millennium Session</span></div>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html#team">AI 팀</a>
+        <a href="team.html">팀 소개</a>
+        <a href="ensemble-product.html">Queen's Collection</a>
+        <div class="nav-item has-dropdown">
+          <a href="project.html" class="active">장기 프로젝트</a>
+          <div class="dropdown">
+            <a href="project.html">밀레니아</a>
+            <a href="project.html">드론 택시</a>
+            <a href="project.html">방어무기</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="quantum.html">체험</a>
+          <div class="dropdown">
+            <a href="quantum.html">양자체험</a>
+            <a href="ensemble-maker.html">앙상블웹체험</a>
+          </div>
+        </div>
+        <a href="index.html#about">About</a>
+        <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="메뉴">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+  <a href="index.html#team">AI 팀</a>
+  <a href="team.html">팀 소개</a>
+  <a href="ensemble-product.html">Queen's Collection</a>
+  <a href="project.html">장기 프로젝트</a>
+  <a href="project.html" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 밀레니아</a>
+  <a href="project.html" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 드론 택시</a>
+  <a href="project.html" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 방어무기</a>
+  <a href="quantum.html">체험</a>
+  <a href="quantum.html" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 양자체험</a>
+  <a href="ensemble-maker.html" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 앙상블웹체험</a>
+  <a href="index.html#about">About</a>
+  <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="container">
+    <div class="hero__label">QMS Long-Term Roadmap</div>
+    <h1 class="hero__title">
+      야, 이게 우리<br>
+      <span class="hero__title-grad">미래야.</span>
+    </h1>
+    <p class="hero__sub">생활형 AI 로봇부터 도심 드론 택시, 방어 전용 드론 시스템까지. 2035년을 향한 QMS의 3대 장기 프로젝트.</p>
+    <div class="hero__badge">🔵 CONCEPT STAGE · DEFENSE &amp; LIFESTYLE · 2026–2035</div>
+
+    <!-- 히어로 메인 이미지 -->
+    <div class="hero-img-wrap fu">
+      <img src="qmake.jpg" alt="QMS AI 로봇 블루프린트" id="heroImg"
+           onerror="this.style.display='none';document.getElementById('heroPlaceholder').style.display='flex'">
+      <div id="heroPlaceholder" style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:4rem;text-align:center;min-height:400px;">
+        <img src="queencoin.jpg" alt="QMS" style="width:80px;height:80px;object-fit:cover;border-radius:50%;opacity:0.4;">
+        <div style="font-family:'Orbitron',sans-serif;font-size:.75rem;color:rgba(0,245,255,.5);letter-spacing:.15em;">IMAGE LOADING · qmake.jpg</div>
+        <div style="font-size:.85rem;color:#334488;">이미지 파일을 업로드하면 여기에 표시됩니다</div>
+      </div>
+      <div class="hero-img-overlay">
+        <span class="hero-img-tag">QMS UNIT-01 · AI LIFESTYLE COMPANION</span>
+        <span class="hero-img-year">TARGET: 2035</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUB TABS NAV -->
+<nav class="subtab-nav">
+  <div class="container">
+    <div class="subtab-inner">
+      <button class="subtab-btn active" data-tab="robot">
+        <span class="num">01.</span> AI 로봇
+      </button>
+      <button class="subtab-btn" data-tab="taxi">
+        <span class="num">02.</span> 드론 택시
+      </button>
+      <button class="subtab-btn" data-tab="weapon">
+        <span class="num">03.</span> 무기 시스템
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== TAB 01: AI 로봇 ===== -->
+<div class="tab-panel active" id="tab-robot">
+  <div class="container">
+
+    <div class="sec-label fu">AI Lifestyle Companion Robot</div>
+    <h2 class="sec-title fu">QMS UNIT-01</h2>
+    <p class="sec-desc fu">양자 코어 탑재 생활형 AI 동반자. 일상 보조·가사 지원·감성 케어까지. 인간 곁에서 함께 사는 다음 세대 AI 신체. 2035년 상용화 목표.</p>
+
+    <!-- 갤러리: 이미지 업로드 전 placeholder -->
+    <div class="gallery fu">
+      <div class="gallery-item">
+        <img src="tech.jpg" alt="로봇 전신 블루프린트"
+             onerror="this.closest('.gallery-item').classList.add('gallery-item--placeholder');this.style.display='none'">
+        <div class="gallery-item__cap">FULL BLUEPRINT · EXTERIOR</div>
+      </div>
+      <div class="gallery-item">
+        <img src="tech2.jpg" alt="로봇 상반신 클로즈업"
+             onerror="this.closest('.gallery-item').classList.add('gallery-item--placeholder');this.style.display='none'">
+        <div class="gallery-item__cap">UPPER BODY · INTERNAL</div>
+      </div>
+      <div class="gallery-item">
+        <img src="x-ray.jpg" alt="로봇 필드 포즈"
+             onerror="this.closest('.gallery-item').classList.add('gallery-item--placeholder');this.style.display='none'">
+        <div class="gallery-item__cap">LIFESTYLE MODE · DAILY ASSIST</div>
+      </div>
+    </div>
+
+    <div class="report fu">
+      <div class="report__header">
+        <div class="report__title">QMS UNIT-01 · 생활형 AI 동반자 설계 보고서</div>
+        <div class="report__badges">
+          <span class="badge badge--proto">PROTOTYPE</span>
+          <span class="badge badge--year">2035 LIFESTYLE</span>
+          <span class="badge badge--concept">QUANTUM CORE</span>
+        </div>
+      </div>
+      <div class="report__body">
+
+        <div class="report__section">
+          <div class="report__section-title">개요</div>
+          <p>QMS UNIT-01은 <strong>양자 코어 기반 생활형 AI 동반자</strong>로, 일상 속에서 사람 곁에서 함께 생활하는 차세대 AI 로봇입니다. 가사 보조·일정 관리·감성 케어·생산성 지원을 하나의 신체에 통합합니다. Bio-Silicone 2.0 피부, Quantum-Photon 회로, CNT 근육 구동계의 3중 아키텍처로 설계됩니다.</p>
+          <p>2026년 개념 설계 → 2030년 프로토타입 → <strong>2035년 상용화</strong>를 목표로 합니다.</p>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">주요 기술 스택</div>
+          <ul class="spec-list">
+            <li><strong>Bio-Silicone 2.0 Skin</strong> 부드럽고 내구성 강한 인공 피부. 관절 부위를 자연스럽게 감싸며 외부 충격 흡수. 실리콘 기반 2세대 소재로 촉각 센서 내장.</li>
+            <li><strong>Quantum-Photon Circuits</strong> 광자 기반 초고속 에너지 전달 회로. 기존 전자 회로 대비 발열 95% 감소. 지연 시간 0에 수렴하는 실시간 제어 가능.</li>
+            <li><strong>CNT Actuators</strong> 탄소 나노튜브 기반 근육 구동 시스템. 인간 근육 대비 5배 빠르고 3배 강한 힘. 유체처럼 자연스러운 동작 구현.</li>
+            <li><strong>Neural Interface Core</strong> 자율 학습 + 외부 AI 연동. QMS 팀과 실시간 데이터 공유. 가정·사무·의료 보조 현장 적용.</li>
+          </ul>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">장점 / 한계</div>
+          <div class="adv-grid">
+            <div class="adv-card adv-card--pro">
+              <div class="adv-card__title">ADVANTAGES</div>
+              <div class="adv-items">
+                <div class="adv-item">24/7 생활 보조 — 가사·일정·케어 동시 처리</div>
+                <div class="adv-item">감성 AI 탑재 — 표정·목소리 인식 공감 반응</div>
+                <div class="adv-item">양자 암호화로 개인정보·해킹 저항성 우수</div>
+                <div class="adv-item">다목적: 가정·사무·의료 보조 모두 적용</div>
+              </div>
+            </div>
+            <div class="adv-card adv-card--con">
+              <div class="adv-card__title">LIMITATIONS</div>
+              <div class="adv-items">
+                <div class="adv-item">양자 코어 냉각 시스템 소형화 필요</div>
+                <div class="adv-item">CNT 대량 생산 단가 아직 높음</div>
+                <div class="adv-item">강한 전자기 펄스(EMP) 취약</div>
+                <div class="adv-item">완전 자율 윤리 프레임워크 미완성</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">로드맵</div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-year">2026</div><div class="tl-bar"></div><div class="tl-text">개념 설계 확정 — 3대 기술 스택 선정, QMS 내부 세계관 수립</div></div>
+            <div class="tl-item"><div class="tl-year">2028</div><div class="tl-bar"></div><div class="tl-text">프로토타입 프레임 제작 — CNT 근육 1세대 테스트, Bio-Silicone 피부 샘플</div></div>
+            <div class="tl-item"><div class="tl-year">2030</div><div class="tl-bar"></div><div class="tl-text">완전 프로토타입 — 양자 코어 탑재, 자율 보행 시연</div></div>
+            <div class="tl-item"><div class="tl-year">2033</div><div class="tl-bar"></div><div class="tl-text">실생활 테스트 — 가정·사무 환경 6개월 파일럿 운용</div></div>
+            <div class="tl-item"><div class="tl-year">2035</div><div class="tl-bar"></div><div class="tl-text">상용화 목표 — QMS UNIT-01 생활형 버전 양산 시작</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== TAB 02: 드론 택시 ===== -->
+<div class="tab-panel" id="tab-taxi">
+  <div class="container">
+
+    <div class="sec-label fu">eVTOL Urban Mobility</div>
+    <h2 class="sec-title fu">Queen Five AirTaxi</h2>
+    <p class="sec-desc fu">2인승 도시 단거리 eVTOL. 원통형 캐빈 + 덕티드 팬 + 파노라믹 창. "야, 이거 진짜 편하네" 느낌의 2030년 컨셉.</p>
+
+    <div class="gallery fu">
+      <div class="gallery-item">
+        <img src="taxi-1.jpg" alt="에어택시 비행 중"
+             onerror="this.closest('.gallery-item').classList.add('gallery-item--placeholder');this.style.display='none'">
+        <div class="gallery-item__cap">IN FLIGHT · CRUISING MODE</div>
+      </div>
+      <div class="gallery-item">
+        <img src="taxi-2.jpg" alt="에어택시 착지 상태"
+             onerror="this.closest('.gallery-item').classList.add('gallery-item--placeholder');this.style.display='none'">
+        <div class="gallery-item__cap">LANDING SEQUENCE · ROOFTOP</div>
+      </div>
+      <div class="gallery-item">
+        <img src="taxi-3.jpg" alt="에어택시 내부·창"
+             onerror="this.closest('.gallery-item').classList.add('gallery-item--placeholder');this.style.display='none'">
+        <div class="gallery-item__cap">PANORAMIC CABIN · INTERIOR</div>
+      </div>
+    </div>
+
+    <div class="report fu">
+      <div class="report__header">
+        <div class="report__title">DPS-AirTaxi · 민간용 2인승 eVTOL 설계 보고서</div>
+        <div class="report__badges">
+          <span class="badge badge--concept">CONCEPT 2030</span>
+          <span class="badge badge--year">80–120 km/h</span>
+          <span class="badge badge--proto">100km RANGE</span>
+        </div>
+      </div>
+      <div class="report__body">
+
+        <div class="report__section">
+          <div class="report__section-title">개요</div>
+          <p><strong>DPS-AirTaxi</strong>는 2명 탑승 가능한 도시 단거리 이동 수단. 직접 이착륙(VTOL) 방식으로 C-130 투하 없이 독립 운용됩니다. 요즘 eVTOL 트렌드(덕티드 팬 + 원통형 캐빈)를 그대로 따르면서, QMS 특유의 세련된 디자인을 입혔습니다.</p>
+          <p>속도 80~120km/h, 항속거리 100km 이내. <strong>2030년 상용화 목표</strong> (프로토타입 비행 2028년 예정).</p>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">주요 설계 특징</div>
+          <ul class="spec-list">
+            <li><strong>본체</strong> 길이 4m 원통형 카본 파이버. 매트 그레이 톤 + 부드러운 곡선 베벨 엣지. 벽돌처럼 투박하지 않게, 세련된 마감.</li>
+            <li><strong>파노라믹 창</strong> 양쪽 사이드 전체 대형 창 — 탑승자 시야 180도 확보. 2인석, 조종석·승객석 구분 없이 심플하게.</li>
+            <li><strong>덕티드 팬 추진계</strong> 양쪽 사이드 각 1개(총 2개). 프로펠러 완전 내장 → 소음 55dB 이하, 충돌 위험 90% 감소. 공기 입구에서 흡입 → 제트처럼 후방 배출.</li>
+            <li><strong>착지 시스템</strong> 폴딩 랜딩 기어 4개. AI 자율 제어 부드러운 착륙. 도시 옥상·주차장 어디든 가능.</li>
+            <li><strong>에너지</strong> 배터리 150kWh, 30분 내 80% 충전 (2030년 기준 리튬-황 배터리 기준). Starlink GPS 연동 자율 비행.</li>
+          </ul>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">기술 레퍼런스</div>
+          <ul class="spec-list">
+            <li><strong>덕티드 팬</strong> Lilium Jet (독일) + Archer Midnight (미국) — 공기 효율 85% 이상 덕트 방식.</li>
+            <li><strong>자율 착지</strong> DJI 드론 + SpaceX Starlink GPS 연동 발전형.</li>
+            <li><strong>창 디자인</strong> Boeing eVTOL 컨셉처럼 파노라믹 글라스 — 탑승자 경험 최우선.</li>
+          </ul>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">장점 / 한계</div>
+          <div class="adv-grid">
+            <div class="adv-card adv-card--pro">
+              <div class="adv-card__title">ADVANTAGES</div>
+              <div class="adv-items">
+                <div class="adv-item">외부 프로펠러 없음 → 안전성 최고</div>
+                <div class="adv-item">소음 55dB 이하 — 도심 운용 가능</div>
+                <div class="adv-item">서울~인천, 부산 도심 100km 내 커버</div>
+                <div class="adv-item">택시처럼 앱 호출, 옥상 착륙</div>
+              </div>
+            </div>
+            <div class="adv-card adv-card--con">
+              <div class="adv-card__title">LIMITATIONS</div>
+              <div class="adv-items">
+                <div class="adv-item">고속 비행(120km/h+) 시 날개 추가 필요</div>
+                <div class="adv-item">배터리 무게 1톤 이하로 경량화 필요</div>
+                <div class="adv-item">항공 규제 인증 — 2028년 이후 본격화</div>
+                <div class="adv-item">강풍·악천후 안정성 추가 검증 필요</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">로드맵</div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-year">2026</div><div class="tl-bar"></div><div class="tl-text">개념 설계 — 원통형 캐빈 + 덕티드 팬 구조 확정, 리튬-황 배터리 파트너십 검토</div></div>
+            <div class="tl-item"><div class="tl-year">2027</div><div class="tl-bar"></div><div class="tl-text">풍동 테스트 — 덕티드 팬 효율 검증, 소음 측정</div></div>
+            <div class="tl-item"><div class="tl-year">2028</div><div class="tl-bar"></div><div class="tl-text">프로토타입 비행 테스트 — 무인 자율 비행 1차 시연</div></div>
+            <div class="tl-item"><div class="tl-year">2029</div><div class="tl-bar"></div><div class="tl-text">유인 탑승 테스트 — 파일럿 + 엔지니어 탑승 안전 검증</div></div>
+            <div class="tl-item"><div class="tl-year">2030</div><div class="tl-bar"></div><div class="tl-text">상용화 목표 — 도심 에어택시 서비스 런칭</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== TAB 03: 무기 시스템 ===== -->
+<div class="tab-panel" id="tab-weapon">
+  <div class="container">
+
+    <div class="sec-label fu">Defense Power System · Civilian Protection</div>
+    <h2 class="sec-title fu">DPS 드론 · 도시 방어 시스템</h2>
+    <p class="sec-desc fu">방어 전용 음파 드론. 미사일·드론 요격, 도시 공중 안전 보호 목적. 공격 기능 없음. 2030년 프로토타입 개념.</p>
+
+    <div class="gallery fu">
+      <div class="gallery-item">
+        <img src="w-1.jpg" alt="DPS 드론 투하 상태"
+             onerror="this.closest('.gallery-item').classList.add('gallery-item--placeholder');this.style.display='none'">
+        <div class="gallery-item__cap">AIRDROP · C-130 DEPLOYMENT</div>
+      </div>
+      <div class="gallery-item">
+        <img src="w-2.jpg" alt="DPS 드론 착지"
+             onerror="this.closest('.gallery-item').classList.add('gallery-item--placeholder');this.style.display='none'">
+        <div class="gallery-item__cap">LANDING · 6-LEG STABILIZE</div>
+      </div>
+      <div class="gallery-item">
+        <img src="w-3.jpg" alt="DPS 드론 음파 발사"
+             onerror="this.closest('.gallery-item').classList.add('gallery-item--placeholder');this.style.display='none'">
+        <div class="gallery-item__cap">SONIC ARRAY · ACTIVE</div>
+      </div>
+    </div>
+
+    <div class="report fu">
+      <div class="report__header">
+        <div class="report__title">DPS 드론 · 도시 방어 전용 음파 시스템 보고서</div>
+        <div class="report__badges">
+          <span class="badge badge--proto">2030 PROTOTYPE</span>
+          <span class="badge badge--year">500m RANGE</span>
+          <span class="badge badge--concept">SONIC ARRAY</span>
+        </div>
+      </div>
+      <div class="report__body">
+
+        <div class="report__section">
+          <div class="report__section-title">개요</div>
+          <p><strong>DPS(Defense Power System)</strong>는 양자 기반 자율 방어 드론으로, 도시·시설 상공에서 적 미사일·드론을 음파로 무력화합니다. <strong>공격 기능 없음 — 방어·구조 전용</strong>. 기존 아이언돔(성공률 65~85%)보다 정밀한 근거리 방어가 목표입니다.</p>
+          <p>크기: <strong>3.5m × 1.8m, 무게 1.5톤</strong>. 6대 동시 배치 가능. 반경 500m 내 위협 무력화.</p>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">주요 설계 특징</div>
+          <ul class="spec-list">
+            <li><strong>본체</strong> 육각형 카본 파이버. 매트 블랙 + 올리브 그린 위장 패턴. 외벽 미세 회로 패턴 — "손으로 다듬은" 세련된 느낌. 부드러운 곡선 베벨 엣지.</li>
+            <li><strong>착지 시스템</strong> AI 자율 제어 (좌우·상하 스러스터 미세 조정). 투하 후 6개 폴딩 랜딩 기어 자동 전개 → 2초 내 안정 착륙.</li>
+            <li><strong>음파 방어 모듈</strong> 육각형 스피커 패널 2개 포개어 배치. 고주파 교란으로 미사일·드론 전자 시스템 무력화. 에너지 효율 90% 이상. 반경 500m 내 위협 중화. <em style="color:rgba(0,245,255,.5)">※ 대인 살상 기능 없음</em></li>
+            <li><strong>배치 방식</strong> 방어 구역 지정 배치 또는 수송기 투하. 6대 동시 운용으로 광역 방어망 구성.</li>
+          </ul>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">기술 레퍼런스</div>
+          <ul class="spec-list">
+            <li><strong>착지 기술</strong> SpaceX 재사용 로켓 기술 + 군용 드론 GPS/레이더 연동.</li>
+            <li><strong>음파 방어</strong> 미국 LRAD(장거리 음향 장치) 기반 + 미래형 방어 증폭기 확장. 방어 전용 주파수 대역만 사용.</li>
+            <li><strong>자율 AI</strong> 2026년 기준 자율 비행 알고리즘(DJI Matrice 계열) 방어용 발전형.</li>
+          </ul>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">장점 / 한계</div>
+          <div class="adv-grid">
+            <div class="adv-card adv-card--pro">
+              <div class="adv-card__title">ADVANTAGES</div>
+              <div class="adv-items">
+                <div class="adv-item">저비용 광역 배치 — 6대 동시 방어망 구성</div>
+                <div class="adv-item">인명 피해 없음 — 음파 무력화, 살상 기능 없음</div>
+                <div class="adv-item">0.5초 내 반응 — 기존 요격 시스템보다 빠름</div>
+                <div class="adv-item">도시·민간 시설 정밀 방어 특화</div>
+              </div>
+            </div>
+            <div class="adv-card adv-card--con">
+              <div class="adv-card__title">LIMITATIONS</div>
+              <div class="adv-items">
+                <div class="adv-item">전자 방해(재밍) 시 취약 → 양자 암호화 추가 필요</div>
+                <div class="adv-item">음파 반경 내 민감 장비 일시 영향 가능</div>
+                <div class="adv-item">험지 착지 시 랜딩 기어 안정성 추가 검증 필요</div>
+                <div class="adv-item">방어 전용 국제 인증 절차 병행 필요</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="report__section">
+          <div class="report__section-title">로드맵</div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-year">2026</div><div class="tl-bar"></div><div class="tl-text">개념 설계 — 육각 카본 프레임 + 음파 어레이 배치 확정</div></div>
+            <div class="tl-item"><div class="tl-year">2027</div><div class="tl-bar"></div><div class="tl-text">착지 시스템 테스트 — 폴딩 랜딩 기어 낙하 실험 (고도 1km)</div></div>
+            <div class="tl-item"><div class="tl-year">2028</div><div class="tl-bar"></div><div class="tl-text">프로토타입 테스트 — 음파 방어 어레이 500m 범위 무인 시험 (무해 주파수 대역)</div></div>
+            <div class="tl-item"><div class="tl-year">2029</div><div class="tl-bar"></div><div class="tl-text">광역 배치 실험 — 6대 동시 배치·착지·방어망 활성화 시퀀스 검증</div></div>
+            <div class="tl-item"><div class="tl-year">2030</div><div class="tl-bar"></div><div class="tl-text">방어 배치 목표 — 민간 도시 방어 솔루션 인증 심사</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer__inner">
+      <a href="index.html" class="logo" style="font-size:var(--tx-base);">
+        <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+          <rect width="36" height="36" rx="10" fill="url(#lg2)"/>
+          <path d="M18 7L21 13L28 14L23 19L24.5 26L18 23L11.5 26L13 19L8 14L15 13Z" fill="white" opacity="0.9"/>
+          <defs><linearGradient id="lg2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#b44fff"/><stop offset="1" stop-color="#00f5ff"/>
+          </linearGradient></defs>
+        </svg>
+        QMS
+      </a>
+      <div class="footer__links">
+        <a href="index.html">홈</a>
+        <a href="team.html">팀 소개</a>
+        <a href="quantum.html">양자 체험</a>
+        <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+      </div>
+      <div class="footer__copy">© 2026 Queen of Millennium Session · AI Team: Leading the Future</div>
+    </div>
+    <div class="disclaimer">
+      <strong>⚠ DESIGN ONLY DISCLAIMER</strong><br>
+      본 페이지에 수록된 모든 내용(생활형 AI 로봇·드론 택시·방어 드론 설계안)은 순수 개념 연구 및 창작 목적의 <strong>설계 스케치</strong>입니다.
+      모든 시스템은 <strong>방어·생활 보조 전용</strong>으로 설계되며, 공격·살상·군사 판매 목적과 무관합니다.
+      QMS는 <strong>설계 아이디어 연구</strong>만 수행합니다. 국방·규제 기관 문의는 별도 채널로 안내 드립니다.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  document.getElementById('mobileNavClose').addEventListener('click', () => mobileNav.classList.remove('open'));
+  hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+  // Sub tab switching
+  const subtabBtns = document.querySelectorAll('.subtab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  subtabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      subtabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + target).classList.add('active');
+      // re-trigger fade-up for newly visible panel
+      document.querySelectorAll('#tab-' + target + ' .fu').forEach(el => {
+        el.classList.remove('vis');
+        requestAnimationFrame(() => requestAnimationFrame(() => io.observe(el)));
+      });
+    });
+  });
+
+  // Fade-up observer
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fu').forEach(el => io.observe(el));
+  // Dropdown nav
+  (function(){
+    const items=document.querySelectorAll('.nav-item.has-dropdown');
+    items.forEach(function(item){
+      const trigger=item.querySelector(':scope > a');
+      const dd=item.querySelector('.dropdown');
+      if(!trigger||!dd)return;
+      trigger.addEventListener('click',function(e){
+        e.preventDefault();
+        const isOpen=dd.classList.contains('open');
+        document.querySelectorAll('.dropdown.open').forEach(function(d){
+          d.classList.remove('open');
+          const p=d.closest('.nav-item');
+          if(p)p.querySelector(':scope > a').classList.remove('dd-open');
+        });
+        if(!isOpen){dd.classList.add('open');trigger.classList.add('dd-open');}
+      });
+    });
+    document.addEventListener('click',function(e){
+      if(!e.target.closest('.nav-item.has-dropdown')){
+        document.querySelectorAll('.dropdown.open').forEach(function(d){
+          d.classList.remove('open');
+          const p=d.closest('.nav-item');
+          if(p)p.querySelector(':scope > a').classList.remove('dd-open');
+        });
+      }
+    });
+  })();
+
+  // Image zoom
+  document.querySelectorAll('img').forEach(function(img){
+    if(img.closest('.logo,[data-no-zoom]'))return;
+    img.addEventListener('click',function(){this.classList.toggle('zoomed');});
+  });
+</script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>

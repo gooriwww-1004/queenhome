@@ -1,0 +1,987 @@
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>양자 컴퓨터 체험 센터 — Queen of Millennium Session</title>
+  <meta name="description" content="실제 양자 컴퓨터를 무료로 체험하세요. IBM Quantum, Google Cirq, AWS Braket, Azure Quantum.">
+  <meta property="og:title" content="양자 컴퓨터 체험 센터 — QMS">
+  <meta property="og:description" content="실제 양자 컴퓨터를 무료로 체험하세요. 지금 이 순간, 현실이 된 SF.">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== CYBERPUNK DESIGN TOKENS ===== */
+    :root {
+      --cp-black: #03030a;
+      --cp-dark: #07071a;
+      --cp-surface: #0b0b22;
+      --cp-surface2: #0f0f2e;
+      --cp-border: #1a1a4a;
+      --cp-cyan: #00f5ff;
+      --cp-purple: #b44fff;
+      --cp-pink: #ff2d9b;
+      --cp-text: #e0e8ff;
+      --cp-text-muted: #7888cc;
+      --cp-text-faint: #334488;
+    }
+
+    /* ===== BASE RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+    body {
+      background: var(--cp-black);
+      color: var(--cp-text);
+      font-family: 'Rajdhani', sans-serif;
+      min-height: 100dvh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    /* CRT scanline overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0, 245, 255, 0.012) 3px,
+        rgba(0, 245, 255, 0.012) 4px
+      );
+    }
+
+    img, picture, video { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; }
+    p, li { text-wrap: pretty; }
+    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    a, button, [role="button"] {
+      transition: color 180ms ease, background 180ms ease, border-color 180ms ease,
+                  box-shadow 180ms ease, opacity 180ms ease, transform 180ms ease;
+    }
+    :focus-visible { outline: 2px solid var(--cp-cyan); outline-offset: 3px; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding-block: 1rem;
+      background: rgba(3, 3, 10, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--cp-cyan);
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--cp-cyan);
+      letter-spacing: 0.08em;
+    }
+    .logo:hover { text-shadow: 0 0 12px rgba(0, 245, 255, 0.5); }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .desktop-nav a {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--cp-text-muted);
+      letter-spacing: 0.03em;
+      position: relative;
+    }
+    .desktop-nav a:hover { color: var(--cp-cyan); }
+    .desktop-nav a.active {
+      color: var(--cp-cyan);
+      text-shadow: 0 0 8px rgba(0, 245, 255, 0.4);
+    }
+    .desktop-nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--cp-cyan);
+      box-shadow: 0 0 6px var(--cp-cyan);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 28px;
+      padding: 4px 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--cp-cyan);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* Mobile Nav */
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(3, 3, 10, 0.98);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--cp-text-muted);
+      letter-spacing: 0.05em;
+    }
+    .mobile-nav a:hover { color: var(--cp-cyan); }
+    .mobile-nav a.active { color: var(--cp-cyan); }
+    .mobile-nav-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 1.5rem;
+      color: var(--cp-cyan);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: clamp(4rem, 10vw, 7rem) 0;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 50% 50% at 50% 40%, rgba(0, 245, 255, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 60% at 50% 60%, rgba(180, 79, 255, 0.06) 0%, transparent 70%),
+        var(--cp-black);
+    }
+    .hero__label {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--cp-cyan);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+    }
+    .hero__title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.2rem, 1rem + 5vw, 4.5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--cp-cyan) 0%, var(--cp-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+    .hero__desc {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(1rem, 0.9rem + 0.5vw, 1.3rem);
+      color: var(--cp-text-muted);
+      max-width: 50ch;
+      margin-inline: auto;
+      line-height: 1.7;
+    }
+
+    /* ===== MAIN CONTENT — 2-COLUMN GRID ===== */
+    .quantum-main {
+      padding: clamp(3rem, 8vw, 5rem) 0;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .quantum-grid {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .quantum-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* Quantum Frame (image container) */
+    .quantum-frame {
+      position: relative;
+      border: 1px solid var(--cp-cyan);
+      box-shadow: 0 0 40px rgba(0, 245, 255, 0.25), 0 0 80px rgba(180, 79, 255, 0.15);
+      background: var(--cp-dark);
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .quantum-frame::before,
+    .quantum-frame::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      z-index: 2;
+    }
+    .quantum-frame::before {
+      top: 8px;
+      left: 8px;
+      border-width: 2px 0 0 2px;
+      border-color: var(--cp-cyan);
+      border-style: solid;
+    }
+    .quantum-frame::after {
+      bottom: 8px;
+      right: 8px;
+      border-width: 0 2px 2px 0;
+      border-color: var(--cp-purple);
+      border-style: solid;
+    }
+
+    .quantum-img {
+      display: block;
+      width: 70%;
+      height: auto;
+      margin: 0 auto;
+      cursor: zoom-in;
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), filter 4s ease-in-out;
+      transform-origin: center;
+      animation: quantumPulse 4s ease-in-out infinite;
+      filter: hue-rotate(0deg) brightness(1.1);
+    }
+    .quantum-img.zoomed {
+      transform: scale(1.714);
+      cursor: zoom-out;
+      position: relative;
+      z-index: 50;
+    }
+    @keyframes quantumPulse {
+      0%, 100% { filter: hue-rotate(0deg) brightness(1.1) saturate(1.2); transform: scale(1); }
+      50% { filter: hue-rotate(20deg) brightness(1.25) saturate(1.5); transform: scale(1.02); }
+    }
+
+    /* Overlay labels */
+    .quantum-overlay-top {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      z-index: 3;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      color: var(--cp-cyan);
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
+    }
+    .quantum-overlay-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      padding: 12px 20px;
+      background: linear-gradient(transparent, rgba(3, 3, 10, 0.9));
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      color: var(--cp-cyan);
+      letter-spacing: 0.1em;
+    }
+    .qubit-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .qubit-label { opacity: 0.7; }
+    .qubit-blocks {
+      display: flex;
+      gap: 2px;
+    }
+    .qubit-block {
+      width: 10px;
+      height: 12px;
+      background: var(--cp-cyan);
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .qubit-block.off {
+      background: var(--cp-text-faint);
+      opacity: 0.3;
+    }
+    .qubit-pct {
+      margin-left: 4px;
+      color: var(--cp-cyan);
+    }
+    .qubit-status {
+      margin-left: 8px;
+      color: var(--cp-purple);
+      opacity: 0.8;
+    }
+
+    /* ===== LINK CARDS ===== */
+    .quantum-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .quantum-link-card {
+      border: 1px solid rgba(0, 245, 255, 0.25);
+      background: rgba(0, 245, 255, 0.02);
+      border-radius: 2px;
+      padding: 1.25rem;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: all 0.25s;
+      outline: 1px solid rgba(0, 245, 255, 0.08);
+      outline-offset: -6px;
+    }
+    .quantum-link-card:hover {
+      border-color: var(--cp-cyan);
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+      background: rgba(0, 245, 255, 0.06);
+      transform: translateX(4px);
+    }
+    .quantum-link-card::before {
+      content: '→';
+      position: absolute;
+      left: -28px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(0, 245, 255, 0.4);
+      font-size: 1rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .quantum-link-card:hover::before {
+      color: var(--cp-cyan);
+      text-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
+    }
+    .quantum-link-card__num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.55rem;
+      color: rgba(180, 79, 255, 0.6);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.3rem;
+    }
+    .quantum-link-card__title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      color: var(--cp-cyan);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .quantum-link-card__desc {
+      font-family: 'Rajdhani', sans-serif;
+      color: var(--cp-text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .quantum-link-card__badge {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      color: var(--cp-cyan);
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: rgba(0, 245, 255, 0.05);
+    }
+
+    /* ===== EXPERIENCE BANNER ===== */
+    .exp-banner {
+      padding: clamp(2.5rem, 6vw, 4rem) 0;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .exp-banner__inner {
+      background: rgba(180, 79, 255, 0.08);
+      border: 1px solid rgba(180, 79, 255, 0.4);
+      border-radius: 4px;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-banner__inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cp-purple), var(--cp-pink), var(--cp-purple));
+    }
+    .exp-banner__title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1rem, 0.8rem + 0.8vw, 1.4rem);
+      font-weight: 700;
+      color: var(--cp-text);
+      margin-bottom: 0.75rem;
+    }
+    .exp-banner__text {
+      font-size: 1rem;
+      color: var(--cp-text);
+      line-height: 1.8;
+    }
+    .exp-banner__text span {
+      color: var(--cp-text-muted);
+    }
+
+    /* ===== BASICS SECTION ===== */
+    .basics {
+      padding: clamp(3rem, 8vw, 5rem) 0;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .basics__header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .basics__label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--cp-purple);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .basics__title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+      font-weight: 700;
+      color: var(--cp-text);
+    }
+    .basics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 700px) {
+      .basics-grid { grid-template-columns: 1fr; }
+    }
+    .basics-card {
+      border: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .basics-card:hover {
+      border-color: rgba(0, 245, 255, 0.3);
+      box-shadow: 0 0 30px rgba(0, 245, 255, 0.1);
+      transform: translateY(-4px);
+    }
+    .basics-card__icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .basics-card__title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--cp-cyan);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.03em;
+    }
+    .basics-card__desc {
+      font-size: 0.9rem;
+      color: var(--cp-text-muted);
+      line-height: 1.7;
+    }
+
+    /* Dropdown nav */
+    .nav-item { position: relative; }
+    .dropdown {
+      display: none; position: absolute;
+      top: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+      background: rgba(3,3,10,0.98); border: 1px solid #00f5ff;
+      border-radius: 4px; min-width: 160px; z-index: 500;
+      box-shadow: 0 0 20px rgba(0,245,255,0.25); overflow: hidden;
+    }
+    .dropdown.open { display: block; }
+    .dropdown a {
+      display: block; padding: 10px 16px;
+      font-size: 0.82rem; font-weight: 600; color: #7888cc;
+      letter-spacing: 0.04em; border-bottom: 1px solid #12123a;
+      transition: all 0.15s; white-space: nowrap; text-decoration: none;
+    }
+    .dropdown a:last-child { border-bottom: none; }
+    .dropdown a:hover { color: #00f5ff; background: rgba(0,245,255,0.06); }
+    .nav-item.has-dropdown > a::after { content: ' ▾'; font-size: 0.6rem; opacity: 0.7; }
+    .nav-item.has-dropdown > a.dd-open::after { content: ' ▴'; }
+
+    /* Image zoom */
+    .img-zoomable {
+      display: block; width: 70%; max-width: 70%;
+      margin: 0 auto; cursor: zoom-in;
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+      transform-origin: center;
+    }
+    .img-zoomable.zoomed {
+      transform: scale(1.714);
+      cursor: zoom-out; position: relative; z-index: 50;
+    }
+    .staff-photo img, .boss-photo img, .group-photo-wrap img { cursor: default !important; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 2.5rem 0;
+      background: var(--cp-dark);
+      border-top: 1px solid var(--cp-border);
+    }
+    .footer__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+    .footer__copy {
+      font-size: 0.85rem;
+      color: var(--cp-text-muted);
+    }
+    .footer__pplx {
+      font-size: 0.75rem;
+      color: var(--cp-text-faint);
+    }
+    .footer__pplx a {
+      color: var(--cp-text-faint);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .footer__pplx a:hover { color: var(--cp-cyan); }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered cards */
+    .quantum-link-card:nth-child(2) { transition-delay: 0.08s; }
+    .quantum-link-card:nth-child(3) { transition-delay: 0.16s; }
+    .quantum-link-card:nth-child(4) { transition-delay: 0.24s; }
+
+    .basics-card:nth-child(2) { transition-delay: 0.1s; }
+    .basics-card:nth-child(3) { transition-delay: 0.2s; }
+
+    /* ===== GLITCH TEXT (subtle) ===== */
+    @keyframes glitch {
+      0%, 90%, 100% { opacity: 1; transform: translate(0); }
+      92% { transform: translate(-2px, 1px); }
+      94% { transform: translate(2px, -1px); }
+      96% { transform: translate(-1px, -1px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="logo">QMS</a>
+        <nav class="desktop-nav">
+          <a href="index.html#team">AI 팀</a>
+          <a href="team.html">팀 소개</a>
+          <a href="ensemble-product.html">Queen's Collection</a>
+          <div class="nav-item has-dropdown">
+            <a href="project.html">장기 프로젝트</a>
+            <div class="dropdown">
+              <a href="project.html">밀레니아</a>
+              <a href="project.html">드론 택시</a>
+              <a href="project.html">방어무기</a>
+            </div>
+          </div>
+          <div class="nav-item has-dropdown">
+            <a href="quantum.html" class="active">체험</a>
+            <div class="dropdown">
+              <a href="quantum.html">양자체험</a>
+              <a href="ensemble-maker.html">앙상블웹체험</a>
+            </div>
+          </div>
+          <a href="index.html#about">About</a>
+          <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="메뉴">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+    <a href="index.html#team" onclick="closeMobileNav()">AI 팀</a>
+    <a href="team.html" onclick="closeMobileNav()">팀 소개</a>
+    <a href="ensemble-product.html" onclick="closeMobileNav()">Queen's Collection</a>
+    <a href="project.html" onclick="closeMobileNav()">장기 프로젝트</a>
+    <a href="project.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 밀레니아</a>
+    <a href="project.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 드론 택시</a>
+    <a href="project.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 방어무기</a>
+    <a href="quantum.html" onclick="closeMobileNav()">체험</a>
+    <a href="quantum.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 양자체험</a>
+    <a href="ensemble-maker.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 앙상블웹체험</a>
+    <a href="index.html#about" onclick="closeMobileNav()">About</a>
+    <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="container">
+      <div class="hero__label">QUANTUM EXPERIENCE</div>
+      <h1 class="hero__title">양자 컴퓨터<br>체험 센터</h1>
+      <p class="hero__desc">실제 양자 컴퓨터를 무료로 체험하세요. 지금 이 순간, 현실이 된 SF.</p>
+    </div>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <section class="quantum-main">
+    <div class="container">
+      <div class="quantum-grid">
+
+        <!-- LEFT: Quantum Image -->
+        <div class="quantum-frame fade-up">
+          <img src="quantum.jpg" alt="양자 컴퓨터 큐비트 회로 — 네온 블루 & 퍼플" class="quantum-img">
+          <div class="quantum-overlay-top">QUANTUM CORE v3.7</div>
+          <div class="quantum-overlay-bottom">
+            <div class="qubit-bar">
+              <span class="qubit-label">QUBIT STATE</span>
+              <span class="qubit-blocks" id="qubitBlocks">
+                <span class="qubit-block"></span>
+                <span class="qubit-block"></span>
+                <span class="qubit-block"></span>
+                <span class="qubit-block"></span>
+                <span class="qubit-block off"></span>
+                <span class="qubit-block off"></span>
+                <span class="qubit-block off"></span>
+                <span class="qubit-block off"></span>
+                <span class="qubit-block off"></span>
+                <span class="qubit-block off"></span>
+              </span>
+              <span class="qubit-pct" id="qubitPct">40%</span>
+              <span class="qubit-status">COHERENT</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Link Cards -->
+        <div class="quantum-links fade-up">
+
+          <!-- 1. IBM Quantum -->
+          <a href="https://quantum.ibm.com" target="_blank" rel="noopener" class="quantum-link-card">
+            <span class="quantum-link-card__badge">FREE ACCESS</span>
+            <div class="quantum-link-card__num">SYSTEM_01</div>
+            <div class="quantum-link-card__title">IBM Quantum</div>
+            <div class="quantum-link-card__desc">IBM이 제공하는 실제 양자 컴퓨터 클라우드 접속</div>
+          </a>
+
+          <!-- 2. Google Cirq -->
+          <a href="https://quantumai.google/cirq" target="_blank" rel="noopener" class="quantum-link-card">
+            <span class="quantum-link-card__badge">OPEN SOURCE</span>
+            <div class="quantum-link-card__num">SYSTEM_02</div>
+            <div class="quantum-link-card__title">Google Cirq</div>
+            <div class="quantum-link-card__desc">Google 양자 시뮬레이터 + 실제 하드웨어 연동</div>
+          </a>
+
+          <!-- 3. AWS Braket -->
+          <a href="https://aws.amazon.com/braket" target="_blank" rel="noopener" class="quantum-link-card">
+            <span class="quantum-link-card__badge">CLOUD</span>
+            <div class="quantum-link-card__num">SYSTEM_03</div>
+            <div class="quantum-link-card__title">AWS Braket</div>
+            <div class="quantum-link-card__desc">Amazon 양자 컴퓨팅 클라우드 서비스</div>
+          </a>
+
+          <!-- 4. Azure Quantum -->
+          <a href="https://azure.microsoft.com/en-us/products/quantum" target="_blank" rel="noopener" class="quantum-link-card">
+            <span class="quantum-link-card__badge">ENTERPRISE</span>
+            <div class="quantum-link-card__num">SYSTEM_04</div>
+            <div class="quantum-link-card__title">Azure Quantum</div>
+            <div class="quantum-link-card__desc">Microsoft 양자 개발 플랫폼</div>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE BANNER ===== -->
+  <section class="exp-banner">
+    <div class="container">
+      <div class="exp-banner__inner fade-up">
+        <div class="exp-banner__title">무료로 실제 양자 컴퓨터를 돌려보세요!</div>
+        <div class="exp-banner__text">
+          10분 안에 체험 가능합니다 <span>(노이즈 많아도 재미있음 ㅋㅋ)</span><br>
+          양자 회로 설계 → 실행 → 결과 확인 — 전부 브라우저에서 가능.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUANTUM BASICS ===== -->
+  <section class="basics">
+    <div class="container">
+      <div class="basics__header fade-up">
+        <div class="basics__label">QUANTUM 101</div>
+        <h2 class="basics__title">양자 컴퓨팅 기초</h2>
+      </div>
+      <div class="basics-grid">
+
+        <div class="basics-card fade-up">
+          <span class="basics-card__icon"><img src="queencoin.jpg" alt="icon" style="width:2.5rem;height:2.5rem;object-fit:cover;border-radius:50%;"></span>
+          <div class="basics-card__title">큐비트란?</div>
+          <p class="basics-card__desc">0과 1을 동시에 가질 수 있는 양자 비트. 일반 컴퓨터 비트와 달리 중첩 상태를 활용합니다.</p>
+        </div>
+
+        <div class="basics-card fade-up">
+          <span class="basics-card__icon"><img src="queencoin.jpg" alt="icon" style="width:2.5rem;height:2.5rem;object-fit:cover;border-radius:50%;"></span>
+          <div class="basics-card__title">양자 얽힘</div>
+          <p class="basics-card__desc">두 큐비트가 거리에 상관없이 즉각적으로 연결되는 현상. 아인슈타인이 "유령 같은 원격 작용"이라 불렀습니다.</p>
+        </div>
+
+        <div class="basics-card fade-up">
+          <span class="basics-card__icon"><img src="queencoin.jpg" alt="icon" style="width:2.5rem;height:2.5rem;object-fit:cover;border-radius:50%;"></span>
+          <div class="basics-card__title">양자 우위</div>
+          <p class="basics-card__desc">특정 문제에서 고전 컴퓨터가 1만 년 걸릴 계산을 양자 컴퓨터가 200초에 해결합니다.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__copy">© 2026 Queen of Millennium Session · AI Team: Leading the Future</div>
+        <div class="footer__pplx">
+          <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Mobile nav
+    function closeMobileNav() {
+      document.getElementById('mobileNav').classList.remove('open');
+    }
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileNav').classList.add('open');
+    });
+    document.getElementById('mobileNavClose').addEventListener('click', closeMobileNav);
+
+    // IntersectionObserver — fade-up
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Qubit state bar animation
+    (function() {
+      const blocks = document.querySelectorAll('#qubitBlocks .qubit-block');
+      const pctEl = document.getElementById('qubitPct');
+      const totalBlocks = blocks.length;
+
+      function updateQubitState() {
+        const activeCount = Math.floor(Math.random() * (totalBlocks - 1)) + 1;
+        blocks.forEach((block, i) => {
+          if (i < activeCount) {
+            block.classList.remove('off');
+          } else {
+            block.classList.add('off');
+          }
+        });
+        const pct = Math.round((activeCount / totalBlocks) * 100);
+        pctEl.textContent = pct + '%';
+      }
+
+      setInterval(updateQubitState, 1800);
+    })();
+
+    // Dropdown nav
+    (function(){
+      const items=document.querySelectorAll('.nav-item.has-dropdown');
+      items.forEach(function(item){
+        const trigger=item.querySelector(':scope > a');
+        const dd=item.querySelector('.dropdown');
+        if(!trigger||!dd)return;
+        trigger.addEventListener('click',function(e){
+          e.preventDefault();
+          const isOpen=dd.classList.contains('open');
+          document.querySelectorAll('.dropdown.open').forEach(function(d){
+            d.classList.remove('open');
+            const p=d.closest('.nav-item');
+            if(p)p.querySelector(':scope > a').classList.remove('dd-open');
+          });
+          if(!isOpen){dd.classList.add('open');trigger.classList.add('dd-open');}
+        });
+      });
+      document.addEventListener('click',function(e){
+        if(!e.target.closest('.nav-item.has-dropdown')){
+          document.querySelectorAll('.dropdown.open').forEach(function(d){
+            d.classList.remove('open');
+            const p=d.closest('.nav-item');
+            if(p)p.querySelector(':scope > a').classList.remove('dd-open');
+          });
+        }
+      });
+    })();
+
+    // Image zoom
+    document.querySelectorAll('img').forEach(function(img){
+      if(img.closest('.logo,[data-no-zoom]'))return;
+      img.addEventListener('click',function(){this.classList.toggle('zoomed');});
+    });
+  </script>
+
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>

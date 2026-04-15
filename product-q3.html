@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>레이센 세이 — 외국어 말하기 연습 앱 매뉴얼</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* 원본 스타일 그대로 복사해서 그대로 씀 */
+    :root { --cp-black: #03030a; --cp-dark: #07071a; --cp-surface: #0b0b22; --cp-surface2: #0f0f2e;
+      --cp-border: #1a1a4a; --cp-text: #e0e8ff; --cp-muted: #7888cc; --cp-cyan: #00f5ff;
+      --cp-purple: #b44fff; --cp-pink: #ff2d9b; --cp-green: #00ff9f; }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { background: var(--cp-black); color: var(--cp-text); font-family: 'Rajdhani', sans-serif; line-height: 1.6; min-height: 100vh; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+    .hero { text-align: center; padding: 4rem 1rem 2rem; background: radial-gradient(ellipse at top, rgba(180,79,255,0.12), transparent 70%); }
+    .hero h1 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 3.2rem; background: linear-gradient(90deg, var(--cp-cyan), var(--cp-purple), var(--cp-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+    .hero img { max-width: 100%; border: 2px solid var(--cp-cyan); border-radius: 8px; box-shadow: 0 0 30px rgba(0,245,255,0.25); margin: 1.5rem 0; }
+    .section { margin: 2rem 0; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 6px; overflow: hidden; }
+    .section-header { padding: 1rem 1.5rem; background: rgba(0,245,255,0.05); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
+    .section-header:hover { background: rgba(0,245,255,0.12); }
+    .section-header h2 { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--cp-cyan); letter-spacing: 0.08em; text-transform: uppercase; }
+    .section-content { padding: 1.5rem; display: none; }
+    .section-content.open { display: block; }
+    .section-content p, .section-content ul { color: var(--cp-muted); font-size: 1rem; }
+    .section-content strong { color: var(--cp-cyan); }
+    .list { list-style: none; padding-left: 1.2rem; }
+    .list li:before { content: '→'; color: var(--cp-purple); margin-right: 0.5rem; }
+    footer { text-align: center; padding: 2rem; color: var(--cp-muted); font-size: 0.85rem; border-top: 1px solid var(--cp-border); }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="hero">
+    <h1>레이센 세이</h1>
+    <p style="color:var(--cp-muted); max-width:600px; margin:0 auto;">외국어 말하기 연습 — 네 목소리로 바로 피드백 받는 앱</p>
+    <img src="https://media.craiyon.com/2025-10-09/YDRBDTB0SCe-tYo8pl_wuw.webp" alt="네온 스타일 말하기 앱 화면">
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>1. 앱 개요</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <p>사용자가 말하면 실시간으로 TTS/STT가 분석 → 발음·억양·속도 피드백.  
+      <strong>언어팩 10개 이상</strong> 지원, 16:9 풀스크린 최적화.</p>
+      <p>혼자서도 "진짜 대화"처럼 연습 — AI가 상대역.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>2. 주요 기능</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <ul class="list">
+        <li>음성 녹음 & 즉시 피드백: 발음 점수, 억양 그래프</li>
+        <li>언어팩 선택: 영어·일본어·스페인어·프랑스어 등</li>
+        <li>대화 시뮬레이션: AI가 질문 → 답변 → 교정</li>
+        <li>반복 연습 모드: 틀린 문장만 자동 재생</li>
+        <li>화면 비율 최적화: 태블릿·폰 모두 16:9 풀스크린</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>3. 설치 & 실행</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <ol>
+        <li>앱 스토어에서 "레이센 세이" 검색·설치</li>
+        <li>첫 실행 시 언어팩 다운로드 (1~2분)</li>
+        <li>마이크 권한 허용</li>
+        <li>프로필 설정 후 바로 시작</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>4. 규약 준수</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <p>개인 학습용만 사용 — 상업 배포 금지</p>
+      <p>음성 데이터 저장 안 함, 모두 로컬 처리</p>
+      <p>공유는 스크린샷만 OK</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>5. 장점</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <p>언제 어디서나 말하기 연습 가능</p>
+      <p>AI 피드백으로 "진짜 선생님" 느낌</p>
+      <p>가볍고 빠름 — 데이터 적게 먹음</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>© 2026 — 레이센 세이 개발팀</footer>
+
+<script>
+  document.querySelector('.section-content').classList.add('open');
+</script>
+</body>
+</html>

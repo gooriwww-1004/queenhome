@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏭 AI FACTORY ALL-IN-ONE — 매뉴얼</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cp-black: #03030a; --cp-dark: #07071a; --cp-surface: #0b0b22; --cp-surface2: #0f0f2e;
+      --cp-border: #1a1a4a; --cp-text: #e0e8ff; --cp-muted: #7888cc; --cp-cyan: #00f5ff;
+      --cp-purple: #b44fff; --cp-pink: #ff00aa; --cp-green: #00ff9f;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { background: var(--cp-black); color: var(--cp-text); font-family: 'Rajdhani', sans-serif; line-height: 1.6; min-height: 100vh; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+    .hero { text-align: center; padding: 4rem 1rem 2rem; background: radial-gradient(ellipse at top, rgba(255,0,170,0.12), transparent 70%); }
+    .hero h1 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 3.2rem; background: linear-gradient(90deg, var(--cp-cyan), var(--cp-pink), var(--cp-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+    .hero img { max-width: 100%; border: 2px solid var(--cp-pink); border-radius: 8px; box-shadow: 0 0 30px rgba(255,0,170,0.25); margin: 1.5rem 0; }
+    .section { margin: 2rem 0; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 6px; overflow: hidden; }
+    .section-header { padding: 1rem 1.5rem; background: rgba(255,0,170,0.05); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
+    .section-header:hover { background: rgba(255,0,170,0.12); }
+    .section-header h2 { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--cp-pink); letter-spacing: 0.08em; text-transform: uppercase; }
+    .section-content { padding: 1.5rem; display: none; }
+    .section-content.open { display: block; }
+    .section-content p, .section-content ul { color: var(--cp-muted); font-size: 1rem; }
+    .section-content strong { color: var(--cp-pink); }
+    .list { list-style: none; padding-left: 1.2rem; }
+    .list li:before { content: '→'; color: var(--cp-purple); margin-right: 0.5rem; }
+    footer { text-align: center; padding: 2rem; color: var(--cp-muted); font-size: 0.85rem; border-top: 1px solid var(--cp-border); }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="hero">
+    <h1>AI FACTORY ALL-IN-ONE</h1>
+    <p style="color:var(--cp-muted); max-width:600px; margin:0 auto;">Gemini + Grok 이미지 공장 — 자동 프롬프트 생산 & 무한 렌더링</p>
+    <img src="https://media.craiyon.com/2025-10-09/YDRBDTB0SCe-tYo8pl_wuw.webp" alt="네온 공장 제어실">
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>1. 시스템 개요</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <p>Flask 웹 서버 + Playwright 자동화 + Gemini 프롬프트 생성기.  
+      <strong>목표:</strong> 한 번 설정하면 20개 프롬프트 자동 생성 → Grok.com/imagine에서 무한 이미지/동영상 생산.</p>
+      <p>사장님 전용 UI: 로그 실시간, 오더 생성, 생산 시작 버튼 하나로 끝.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>2. 주요 기능</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <ul class="list">
+        <li>Gemini가 설정 기반 20개 영어 프롬프트 자동 생성</li>
+        <li>Playwright로 Grok 이미지 사이트 자동 조작 (입력 → 렌더 → 스크린샷)</li>
+        <li>실시간 로그 & 생산량 표시 (downloads 폴더에 png 저장)</li>
+        <li>지속 프로필 브라우저 (로그인 유지)</li>
+        <li>헤드리스 아님 — 브라우저 직접 보면서 디버깅 가능</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>3. 설치 & 실행</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <ol>
+        <li>Python 3.10+ 설치</li>
+        <li>pip install flask playwright google-generativeai python-dotenv</li>
+        <li>.env에 GEMINI_API_KEY=너의키 입력</li>
+        <li>playwright install chromium</li>
+        <li>python aifactory.py 실행 → http://localhost:5000</li>
+      </ol>
+      <p>첫 실행 시 .grok_profile 폴더 자동 생성 — Grok 로그인 유지됨.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>4. 사용법 & 팁</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <p>1. textarea에 캐릭터+배경+스타일 입력 (예: 나(여자, 알몸), 별빛 방, 현실적)</p>
+      <p>2. "제미니 대리 일감 생성" → orders.txt에 20개 프롬프트 저장</p>
+      <p>3. "공장 풀가동 시작" → 브라우저가 Grok.com/imagine 열고 자동 렌더링</p>
+      <strong>주의:</strong> 렌더링 5분씩 걸림. 인터넷 끊기면 재시작해야 함.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="this.nextElementSibling.classList.toggle('open')">
+      <h2>5. 장점 & 한계</h2>
+      <span>▼</span>
+    </div>
+    <div class="section-content">
+      <p>장점: 한 번 클릭으로 무한 생산 — 진짜 공장 느낌</p>
+      <p>한계: Grok 사이트 바뀌면 좌표 깨짐 (수동 조정 필요)</p>
+      <p>팁: headless=True로 바꾸면 백그라운드 돌릴 수 있음</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>© 2026 AI FACTORY — Queen of Millennium Session</footer>
+
+<script>
+  document.querySelector('.section-content').classList.add('open');
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Queen of Millennium Session - Luxury Chrome Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* DESIGN TOKENS */
+        :root {
+            --cp-black: #03030a; 
+            --cp-dark: #07071a; 
+            --cp-surface: #0b0b22; 
+            --cp-border: #1a1a4a; 
+            --cp-text: #e0e8ff; 
+            --cp-text-muted: #7888cc; 
+            --cp-cyan: #00f5ff; 
+            --cp-purple: #b44fff; 
+            
+            /* 추가 메탈릭 토큰 (재미 과장님 지시) */
+            --mg-gold-grad: linear-gradient(135deg, #BF953F 0%, #FCF6BA 45%, #B38728 100%);
+            --mg-chrome-grad: linear-gradient(180deg, #FFFFFF 0%, #B0B0B0 50%, #4A4A4A 100%);
+            --mg-gold-glow: 0 0 20px rgba(191, 149, 63, 0.4);
+
+            --font-display: 'Orbitron', sans-serif; 
+            --font-body: 'Rajdhani', "Microsoft YaHei", "Malgun Gothic", sans-serif; /* 다국어 대응 폰트 폴백 */
+            
+            --space-2: 0.5rem; --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+            --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem); 
+            --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem); 
+            --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem); 
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--cp-black); color: var(--cp-text); font-family: var(--font-body); line-height: 1.6; }
+        .container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: clamp(var(--space-6), 5vw, 4rem); }
+
+        /* HEADER & LANGUAGE SWITCHER */
+        .header { position: sticky; top: 0; z-index: 100; padding-block: var(--space-4); background: rgba(3,3,10,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--cp-cyan); }
+        .header__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4); }
+        .logo { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); color: var(--cp-cyan); }
+        
+        .lang-switcher { display: flex; gap: var(--space-2); }
+        .lang-btn {
+            padding: 0.4rem 0.8rem; font-family: var(--font-display); font-weight: 700; font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.1); color: var(--cp-text);
+            border: 1px solid var(--cp-border); border-radius: 4px; cursor: pointer; transition: all 0.3s ease;
+        }
+        .lang-btn.active {
+            background: var(--mg-gold-grad); color: var(--cp-black); border-color: #FCF6BA; box-shadow: var(--mg-gold-glow);
+        }
+
+        /* PAGE HERO */
+        .page-hero { padding-block: var(--space-10); text-align: center; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(191,149,63,0.15) 0%, transparent 70%, var(--cp-black) 100%); }
+        .page-hero__title { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 900; background: var(--mg-gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* PRODUCT GRID */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-8); padding-block: var(--space-10); }
+
+        /* LUXURY CHROME GOLD PRODUCT CARD */
+        .product-card {
+            background: rgba(5, 5, 5, 0.85); /* 깊은 네이비 블랙 베이스 */
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); /* Glassmorphism */
+            border: 1px solid transparent; 
+            border-image: var(--mg-chrome-grad) 1; /* 크롬 그라데이션 테두리 */
+            padding: var(--space-6);
+            display: flex; flex-direction: column; gap: var(--space-4);
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 250px;
+        }
+        .product-card:hover {
+            box-shadow: var(--mg-gold-glow);
+            transform: translateY(-5px);
+            border-image: var(--mg-gold-grad) 1;
+        }
+        
+        .product-card__img {
+            width: 100%; height: 160px; object-fit: cover; border-radius: 2px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.5));
+            margin-bottom: var(--space-2);
+        }
+
+        .gold-text {
+            background: var(--mg-gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; line-height: 1.3;
+        }
+
+        .product-card p { font-size: var(--text-sm); color: var(--cp-text-muted); flex-grow: 1; word-break: keep-all; }
+
+        .chrome-btn {
+            margin-top: auto; padding: 0.8rem; width: 100%;
+            background: var(--mg-chrome-grad); color: var(--cp-black);
+            font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+            border: none; cursor: pointer; transition: all 0.3s ease;
+        }
+        .chrome-btn:hover { box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
+
+        footer { text-align: center; padding: var(--space-8); color: var(--cp-text-muted); border-top: 1px solid var(--cp-border); margin-top: var(--space-10); }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__inner">
+            <div class="logo">QUEEN OF MILLENNIUM <span class="logo__sub">Luxury Ensemble</span></div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ko">KO</button>
+                <button class="lang-btn" data-lang="zh">ZH</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero container">
+        <h1 class="page-hero__title" 
+            data-ko="프리미엄 AI 앙상블 컬렉션" 
+            data-zh="高端 AI 集合系列" 
+            data-en="Premium AI Ensemble Collection">
+            프리미엄 AI 앙상블 컬렉션
+        </h1>
+    </section>
+
+    <div class="container product-grid">
+        
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="골든 랭귀지 엔진" data-zh="黄金语言引擎" data-en="Golden Language Engine">골든 랭귀지 엔진</h3>
+            <p data-ko="실시간 언어 변환 버튼 팩" data-zh="实时语言转换按钮包" data-en="Real-time Language Translation Button Pack">실시간 언어 변환 버튼 팩</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="크롬 챗 봇" data-zh="镀铬聊天机器人" data-en="Chrome Chat Bot">크롬 챗 봇</h3>
+            <p data-ko="사이버펑크 텍스트 기반 대화 에이전트" data-zh="赛博朋克文本对话代理" data-en="Cyberpunk Text Conversational Agent">사이버펑크 텍스트 기반 대화 에이전트</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="네온 드래그 게임" data-zh="霓虹拖拽游戏" data-en="Neon Drag Game">네온 드래그 게임</h3>
+            <p data-ko="직관적인 이모티콘 드래그 학습 도구" data-zh="直观的表情符号拖拽学习工具" data-en="Intuitive Emoji Drag Learning Tool">직관적인 이모티콘 드래그 학습 도구</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="사이버 마켓 심" data-zh="赛博市场模拟器" data-en="Cyber Market Sim">사이버 마켓 심</h3>
+            <p data-ko="베트남 현지 시장 흥정 시뮬레이션" data-zh="越南当地市场讨价还价模拟" data-en="Vietnam Local Market Bargaining Sim">베트남 현지 시장 흥정 시뮬레이션</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="퀀텀 코드 리뷰어" data-zh="量子代码审查员" data-en="Quantum Code Reviewer">퀀텀 코드 리뷰어</h3>
+            <p data-ko="초정밀 양자 기반 코드 분석 및 최적화" data-zh="超精密量子代码分析与优化" data-en="Ultra-precision Quantum Code Analysis & Optimization">초정밀 양자 기반 코드 분석 및 최적화</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="홀로그램 피치 덱" data-zh="全息商业计划书" data-en="Hologram Pitch Deck">홀로그램 피치 덱</h3>
+            <p data-ko="3D 입체형 사업 계획서 자동 생성기" data-zh="3D 立体商业计划书自动生成器" data-en="3D Stereoscopic Business Plan Auto-Generator">3D 입체형 사업 계획서 자동 생성기</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="뉴럴 신스 메이커" data-zh="神经合成器" data-en="Neural Synth Maker">뉴럴 신스 메이커</h3>
+            <p data-ko="사용자 감정 인식형 사운드트랙 작곡 AI" data-zh="情感识别型原声带作曲 AI" data-en="Emotion-Recognizing Soundtrack Composer AI">사용자 감정 인식형 사운드트랙 작곡 AI</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="매트릭스 데이터 뷰어" data-zh="矩阵数据查看器" data-en="Matrix Data Viewer">매트릭스 데이터 뷰어</h3>
+            <p data-ko="복잡한 빅데이터를 3D 공간에 시각화" data-zh="在 3D 空间中可视化复杂的大数据" data-en="Visualize Complex Big Data in 3D Space">복잡한 빅데이터를 3D 공간에 시각화</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="골드 티어 시큐리티" data-zh="黄金级安全" data-en="Gold-Tier Security">골드 티어 시큐리티</h3>
+            <p data-ko="절대 뚫리지 않는 블록체인 보안 프로토콜" data-zh="绝对无法攻破的区块链安全协议" data-en="Impenetrable Blockchain Security Protocol">절대 뚫리지 않는 블록체인 보안 프로토콜</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="사이버 펫 컴패니언" data-zh="赛博宠物伴侣" data-en="Cyber-Pet Companion">사이버 펫 컴패니언</h3>
+            <p data-ko="감정을 교류하는 메타버스 가상 반려동물" data-zh="交流情感的元宇宙虚拟宠物" data-en="Emotion-Sharing Metaverse Virtual Pet">감정을 교류하는 메타버스 가상 반려동물</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="하이퍼스피드 번역기" data-zh="超光速翻译器" data-en="Hyper-Speed Translator">하이퍼스피드 번역기</h3>
+            <p data-ko="초광속 대용량 다국어 문서 번역 솔루션" data-zh="超光速大容量多语种文档翻译解决方案" data-en="Hyper-Speed Bulk Multilingual Document Translation Solution">초광속 대용량 다국어 문서 번역 솔루션</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+
+        <div class="product-card">
+            <h3 class="gold-text" data-ko="네온 시티 내비게이터" data-zh="霓虹城市导航器" data-en="Neon City Navigator">네온 시티 내비게이터</h3>
+            <p data-ko="AI 기반 글로벌 무역 최적화 경로 탐색기" data-zh="基于 AI 的全球贸易优化路径导航器" data-en="AI-based Global Trade Optimal Route Navigator">AI 기반 글로벌 무역 최적화 경로 탐색기</p>
+            <button class="chrome-btn" data-ko="자세히 보기" data-zh="查看详情" data-en="View Detail">자세히 보기</button>
+        </div>
+        
+    </div>
+
+    <footer>
+        &copy; 2026 Queen of Millennium Session. AI Team.
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const langBtns = document.querySelectorAll('.lang-btn');
+            // data-ko 속성을 가진 모든 요소를 번역 대상(translatable)으로 식별
+            const translatableElements = document.querySelectorAll('[data-ko]');
+
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 1. 모든 버튼에서 active 클래스 제거하고 클릭된 버튼만 활성화
+                    langBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // 2. 선택된 언어(ko, zh, en) 가져오기
+                    const selectedLang = btn.getAttribute('data-lang');
+                    
+                    // 3. 페이지 내 모든 텍스트 요소를 해당 언어로 즉시 변경
+                    translatableElements.forEach(el => {
+                        const newText = el.getAttribute(`data-${selectedLang}`);
+                        if(newText) el.textContent = newText;
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
