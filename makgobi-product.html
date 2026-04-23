@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>막고비 다이어트</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f0f1a;
+  color: white;
+  text-align: center;
+}
+
+/* 제목 */
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.subtitle {
+  margin: 15px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* 슬라이드 */
+.slider {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.slides {
+  display: flex;
+  width: 500%;
+  animation: slide 15s infinite;
+}
+
+.slides img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% {transform: translateX(0);}
+  20% {transform: translateX(0);}
+  25% {transform: translateX(-100%);}
+  45% {transform: translateX(-100%);}
+  50% {transform: translateX(-200%);}
+  70% {transform: translateX(-200%);}
+  75% {transform: translateX(-300%);}
+  95% {transform: translateX(-300%);}
+  100% {transform: translateX(-400%);}
+}
+
+/* 블랙홀 UI */
+.blackhole {
+  width: 150px;
+  height: 150px;
+  margin: 30px auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, #6a00ff, #000);
+  box-shadow: 0 0 30px #7a00ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* 다운로드 버튼 */
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #7a00ff;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ✅ 텍스트 수정 -->
+<div class="title">"막고비" 다이어트 관리 비법</div>
+
+<div class="subtitle">
+위고비는 식욕을 줄여주지만,<br>
+<b>'무엇을 먹느냐'</b>는 막고비가 관리해 드립니다.<br><br>
+
+🌌 킬러 UX: "칼로리 블랙홀"<br><br>
+
+막고비의 심장입니다.<br>
+지루한 텍스트 입력 대신 손맛을 강조했습니다.<br><br>
+
+사용법:<br>
+음식 이모지(🥘 🍗 🍔)를<br>
+중앙의 <b>보라색 원형 게이지(블랙홀)</b>로 던져 넣으세요.<br><br>
+
+① "블랙홀 필터링" 전략<br>
+② 단백질 60g의 법칙
+</div>
+
+<!-- ✅ 이미지 슬라이드 -->
+<div class="slider">
+  <div class="slides">
+    <img src="makgobi0.jpg">
+    <img src="makgobi1.jpg">
+    <img src="makgobi2.jpg">
+    <img src="makgobi3.jpg">
+    <img src="makgobi4.jpg">
+  </div>
+</div>
+
+<!-- ✅ 블랙홀 UI -->
+<div class="blackhole">BLACK HOLE</div>
+
+<!-- ✅ 다운로드 버튼 -->
+<button class="btn" onclick="downloadFile()">데이터 다운로드</button>
+
+<script>
+function downloadFile() {
+  window.location.href = "https://drive.google.com/uc?export=download&id=1PD8yvynOOC4kVPU7lsT6QvLVISuw0qJB";
+}
+</script>
+
+</body>
+</html>
