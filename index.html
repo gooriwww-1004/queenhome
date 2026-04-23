@@ -866,36 +866,40 @@
   <header class="header" id="header">
     <div class="container">
       <div class="header__inner">
-        <a href="#" class="logo">
-          <img src="queencoin.jpg" alt="QMS" style="width:32px;height:32px;object-fit:cover;border-radius:8px;flex-shrink:0;">
-          <div>
-            <span>QMS</span>
-            <span class="logo__sub">Queen of Millennium Session</span>
-          </div>
-        </a>
-
+        <a href="#" class="logo" style="gap: 8px;">
+		  <img src="queencoin.jpg" alt="QMS" style="width:32px;height:32px;object-fit:cover;border-radius:8px;flex-shrink:0;">
+		  <div>
+			<span style="font-size:1.1rem;letter-spacing:0.05em;">QMS</span>
+			<span class="logo__sub" style="font-size:0.78rem;letter-spacing:0.08em;">퀸 오브 밀레니엄 세션</span>
+		  </div>
+		</a>
         <nav class="desktop-nav">
-          <a href="#team">AI 팀</a>
-          <a href="team.html">팀 소개</a>
-          <a href="ensemble-product.html">Queen's Collection</a>
-          <div class="nav-item has-dropdown">
-            <a href="project.html">장기 프로젝트</a>
-            <div class="dropdown">
-              <a href="project.html">밀레니아</a>
-              <a href="project.html">드론 택시</a>
-              <a href="project.html">방어무기</a>
-            </div>
-          </div>
-          <div class="nav-item has-dropdown">
-            <a href="quantum.html">체험</a>
-            <div class="dropdown">
-              <a href="quantum.html">양자체험</a>
-              <a href="ensemble-maker.html">앙상블웹체험</a>
-            </div>
-          </div>
-          <a href="#about">About</a>
-          <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
-        </nav>
+		  <a href="#team">AI 팀</a>
+		  <a href="team.html">팀 소개</a>
+		  <a href="ensemble-product.html">Queen's Collection</a>
+		  
+		  <div class="nav-item has-dropdown">
+			<a href="project.html">장기 프로젝트</a>
+			<div class="dropdown">
+			  <a href="project.html">밀레니아</a>
+			  <a href="project.html">드론 택시</a>
+			  <a href="project.html">방어무기</a>
+			</div>
+		  </div>
+		  
+		  <div class="nav-item has-dropdown">
+			<a href="quantum.html">체험</a>
+			<div class="dropdown">
+			  <a href="quantum.html">양자체험</a>
+			  <a href="ensemble-maker.html">앙상블웹체험</a>
+			</div>
+		  </div>
+
+		  <!-- 새로 추가 -->
+		  <a href="https://queenofboard.vercel.app/board" target="_blank" rel="noopener">게시판</a>
+		  <a href="https://aether-press.vercel.app/#news" target="_blank" rel="noopener">에테르 저널</a>
+		  <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+		</nav>
 
         <div style="display:flex;align-items:center;gap:var(--space-3)">
           <button class="theme-toggle" data-theme-toggle aria-label="다크모드 전환">
@@ -924,8 +928,9 @@
     <a href="quantum.html" onclick="closeMobileNav()">체험</a>
     <a href="quantum.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 양자체험</a>
     <a href="ensemble-maker.html" onclick="closeMobileNav()" style="font-size:0.85rem;color:#7888cc;padding-left:1.5rem;">└ 앙상블웹체험</a>
-    <a href="#about" onclick="closeMobileNav()">About</a>
-    <a href="https://gooriblog.wordpress.com/" target="_blank" rel="noopener">블로그</a>
+    <a href="https://queenofboard.vercel.app/board" onclick="closeMobileNav()" target="_blank" rel="noopener">게시판</a>
+	<a href="https://aether-press.vercel.app/#news" onclick="closeMobileNav()" target="_blank" rel="noopener">에테르 저널</a>
+	<a href="https://gooriblog.wordpress.com/" onclick="closeMobileNav()" target="_blank" rel="noopener">블로그</a>
   </div>
 
   <!-- ===== HERO ===== -->
